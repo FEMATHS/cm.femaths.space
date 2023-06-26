@@ -1,4 +1,4 @@
-name: Deploy Github pages
+name: Deploy Github Pages
 on:
   push:
     branches:
@@ -9,19 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@main
+        uses: actions/checkout@v2
 
       - name: Install and Build 🔧
         run: |
           npm install
           npm run build
+
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.6
+        uses: JamesIves/github-pages-deploy-action@v4.4.2
         with:
           branch: gh-pages
           folder: build
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: build
-          BUILD_SCRIPT: npm install && npm run build
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
+          
