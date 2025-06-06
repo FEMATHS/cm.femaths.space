@@ -7,7 +7,7 @@
 
 [build.environment]
   NPM_VERSION = "9.7.1"
-  NODE_VERSION = "14"
+  NODE_VERSION = "18"
 
 [context.deploy-preview]
   publish = "build/"
