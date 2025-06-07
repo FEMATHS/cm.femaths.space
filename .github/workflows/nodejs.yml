@@ -1,29 +1,33 @@
-name: Deploy to GitHub Pages
+name: Deploy to Another Repo with Force Push
 
 on:
   push:
     branches:
-      - main  # 监听 main 分支的 push 事件
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: MY_DEPLOY_TOKEN  # 和你 GitHub 仓库环境名字对应
 
     steps:
-      - name: Checkout repository
+      - name: Checkout source repo
         uses: actions/checkout@v4
 
       - name: Build project
         run: |
           npm install
-          npm run build   # 确保这个命令会生成你的静态文件，且输出目录是 build
+          npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.4.2
-        with:
-          token: ${{ secrets.DEPLOY_TOKEN }}   # 确保 DEPLOY_TOKEN 是环境变量名，且已在环境设置里添加
-          branch: main                          # 部署到 main 分支
-          folder: build                         # 替换成你的构建输出目录
-          clean: true                          # 关键！禁用 worktree，避免部署冲突
-          single-commit: true                  # 可选，保持提交历史简洁
+      - name: Clone target repo
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        run: |
+          git clone --branch main https://x-access-token:${DEPLOY_TOKEN}@github.com/FEMATHS/FEMATHS.github.io.git target-repo
+          rm -rf target-repo/*
+          cp -r build/* target-repo/
+          cd target-repo
+          git config user.name "redhat123456"
+          git config user.email "1907065810@qq.com"
+          git add .
+          git commit -m "Deploy via GitHub Actions (force push)" || echo "No changes to commit"
+          git push -f origin main
