@@ -87,7 +87,7 @@ function Home() {
                 'button button--outline button--secondary button--lg',
                 styles.getStarted,
               )}
-              to={useBaseUrl('docs/')}>
+              >
               Get Started
             </Link>
           </div>
@@ -113,9 +113,9 @@ function Home() {
           className={classnames(styles.announcement, styles.announcementDark)}>
           <div className={styles.announcementInner}>
             了解更多，敬请关注{' '}
-            <Link to={useBaseUrl('/docs')}>
+            
               🔗
-            </Link>
+            
             .
           </div>
         </div>
