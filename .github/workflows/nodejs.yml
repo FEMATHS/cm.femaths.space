@@ -22,6 +22,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.4.2
         with:
           token: ${{ secrets.DEPLOY_TOKEN }}  # 👈 引用你刚才配置的 Secret
-          branch: gh-pages
-          folder: main
+          branch: main
+          folder: build
           repository-name: FEMATHS/FEMATHS.github.io  # 确保仓库名大小写一致
