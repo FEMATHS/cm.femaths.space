@@ -23,5 +23,5 @@ jobs:
         with:
           token: ${{ secrets.DEPLOY_TOKEN }}  # 👈 引用你刚才配置的 Secret
           branch: gh-pages
-          folder: build
+          folder: main
           repository-name: FEMATHS/FEMATHS.github.io  # 确保仓库名大小写一致
