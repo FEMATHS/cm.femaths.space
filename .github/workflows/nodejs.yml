@@ -1,26 +1,28 @@
-name: Deploy Github Pages
+name: Deploy to femaths.github.io
+
 on:
   push:
     branches:
-      - main
+      - main  # 你希望触发部署的分支
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-    environment: MY_DEPLOY_TOKEN      # 这里加上环境名，必须和你在 GitHub 仓库 Environments 中创建的环境名一致
+
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout source
         uses: actions/checkout@v3
 
-      - name: Install and Build 🔧
+      - name: Build Project
         run: |
           npm install
           npm run build
 
-      - name: Deploy 🚀
+      - name: Deploy to femaths.github.io
         uses: JamesIves/github-pages-deploy-action@v4.4.2
         with:
-           token: ${{ secrets.DEPLOY_TOKEN }}
-           branch: gh-pages
-           folder: build
-
+          token: ${{ secrets.DEPLOY_TOKEN }}
+          repository-name: FEMATHS/femaths.github.io
+          branch: main  # femaths.github.io 的分支，通常是 main
+          folder: build # 这是 build 后输出的目录
+          clean: true
