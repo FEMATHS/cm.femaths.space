@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install and Build 🔧
         run: |
@@ -21,5 +21,4 @@ jobs:
         with:
           branch: gh-pages
           folder: build
-          ssh-key: ${{ secrets.DEPLOY_KEY }}
-          
+          token: ${{ secrets.GITHUB_TOKEN }}
