@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from '@theme/Layout';
-import  Registration  from "../components/Registration";
 
 function IndexRegistration() {
   return (
