@@ -20,6 +20,7 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.4.2
         with:
-          branch: gh-pages
-          folder: build
-          token: ${{ secrets.DEPLOY_TOKEN }}  # 这个 secret 会从环境 MY_DEPLOY_TOKEN 里拿
+           token: ${{ secrets.DEPLOY_TOKEN }}
+           branch: gh-pages
+           folder: build
+
