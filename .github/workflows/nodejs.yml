@@ -3,7 +3,7 @@ name: Deploy to femaths.github.io
 on:
   push:
     branches:
-      - main  # 你希望触发部署的分支
+      - main
 
 jobs:
   deploy:
@@ -23,6 +23,6 @@ jobs:
         with:
           token: ${{ secrets.DEPLOY_TOKEN }}
           repository-name: FEMATHS/femaths.github.io
-          branch: main  # femaths.github.io 的分支，通常是 main
-          folder: build # 这是 build 后输出的目录
+          branch: gh-pages  # 👈 改成 gh-pages 分支
+          folder: build
           clean: true
