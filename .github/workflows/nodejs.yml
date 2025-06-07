@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: MY_DEPLOY_TOKEN
 
     steps:
       - name: Checkout source repo
