@@ -22,3 +22,4 @@ jobs:
           branch: gh-pages
           folder: build
           token: ${{ secrets.DEPLOY_TOKEN }}
+
