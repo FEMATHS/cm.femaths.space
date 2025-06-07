@@ -23,5 +23,5 @@ jobs:
         with:
           token: ${{ secrets.DEPLOY_TOKEN }}  
           repository-name: FEMATHS/FEMATHS.github.io
-          branch: main
+          branch: gh-pages
           folder: build
