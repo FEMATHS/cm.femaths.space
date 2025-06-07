@@ -18,10 +18,12 @@ jobs:
           npm install
           npm run build  # 或你自己的构建命令
 
-      - name: Deploy to GitHub Pages 🚀
+      - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.2
         with:
-          token: ${{ secrets.DEPLOY_TOKEN }}  # 👈 引用你刚才配置的 Secret
-          branch: main
-          folder: build
-          repository-name: FEMATHS/FEMATHS.github.io  # 确保仓库名大小写一致
+          token: ${{ secrets.DEPLOY_TOKEN }}
+          branch: main                  # ✅ 指定部署到 main 分支
+          folder: build                 # ⚠️ 替换为你的构建目录，如 dist/public
+          clean: true                   # ✅ 禁用 worktree，强制清空目录再部署
+          single-commit: true           # ✅ 避免历史膨胀，仅保留一次 commit（可选）
+
