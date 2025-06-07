@@ -21,8 +21,7 @@ jobs:
       - name: Deploy to femaths.github.io
         uses: JamesIves/github-pages-deploy-action@v4.4.2
         with:
-          token: ${{ secrets.DEPLOY_TOKEN }}
-          repository-name: FEMATHS/femaths.github.io
-          branch: gh-pages  # 👈 改成 gh-pages 分支
+          token: ${{ secrets.DEPLOY_TOKEN }}  
+          repository-name: FEMATHS/FEMATHS.github.io
+          branch: main
           folder: build
-          clean: true
