@@ -2,7 +2,8 @@
 title: 欢迎来到FEMATHS小组学习日志
 authors: [Tanger]
 tags: []
-date: 2099-01-01
+date: 2025-06-08
+priority: 0
 ---
 
 FEMATHS 学习小组的故事可以追溯到 **2023 年 6 月**。当时，[JoyBun](https://github.com/JoyBun)、[zqqqqqqj1110](https://github.com/zqqqqqqj1110) 和 [Tanger](https://github.com/redhat123456) 三人决定一起攻读与 **PINN**（_Physics-Informed Neural Networks_）相关的论文，以突破各自在学习中遇到的瓶颈。

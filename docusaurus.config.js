@@ -45,11 +45,12 @@ const config = {
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
+          postsPerPage: 'ALL',
           showReadingTime: true,
-          postsPerPage: 20, // 👈 新增这一行，修改显示数量
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          blogTitle: 'FEMATHS小组学习日志',
+          editUrl: 'https://github.com/yourrepo',
         },
+
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -75,7 +76,7 @@ const config = {
             position: 'left',
             label: '计算数学以及机器学习Wiki',
           },
-          { to: '/blog', label: 'Blog', position: 'left' },
+          { to: '/blog', label: 'FEMATHS小组学习日志', position: 'left' },
           {
             href: 'https://github.com/FEMATHS',
             label: 'GitHub',
