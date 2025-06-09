@@ -46,8 +46,7 @@ const config = {
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
+          postsPerPage: 20, // 👈 新增这一行，修改显示数量
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
@@ -66,7 +65,7 @@ const config = {
       navbar: {
         title: '机器学习小纵队',
         logo: {
-          alt: 'My Site Logo',
+          alt: '机器学习小纵队',
           src: 'img/favicon.ico',
         },
         items: [
