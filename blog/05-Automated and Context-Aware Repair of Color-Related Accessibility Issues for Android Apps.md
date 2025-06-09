@@ -1,3 +1,9 @@
+---
+title: Automated and Context-Aware Repair of Color-Related Accessibility Issues for Android Apps
+authors: [zqqqj1110]
+tags: []
+---
+
 # Automated and Context-Aware Repair of Color-Related Accessibility Issues for Android Apps
 
 ## 1. 摘要
@@ -18,7 +24,43 @@
 
 作者提出了iris，可以弄一个流程图体现该作者的研究工作
 
-【图】
+```
+                  [1] APK 文件
+                       ↓
+        ┌───────────────────────────────┐
+        │        Xbot 检测工具           │ ← 基于 Accessibility Scanner
+        └───────────────────────────────┘
+                       ↓
+               输出内容包括：
+               - 无障碍检测报告（JSON / XML）
+               - UI 页面截图（PNG）
+
+        ┌────────────────────────────────────────┐
+        │               Iris 修复系统              │
+        └────────────────────────────────────────┘
+                       ↓
+  1. 颜色参考数据库（Reference DB）
+     - 收集 9978 个 App 的 UI 配色
+     - 用于推荐合适的替换颜色
+
+  2. 上下文感知颜色选择（Context-aware）
+     - 保持风格一致性（HSV 模型、色轮协调）
+     - 决定修改 foreground 还是 background
+
+  3. 属性定位模块（Attribute-to-Repair）
+     - 定位 XML 或 Java 中待修复组件
+     - 分析 textColor、background 等属性
+
+  4. 图像修复模块（仅针对图标）
+     - 判断功能性 vs 装饰性图像
+     - 调整颜色或替换 vector 图标
+
+                       ↓
+        ┌───────────────────────────────┐
+        │         修复后的 APK 输出       │
+        └───────────────────────────────┘
+
+```
 
 ## 3. Preliminary
 
