@@ -1,6 +1,6 @@
 ---
-title: Physics Informed Deep Learning (Part I):Data-driven Solutions of Nonlinear Partial Differential Equations
-authors: [Tanger]
+title: Automated and Context-Aware Repair of Color-Related Accessibility Issues for Android Apps
+authors: [zqqqj]
 tags: []
 date: 2025-06-09
 ---
