@@ -1,8 +1,14 @@
 Tanger:
   name: Tanger
-  title: Academic rubbish | CV Engineers | Visual bubble | compute math
+  title: Academic rubbish | CV Engineers | Visual bubble | compute math | PINN
   url: https://github.com/redhat123456
   image_url: https://avatars.githubusercontent.com/u/57751257?v=4
+
+zqqqj:
+  name: zqqqj
+  title: Academic rubbish | CV Engineers | Visual bubble | compute math | PINN
+  url: https://github.com/zqqqqqqj1110
+  image_url: https://avatars.githubusercontent.com/u/95482898?v=4
 # 先把自己的信息按照
 # [自己姓名的简称]:
 # {缩减两个英文字符}name: [自己姓名的全称]
