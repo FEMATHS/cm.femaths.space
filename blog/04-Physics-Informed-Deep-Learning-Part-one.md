@@ -2,6 +2,7 @@
 title: Physics Informed Deep Learning (Part I):Data-driven Solutions of Nonlinear Partial Differential Equations
 authors: [Tanger]
 tags: []
+date: 2023-06-17
 ---
 
 ## 一些废话

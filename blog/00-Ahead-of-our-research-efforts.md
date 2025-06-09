@@ -2,7 +2,8 @@
 title: 欢迎来到FEMATHS小组学习日志
 authors: [Tanger]
 tags: []
-date: 2099-01-01
+date: 2025-06-08
+priority: 0
 ---
 
 FEMATHS 学习小组的故事可以追溯到 **2023 年 6 月**。当时，[JoyBun](https://github.com/JoyBun)、[zqqqqqqj1110](https://github.com/zqqqqqqj1110) 和 [Tanger](https://github.com/redhat123456) 三人决定一起攻读与 **PINN**（_Physics-Informed Neural Networks_）相关的论文，以突破各自在学习中遇到的瓶颈。
@@ -16,11 +17,11 @@ FEMATHS 学习小组的故事可以追溯到 **2023 年 6 月**。当时，[JoyB
 这期间我们也结识了一些新的朋友，小组的视野逐渐拓展，开始探索更多方向。我们讨论决定，将围绕**计算数学**与部分**机器学习**领域，构建一个开放共享的 Wiki，并系统阅读相关领域的重要论文。我们利用 ai 技术创造出了新的网站 logo 以及公众号“山海数模”，如下：
 
 <p align="center">
-  <img src="https://github.com/FEMATHS/photo/blob/main/biglogo.JPG?raw=true" alt="logo" />
+  <img src="https://images.weserv.nl/?url=https://article.biliimg.com/bfs/new_dyn/299613cd9ecde59cc3e19f35a3ea806b290271023.jpg" alt="logo" />
 </p>
 
 <p align="center">
-  <img src="https://images.weserv.nl/?url=https://article.biliimg.com/bfs/new_dyn/54ea214f070b1a26989134af5f4459f7290271023.jpg" alt="logo" />
+  <img src="https://images.weserv.nl/?url=https://article.biliimg.com/bfs/new_dyn/16ccf323348b3559d9526bb87b87727d290271023.jpg" alt="logo" />
 </p>
 
 在正式开始撰写这些内容之前，我们一致认为，应当从最基础、也是最关键的问题讲起——**如何正确对待论文**。  

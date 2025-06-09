@@ -45,12 +45,12 @@ const config = {
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
+          postsPerPage: 'ALL',
           showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          blogTitle: 'FEMATHS小组学习日志',
+          editUrl: 'https://github.com/yourrepo',
         },
+
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -66,7 +66,7 @@ const config = {
       navbar: {
         title: '机器学习小纵队',
         logo: {
-          alt: 'My Site Logo',
+          alt: '机器学习小纵队',
           src: 'img/favicon.ico',
         },
         items: [
@@ -76,7 +76,7 @@ const config = {
             position: 'left',
             label: '计算数学以及机器学习Wiki',
           },
-          { to: '/blog', label: 'Blog', position: 'left' },
+          { to: '/blog', label: 'FEMATHS小组学习日志', position: 'left' },
           {
             href: 'https://github.com/FEMATHS',
             label: 'GitHub',
