@@ -11,50 +11,51 @@ import IndexComment from './IndexComment';
 
 const features = [
   {
-    title: '算法部',
-    imageUrl: 'img/1.png',
+    title: '数值分析',
+    imageUrl: 'img/1.png', // 替换为你的 PDE 可视化图像路径
     description: (
       <>
-        本部门以培养优秀的算法工程师为目标。夯实算法基础和领会并能灵活运用编程思想。
-        提升算法优化能力、逻辑思维能力和抽象建模能力，为今后的参与算法比赛和就业做准备。
+        研究偏微分方程（PDE）的数值解法，如有限差分法、有限元法和谱方法。
+        应用于热传导、波动传播与流体模拟等科学计算场景中。
       </>
     ),
-    caption: '培养未来算法专家',
+    caption: '网格上的波动演化、热传导或流体模拟',
   },
   {
-    title: '大数据技术与分析部',
-    imageUrl: 'img/2.png',
+    title: '优化算法',
+    imageUrl: 'img/2.png', // 替换为目标函数图像路径
     description: (
       <>
-        本部门以培养优秀的数据研发工程师为目标。打好扎实的数理统计基础，掌握数据挖掘的
-        基础理论、核心算法、关键技术及软件系统，熟悉海量复杂数据的组织、处理、分析、挖掘和可视化等问题。
+        探索凸优化与非凸优化中的经典方法，如梯度下降、牛顿法和约束优化。
+        聚焦在等高线分析和最优解轨迹的可视化上。
       </>
     ),
-    caption: '数据驱动未来',
+    caption: '凸优化目标面、等高线与最优点轨迹',
   },
   {
-    title: '信息安全部',
-    imageUrl: 'img/3.png',
+    title: 'PINN（物理信息神经网络）',
+    imageUrl: 'img/3.png', // 替换为PINN架构图像路径
     description: (
       <>
-        本部门研究范围较广，主要涉及木马编程、网络渗透、逆向工程、代码审计、
-        密码学及社会工程学等方向。成员通过组队参加各大 CTF 及信息安全比赛。
+        结合神经网络与物理模型，引入PDE约束、残差分析和自适应采样机制。
+        广泛用于模拟自然过程与解决逆问题。
       </>
     ),
-    caption: '守护网络安全',
+    caption: 'PINN架构+残差图+物理约束可视化',
   },
   {
-    title: '应用软件研发部',
-    imageUrl: 'img/4.png',
+    title: '深度学习',
+    imageUrl: 'img/4.png', // 替换为CNN结构图像路径
     description: (
       <>
-        本部门以培养计算机技术领域优秀的工程师为目标，学习方向广泛，
-        包括 Web 开发、移动端开发、DevOps、云计算与云原生等。
+        聚焦于卷积神经网络（CNN）的结构与原理，涵盖特征提取、池化与分类过程。
+        广泛应用于图像识别、语义分割与计算机视觉任务中。
       </>
     ),
-    caption: '打造实用软件产品',
+    caption: '多层卷积神经网络结构图',
   },
 ];
+
 
 function Feature({ imageUrl, title, description, caption }) {
   return (
@@ -76,12 +77,11 @@ export default function Home() {
     <Layout
       title={`欢迎来到 ${siteConfig.title}`}
       description="这里是主页简介，将出现在 <head /> 的 meta 中">
-      
       <header className={classnames('hero', styles.heroBanner)}>
-        <div className="container">
+        <div className="container" style={{ paddingBottom: '20px' }}>
           <img
-            style={{ display: 'block', margin: '0 auto' }}
-            src={useBaseUrl('https://github.com/FEMATHS/photo/blob/main/biglogo.JPG?raw=true')}
+            style={{ display: 'block', margin: '0 auto' ,paddingBottom: '25px' }}
+            src={useBaseUrl('img/biglogo.jpg')}
             alt="Logo"
           />
           <div className={styles.buttons}>
@@ -100,7 +100,7 @@ export default function Home() {
       <main>
         {features.length > 0 && (
           <section className={styles.features}>
-            <div className={classnames('container', styles.featuresContainer)}>
+            <div className={classnames('container1', styles.featuresContainer)}>
               <div className="row">
                 {features.map((props, idx) => (
                   <Feature key={idx} {...props} />
