@@ -14,24 +14,21 @@
 
 ## 开发环境说明
 
-你可以选用 yarn 或 npm 任意一款包管理工具进行本地开发。
+请使用 npm 包管理工具进行本地开发。
 
-[Node.js](http://nodejs.cn/) 版本 >= 10.15.1，[Yarn](https://www.yarnpkg.cn/getting-started/usage) 版本 >= 1.22.10
+[Node.js](http://nodejs.cn/) 版本 >= 18.
 
-```bash
-# 安装 yarn
-npm install -g yarn
-```
+npm不需要额外安装，安装node.js已经自带npm.
 
 ## 参与贡献
 
-以下示范借用七院创新基地的 Github 项目 ——> [Git2Github-practice 的协作之道](https://github.com/seven-innovation-base/Git2Github-practice#%E5%8D%8F%E4%BD%9C%E4%B9%8B%E9%81%93pr)。
+首先学习FEMATHS学习小组日志中的[如何正确对待论文]，能阅读论文之后可以进行学习笔记上传。
 
 - Step 1：[fork「戳我」](https://github.com/FEMATHS/cm.fesmpn.space/fork) 本仓库，clone 项目到本地进行开发。
 
 ```bash
-git clone https://github.com/your-username/official-website
-cd official-website
+git clone https://github.com/your-username/cm.femaths.space
+cd cm.femaths.space
 ```
 
 - Step 2：新建 Git 分支，基于新分支进行开发
@@ -43,16 +40,12 @@ git branch branch-name
 安装项目依赖
 
 ```bash
-yarn
-# or
 npm install
 ```
 
 - Step 3：启动开发服务器，进行开发
 
 ```bash
-yarn run start
-# or
 npm run start
 ```
 
@@ -70,7 +63,7 @@ git push origin branch-name
 
 #### 图床
 
-- [聚合图床](https://www.superbed.cn/)
+- [BiliBili图床](https://microsoftedge.microsoft.com/addons/detail/b%E7%AB%99%E5%9B%BE%E5%BA%8A/hfjlcmnnkgeppnaigbphhiibhnbnmbip?hl=zh-CN))
 
 #### 编辑器
 
@@ -87,7 +80,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://redhat123456.github.io/"><img src="https://avatars.githubusercontent.com/u/57751257?v=4?s=100" width="100px;" alt=""/><br /><sub><b>redhat123456</b></sub></a><br /><a href="https://github.com/FEMATHS/cm.fesmpn.space/commits?author=redhat123456" title="Documentation">📖</a> <a href="#maintenance-redhat123456" title="Maintenance">🚧</a></td>
     <td align="center"><a href="https://zqqqqqqj1110.github.io/"><img src="https://avatars.githubusercontent.com/u/95482898?v=4" width="100px;" alt=""/><br /><sub><b>Bravozhou</b></sub></a><br /><a href="https://github.com/FEMATHS/cm.fesmpn.space/commits?author=zqqqqqqj1110" title="Documentation">📖</a> <a href="#maintenance-zqqqqqqj1110" title="Maintenance">🚧</a></td>
-    <td align="center"><a href="https://github.com/JoyBun/"><img src="https://avatars.githubusercontent.com/u/136948208?v=4" width="100px;" alt=""/><br /><sub><b>redhat123456</b></sub></a><br /><a href="https://github.com/FEMATHS/cm.fesmpn.space/commits?author=JoyBun" title="Documentation">📖</a> <a href="#maintenance-JoyBun" title="Maintenance">🚧</a></td>
   </tr>
 </table>
 
