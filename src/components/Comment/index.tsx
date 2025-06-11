@@ -33,23 +33,26 @@ export default function App() {
   return (
     <div className='comment'>
       { <div>
-      {loading ? <List
-      className="comment-list"
-      header={`${data.length} 条评论`}
-      itemLayout="horizontal"
-      dataSource={data}
-      renderItem={item => (
-        <li>
-          <Comment
-            author={<div className='comment-list-name'>{item.author}</div>}
-            avatar={item.avatar}
-            content={<b><p className="comment-list-p">{item.content}</p></b>}
-            datetime={<span className='comment-list-name'>{item.datetime}</span>}
-          />
-        </li>
-      )}
-      /> : <Spin tip="Loading..." size="large">
-    </Spin>} 
+            <List
+        className="comment-list"
+        header={`${data.length} 条评论`}
+        itemLayout="horizontal"
+        dataSource={data}
+        pagination={{
+          pageSize: 5,      // 每页5条
+          showSizeChanger: false, // 不允许用户改变每页数量
+        }}
+        renderItem={item => (
+          <li>
+            <Comment
+              author={<div className='comment-list-name'>{item.author}</div>}
+              avatar={item.avatar}
+              content={<b><p className="comment-list-p">{item.content}</p></b>}
+              datetime={<span className='comment-list-name'>{item.datetime}</span>}
+            />
+          </li>
+        )}
+      />
     </div> }
     
       <div className="Comment-setion2">

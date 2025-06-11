@@ -116,7 +116,7 @@ export default function Home() {
           </div>
         </div>
 
-        <PromotionalVideo />
+        {/* <PromotionalVideo 先暂时注释后面有空再做视频/>*/}
         <IndexComment />
       </main>
     </Layout>
