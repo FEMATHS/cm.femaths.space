@@ -69,7 +69,9 @@ git push origin branch-name
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 
-## Contributors
+## 目前参与奉献
+
+[![All Contributors](https://img.shields.io/github/all-contributors/projectOwner/projectName?color=ee8449&style=flat-square)](#contributors)
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
