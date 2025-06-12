@@ -13,7 +13,10 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/57751257?v=4",
       "profile": "https://github.com/redhat123456",
       "contributions": [
-        "code"
+        "code",
+        "doc",
+        "bug",
+        "design"
       ]
     },
     {
