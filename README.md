@@ -18,11 +18,11 @@
 
 [Node.js](http://nodejs.cn/) 版本 >= 18.
 
-npm不需要额外安装，安装node.js已经自带npm.
+npm 不需要额外安装，安装 node.js 已经自带 npm.
 
 ## 参与贡献
 
-首先学习FEMATHS学习小组日志中的[如何正确对待论文]，能阅读论文之后可以进行学习笔记上传。
+首先学习 FEMATHS 学习小组日志中的[如何正确对待论文]，能阅读论文之后可以进行学习笔记上传。
 
 - Step 1：[fork「戳我」](https://github.com/FEMATHS/cm.fesmpn.space/fork) 本仓库，clone 项目到本地进行开发。
 
@@ -63,7 +63,9 @@ git push origin branch-name
 
 #### 图床
 
-- [BiliBili图床](https://microsoftedge.microsoft.com/addons/detail/b%E7%AB%99%E5%9B%BE%E5%BA%8A/hfjlcmnnkgeppnaigbphhiibhnbnmbip?hl=zh-CN)
+- [聚合图床](https://www.superbed.cn/)
+
+※ 目前还在正常运行 ing。
 
 #### 编辑器
 
