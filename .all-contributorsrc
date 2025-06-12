@@ -1,0 +1,8 @@
+{
+  "projectName": "cm.femaths.space",
+  "projectOwner": "redhat123456",
+  "files": ["README.md"],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": []
+}
