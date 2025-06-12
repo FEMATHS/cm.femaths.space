@@ -17,11 +17,11 @@ FEMATHS 学习小组的故事可以追溯到 **2023 年 6 月**。当时，[JoyB
 这期间我们也结识了一些新的朋友，小组的视野逐渐拓展，开始探索更多方向。我们讨论决定，将围绕**计算数学**与部分**机器学习**领域，构建一个开放共享的 Wiki，并系统阅读相关领域的重要论文。我们利用 ai 技术创造出了新的网站 logo 以及公众号“山海数模”，如下：
 
 <p align="center">
-  <img src="https://images.weserv.nl/?url=https://article.biliimg.com/bfs/new_dyn/299613cd9ecde59cc3e19f35a3ea806b290271023.jpg" alt="logo" />
+  <img src="https://s2.loli.net/2025/06/12/BzStJo2weFED4vQ.jpg" alt="logo" />
 </p>
 
 <p align="center">
-  <img src="https://images.weserv.nl/?url=https://article.biliimg.com/bfs/new_dyn/16ccf323348b3559d9526bb87b87727d290271023.jpg" alt="logo" />
+  <img src="https://s2.loli.net/2025/06/12/9aDkEfKWvUMrjnm.jpg" alt="logo" />
 </p>
 
 在正式开始撰写这些内容之前，我们一致认为，应当从最基础、也是最关键的问题讲起——**如何正确对待论文**。  
@@ -95,7 +95,7 @@ FEMATHS 学习小组的故事可以追溯到 **2023 年 6 月**。当时，[JoyB
 为了更直观地理解一篇科技论文的结构，我们将以本人发表的一篇研究论文《A Multi-Layer Classifier Model XR-KS of Human Activity Recognition for the Problem of Similar Human Activity》为例，对其各部分内容进行拆解分析。希望借此帮助大家掌握一篇标准 Research Article 的行文方式与写作要点。
 
 <p align="center">
-  <img src="https://images.weserv.nl/?url=https://article.biliimg.com/bfs/new_dyn/3e0e83a90510ae58816943513a50f1db290271023.png" alt="logo" />
+  <img src="https://s2.loli.net/2025/06/12/wTvohC8WHIEU9tJ.png" alt="logo" />
 </p>
 
 ### 论文结构解析
