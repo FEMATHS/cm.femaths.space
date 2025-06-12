@@ -63,7 +63,7 @@ git push origin branch-name
 
 #### 图床
 
-- [BiliBili图床](https://microsoftedge.microsoft.com/addons/detail/b%E7%AB%99%E5%9B%BE%E5%BA%8A/hfjlcmnnkgeppnaigbphhiibhnbnmbip?hl=zh-CN))
+- [BiliBili图床](https://microsoftedge.microsoft.com/addons/detail/b%E7%AB%99%E5%9B%BE%E5%BA%8A/hfjlcmnnkgeppnaigbphhiibhnbnmbip?hl=zh-CN)
 
 #### 编辑器
 
