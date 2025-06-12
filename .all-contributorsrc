@@ -1,8 +1,24 @@
 {
   "projectName": "cm.femaths.space",
-  "projectOwner": "redhat123456",
-  "files": ["README.md"],
+  "projectOwner": "FEMATHS",
+  "files": [
+    "README.md"
+  ],
   "imageSize": 100,
   "commit": true,
-  "contributors": []
+  "contributors": [
+    {
+      "login": "redhat123456",
+      "name": "_Tanger_",
+      "avatar_url": "https://avatars.githubusercontent.com/u/57751257?v=4",
+      "profile": "https://github.com/redhat123456",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    }
+  ],
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributorsPerLine": 7
 }
