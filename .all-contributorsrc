@@ -25,7 +25,10 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/95482898?v=4",
       "profile": "https://github.com/zqqqqqqj1110",
       "contributions": [
-        "doc"
+        "doc",
+        "code",
+        "bug",
+        "design"
       ]
     }
   ],
