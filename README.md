@@ -79,7 +79,7 @@ git push origin branch-name
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/redhat123456"><img src="https://avatars.githubusercontent.com/u/57751257?v=4?s=100" width="100px;" alt="_Tanger_"/><br /><sub><b>_Tanger_</b></sub></a><br /><a href="#code-redhat123456" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/redhat123456"><img src="https://avatars.githubusercontent.com/u/57751257?v=4?s=100" width="100px;" alt="_Tanger_"/><br /><sub><b>_Tanger_</b></sub></a><br /><a href="#doc-zqqqqqqj1110" title="Documentation">📖</a> <a href="#code-zqqqqqqj1110" title="Code">💻</a> <a href="#bug-zqqqqqqj1110" title="Bug reports">🐛</a> <a href="#design-zqqqqqqj1110" title="Design">🎨</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/zqqqqqqj1110"><img src="https://avatars.githubusercontent.com/u/95482898?v=4?s=100" width="100px;" alt="羊村的风吹不到比奇堡，我和她也没有明天"/><br /><sub><b>羊村的风吹不到比奇堡，我和她也没有明天</b></sub></a><br /><a href="#doc-zqqqqqqj1110" title="Documentation">📖</a> <a href="#code-zqqqqqqj1110" title="Code">💻</a> <a href="#bug-zqqqqqqj1110" title="Bug reports">🐛</a> <a href="#design-zqqqqqqj1110" title="Design">🎨</a></td>
     </tr>
   </tbody>
