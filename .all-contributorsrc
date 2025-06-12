@@ -1,8 +1,23 @@
 {
   "projectName": "cm.femaths.space",
-  "projectOwner": "redhat123456",
-  "files": ["README.md"],
+  "projectOwner": "FEMATHS",
+  "files": [
+    "README.md"
+  ],
   "imageSize": 100,
   "commit": true,
-  "contributors": []
+  "contributors": [
+    {
+      "login": "zqqqqqqj1110",
+      "name": "羊村的风吹不到比奇堡，我和她也没有明天",
+      "avatar_url": "https://avatars.githubusercontent.com/u/95482898?v=4",
+      "profile": "https://github.com/zqqqqqqj1110",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributorsPerLine": 7
 }
