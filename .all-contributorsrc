@@ -6,17 +6,26 @@
   ],
   "imageSize": 100,
   "commit": true,
-  "contributors": [
-    {
-      "login": "zqqqqqqj1110",
-      "name": "羊村的风吹不到比奇堡，我和她也没有明天",
-      "avatar_url": "https://avatars.githubusercontent.com/u/95482898?v=4",
-      "profile": "https://github.com/zqqqqqqj1110",
-      "contributions": [
-        "doc"
-      ]
-    }
-  ],
+ "contributors": [
+  {
+    "login": "redhat123456",
+    "name": "_Tanger_",
+    "avatar_url": "https://avatars.githubusercontent.com/u/57751257?v=4",
+    "profile": "https://github.com/redhat123456",
+    "contributions": [
+      "code"
+    ]
+  },
+  {
+    "login": "zqqqqqqj1110",
+    "name": "羊村的风吹不到比奇堡，我和她也没有明天",
+    "avatar_url": "https://avatars.githubusercontent.com/u/95482898?v=4",
+    "profile": "https://github.com/zqqqqqqj1110",
+    "contributions": [
+      "doc"
+    ]
+  }
+]
   "commitType": "docs",
   "commitConvention": "angular",
   "contributorsPerLine": 7
