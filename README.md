@@ -69,21 +69,11 @@ git push origin branch-name
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 
-## 贡献者 ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+## Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="https://redhat123456.github.io/"><img src="https://avatars.githubusercontent.com/u/57751257?v=4?s=100" width="100px;" alt=""/><br /><sub><b>redhat123456</b></sub></a><br /><a href="https://github.com/FEMATHS/cm.fesmpn.space/commits?author=redhat123456" title="Documentation">📖</a> <a href="#maintenance-redhat123456" title="Maintenance">🚧</a></td>
-    <td align="center"><a href="https://zqqqqqqj1110.github.io/"><img src="https://avatars.githubusercontent.com/u/95482898?v=4" width="100px;" alt=""/><br /><sub><b>Bravozhou</b></sub></a><br /><a href="https://github.com/FEMATHS/cm.fesmpn.space/commits?author=zqqqqqqj1110" title="Documentation">📖</a> <a href="#maintenance-zqqqqqqj1110" title="Maintenance">🚧</a></td>
-  </tr>
-</table>
-
-
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
