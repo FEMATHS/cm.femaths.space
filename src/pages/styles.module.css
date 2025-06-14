@@ -4,6 +4,10 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
+html, body {
+  overflow-x: hidden;
+}
+
 .hero_title {
   color: black;
 }
