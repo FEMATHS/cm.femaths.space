@@ -1,7 +1,7 @@
 ---
 title: 如何找到一篇合适的科技论文
 authors: [Tanger]
-tags: []
+tags: [从入门到入土？不，是精通！科技论文完全指南]
 date: 2025-06-08
 priority: 1
 ---
@@ -34,8 +34,6 @@ priority: 1
 
 你可能会需要的用到查找论文的网站
 
-### Google Scholar
-
 ## 📚 常用论文搜索平台：
 
 你可能会需要用到的查找论文的网站，这些平台涵盖了国内外权威的学术资源，适合科研初学者与进阶研究者使用。
@@ -48,7 +46,7 @@ priority: 1
 
 **简介**：Google Scholar 是谷歌推出的学术搜索引擎，收录了全球多个数据库的论文、学位论文、书籍章节、会议论文等，支持按作者、出版物等进行检索。是学术研究中不可或缺的工具。
 
-- 官网：[Google Scholar](https://scholar.google.com)
+- 官网：[Google Scholar:https://scholar.google.com](https://scholar.google.com)
 
 ---
 
@@ -58,7 +56,7 @@ priority: 1
 
 **简介**：由于某些网络限制，有时 Google Scholar 无法直接访问，此时可以使用镜像站点进行访问。思谋学术是较为稳定的镜像服务，界面简洁、搜索功能齐全。
 
-- 推荐镜像：[思谋学术](https://ac.scmor.com/)
+- 推荐镜像：[思谋学术:https://ac.scmor.com/](https://ac.scmor.com/)
 
 ---
 
@@ -68,7 +66,7 @@ priority: 1
 
 **简介**：arXiv 是由康奈尔大学运营的一个开放获取的论文预印本平台，主要涵盖数学、物理、计算机科学等领域。可以第一时间获取最新研究成果，适合关注前沿技术的研究者。
 
-- 官网：[arXiv](https://arxiv.org)
+- 官网：[arXiv:https://arxiv.org](https://arxiv.org)
 
 ---
 
@@ -78,7 +76,7 @@ priority: 1
 
 **简介**：ResearchGate 是一个科研社交平台，科研人员可以上传自己的论文、阅读他人文章、参与学术讨论，甚至可以直接向作者请求全文，非常适合建立学术联系和获取资源。
 
-- 官网：[ResearchGate](https://www.researchgate.net)
+- 官网：[ResearchGate:https://www.researchgate.net](https://www.researchgate.net)
 
 ---
 
@@ -88,7 +86,7 @@ priority: 1
 
 **简介**：中国知网（CNKI）是中国最权威的中文学术文献数据库，涵盖了期刊、学位论文、会议论文、年鉴、报纸等中文文献资源，是查找中文论文和了解国内研究现状的重要平台。
 
-- 官网：[CNKI（中国知网）](https://www.cnki.net)
+- 官网：[CNKI（中国知网）:https://www.cnki.net](https://www.cnki.net)
 
 ---
 
@@ -143,11 +141,11 @@ priority: 1
 
 ---
 
-以 Google 镜像的 Sci-Hub（[点我访问 Sci-Hub](https://sci-hub.org.cn/)）为例，我们可以通过以下方式查找目标文献：
+以 Google 镜像的 Sci-Hub（[Sci-Hub:https://sci-hub.org.cn/](https://sci-hub.org.cn/)）为例，我们可以通过以下方式查找目标文献：
 
 假设我们希望查找与图神经网络（Graph Neural Network）和交通预测（Traffic Forecasting）相关的论文，可以在图中箭头所指的搜索框中输入关键词 "Graph Neural Network" + "Traffic Forecasting"。为了提高搜索结果的相关性，我们可以在页面右侧设置检索条件，例如限定时间范围、文献类型、语言等，如下图红框内所示。
 
-此外，建议大家安装一个名为 [EasyScholar](https://www.easyscholar.cc/) 的浏览器插件，它可以在 Google 学术搜索结果中为论文添加多种标签（tag），包括期刊的影响因子（IF）、中国科学院和美国科学院的期刊分区信息、部分高校推荐分区等。这些标签有助于我们初步评估论文的质量，从而决定是否深入阅读或下载。
+此外，建议大家安装一个名为 [EasyScholar:https://www.easyscholar.cc/](https://www.easyscholar.cc/) 的浏览器插件，它可以在 Google 学术搜索结果中为论文添加多种标签（tag），包括期刊的影响因子（IF）、中国科学院和美国科学院的期刊分区信息、部分高校推荐分区等。这些标签有助于我们初步评估论文的质量，从而决定是否深入阅读或下载。
 
 除了插件提供的标签外，我们还应关注 Google Scholar 自带的“被引用数”标签（图中波浪线所示）。引用次数往往可以反映一篇论文在该领域的影响力。对于刚开始了解某一研究方向的读者而言，优先阅读高引用量的经典文献，能够帮助快速把握该领域的研究脉络和关键问题。
 
@@ -160,3 +158,7 @@ priority: 1
 希望这个示例能够帮助你更好地理解科技论文的检索与写作规范，为你的科研之路打下坚实的基础。
 
 📌 **欢迎关注 FEMATHS 小组与山海数模，持续学习更多数学建模与科研相关知识！**
+
+<p align="center">
+  <img src="https://s2.loli.net/2025/06/12/9aDkEfKWvUMrjnm.jpg" alt="logo" />
+</p>
