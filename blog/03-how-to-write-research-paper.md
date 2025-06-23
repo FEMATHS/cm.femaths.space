@@ -34,9 +34,7 @@ priority: 3
 
 采用这种写作顺序，有助于围绕核心研究结果进行清晰、有逻辑的论文构建，同时避免“边写边想”的低效写作状态。
 
-## 写作的常见结构
-
-### Abstract（摘要）
+## Abstract（摘要）
 
 摘要作为论文的开头部分，是整篇文章的核心思想浓缩表达。从读者的角度来看，摘要往往是他们接触论文的第一段文字，因此其写作质量直接影响读者是否有兴趣继续阅读下去。
 
@@ -76,7 +74,7 @@ priority: 3
 
 > Our model is experimentally evaluated, and it is also applied to four benchmark datasets: UCI DSA, UCI HAR, WISDM, and IM-WSHA. The experimental results demonstrate that the proposed approach achieves recognition accuracies of 97.69%, 97.92%, 98.12%, and 90.6%, indicating excellent recognition performance. Additionally, we performed K-fold cross-validation on the random forest model and utilized ROC curves for the SVM classifier to assess the model’s generalization ability. The results indicate that our multi-layer classifier model exhibits robust generalization capabilities.
 
-### Introduction（介绍）
+## Introduction（介绍）
 
 **“Introduction”** 顾名思义，是整篇论文的开端，它不仅介绍研究背景与核心模型，更是作者站在专业视角，以通俗且严谨的语言引导读者理解全文核心思想的关键部分。尽管引言部分没有固定格式，但写作时仍应遵循一定的逻辑和结构，并结合不断练习和积累提升写作质量。一个好的 Introduction 能够帮助不了解你研究领域的读者，在短时间内把握论文的主题、研究意义以及你在其中的贡献。因此，Introduction 不是背景的堆砌，而是一个故事的开端。
 
@@ -127,6 +125,26 @@ priority: 3
 
 > The remaining sections of this paper are organized as follows: Section 2 provides a brief introduction to the work carried out in this paper, along with details about the dataset used. Section 3 conducts a basic data analysis and employs appropriate data preprocessing techniques. This section introduces our proposed approach for human motion, which is based on a multi-layer classifier. Section 4 presents the experimental setup, provides results for our proposed method on multiple datasets, and offers an analysis and discussion of these results. Finally, in Section 5, we will summarize the insights gathered from these experiments and outline future directions.
 
-### Methods （方法）
+## Methods （方法）
 
-方法部分同样要参考许多同一领域的论文，看看同一领域的论文是如何撰写文章的，一般来说，我们会先把
+方法部分同样需要广泛参考同领域的文献，了解该领域在方法描述方面的写作规范与表达方式。通常建议先阐明整体研究框架与核心思路，再逐步展开每个关键步骤的具体实现细节，以保证结构清晰、内容完整，并符合通行的学术表达习惯。
+
+### ✏️ 写作建议
+
+- **图文结合，提升可读性**  
+  推荐采用**流程图或示意图结合文字描述**的方式，更直观地展示方法步骤。例如，以下几幅图可用于概括整体流程或关键步骤的执行逻辑，有助于读者迅速理解方法框架与技术路径：
+
+![1.jpg](https://s2.loli.net/2025/06/23/A2mhJESQIN9zKgV.jpg)  
+![2.jpg](https://s2.loli.net/2025/06/23/rXQxM4KBhjmGEi2.jpg)  
+![3.jpg](https://s2.loli.net/2025/06/23/bd9flHcDg5EGpeC.png)  
+![4.png](https://s2.loli.net/2025/06/23/MWGm1gHEr3eFvOP.png)
+
+- **文字描述需参考规范表达**  
+  在撰写文字说明时，应尽可能参照该领域内已发表的高质量论文，模仿其术语使用、句式结构与逻辑顺序。重点突出方法的创新点和与已有方法的区别，避免泛泛而谈。
+
+- **注意结构层次与术语统一**  
+  建议将方法部分划分为若干子模块（如“整体框架”、“预处理阶段”、“模型结构”、“训练策略”、“评估指标”等），层层推进，逻辑清晰。同时注意统一使用关键术语，避免描述不一致造成歧义。
+
+### Results （结果）
+
+### Discussion （讨论）
