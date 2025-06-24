@@ -40,6 +40,14 @@ cd my-website
 npm run start
 ```
 
+行内公式：$E = mc^2$
+
+块级公式：
+
+$$
+\int_a^b f(x)\,dx = F(b) - F(a)
+$$
+
 The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
 
 The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
