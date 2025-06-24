@@ -1,6 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-
+const math = require('remark-math').default
+const katex = require('rehype-katex').default
 const lightCodeTheme = require('prism-react-renderer/themes/github')
 const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
@@ -39,8 +40,8 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
@@ -49,13 +50,23 @@ const config = {
           showReadingTime: true,
           blogTitle: 'FEMATHS小组学习日志',
           editUrl: 'https://github.com/yourrepo',
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
         },
-
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
       }),
     ],
+  ],
+  stylesheets: [
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css',
+      type: 'text/css',
+      integrity:
+        'sha384-K9P2+4+PNL1EfCT7eKZxLS9P9m1M9L3CwM2X7ZzZsda6CyaZozkn2lW7lRg3p2Ek',
+      crossorigin: 'anonymous',
+    },
   ],
 
   themeConfig:
