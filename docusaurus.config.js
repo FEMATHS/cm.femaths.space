@@ -49,6 +49,8 @@ const config = {
           postsPerPage: 'ALL',
           showReadingTime: true,
           blogTitle: 'FEMATHS小组学习日志',
+          blogSidebarTitle: 'All posts',
+          blogSidebarCount: 'ALL',
           editUrl: 'https://github.com/yourrepo',
           remarkPlugins: [math],
           rehypePlugins: [katex],
@@ -87,7 +89,11 @@ const config = {
             position: 'left',
             label: '计算数学以及机器学习Wiki',
           },
-          { to: '/blog', label: 'FEMATHS小组学习日志', position: 'left' },
+          {
+            to: '/blog',
+            label: 'FEMATHS小组学习日志',
+            position: 'left',
+          },
           {
             href: 'https://github.com/FEMATHS',
             label: 'GitHub',
