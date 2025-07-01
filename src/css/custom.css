@@ -112,3 +112,23 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 .col--7 {
     --ifm-col-width: calc(9 / 12 * 100%);
 }
+
+.navbar__items {
+  font-size: 18px;
+}
+
+.sidebar_njMd {
+  font-size: 18px;
+}
+
+.theme-doc-markdown p {
+  font-size: 18px !important;
+}
+
+.theme-doc-markdown li {
+  font-size: 18px !important;
+}
+
+.theme-doc-markdown h1 {
+  font-weight: bold;
+}
