@@ -9,28 +9,34 @@ const indexData = {
 }
 
 function getDocsInFolder(folder) {
-  const folderPath = path.join(__dirname, '..', 'docs', folder) // 注意这里 ../
+  const folderPath = path.join(__dirname, '..', 'docs', folder)
   if (!fs.existsSync(folderPath)) return []
 
   return fs
     .readdirSync(folderPath)
     .filter((file) => file.endsWith('.md') || file.endsWith('.mdx'))
-    .map((file) => ({
-      file,
-      id: path.basename(file, path.extname(file)),
-    }))
+    .map((file) => {
+      const baseName = path.basename(file, path.extname(file))
+      const cleanedId = baseName.replace(/^\d+-/, '') // 去掉数字+连字符前缀
+      return {
+        file,
+        id: cleanedId,
+      }
+    })
     .sort((a, b) => a.file.localeCompare(b.file))
 }
 
 function generateSidebar() {
   const sidebar = []
 
+  let introDocId = null // 👉 用于注册 /docs/intro
+
   for (const [folder, label] of Object.entries(indexData)) {
     const files = getDocsInFolder(folder)
     if (files.length === 0) continue
 
-    const intro = files.find((f) => f.file.startsWith('[0]'))
-    const others = files.filter((f) => f !== intro)
+    const intro = files[0]
+    const others = files.slice(1)
 
     const category = {
       type: 'category',
@@ -43,14 +49,28 @@ function generateSidebar() {
         type: 'doc',
         id: `${folder}/${intro.id}`,
       }
+
+      if (!introDocId) {
+        introDocId = `${folder}/${intro.id}`
+      }
     }
 
     sidebar.push(category)
   }
 
-  if (sidebar.length === 0) {
-    throw new Error('❌ tutorialSidebar 是空的，请添加有效文档')
+  if (!introDocId) {
+    throw new Error(
+      '❌ 未找到任何首页文档作为默认入口，请检查 docs 目录及文件命名'
+    )
   }
+
+  sidebar.unshift({
+    type: 'doc',
+    id: introDocId,
+    label: '📘 主页',
+  })
+
+  console.log('生成的 sidebar:', JSON.stringify(sidebar, null, 2)) // 打印调试
 
   return sidebar
 }
