@@ -94,3 +94,11 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 .margin-bottom--xl h2:hover {
   text-decoration: underline; /* 鼠标悬停时显示下划线 */
 }
+
+.container_mt6G.margin-vert--md {
+  font-weight: bold;
+}
+
+.sidebarItem__DBe{
+  font-weight: bold;
+}

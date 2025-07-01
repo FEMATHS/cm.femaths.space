@@ -1,7 +1,7 @@
 ---
 title: Automated and Context-Aware Repair of Color-Related Accessibility Issues for Android Apps
 authors: [zqqqj]
-tags: []
+tags: [Thesis Study Notes]
 date: 2025-06-09
 ---
 
@@ -14,6 +14,8 @@ date: 2025-06-09
 然而，与检测相比，**修复工作明显滞后**，尤其是“颜色相关的可访问性问题”——比如文字对比度不足和图片对比度不佳，这类问题极大地影响了低视力用户和老年用户的使用体验，而当前的修复方法对此无能为力。
 
 为此，我们提出了 Iris：一种自动化且具备上下文感知能力的方法，用于修复颜色相关的可访问性问题。该方法通过设计一致性的颜色替换策略和属性定位算法，在**修复问题的同时保持 UI 风格的一致性**。实验显示，Iris 可达到 91.38% 的修复成功率，且效率较高。用户调研也表明其结果令人满意，开发者反馈积极。我们在 GitHub 上提交的 40 个 Pull Request 中已有 9 个被合并，另有 4 个正在积极沟通后续修复。Iris 工具现已开源，旨在推动移动可访问性修复领域的进一步研究。
+
+<!-- truncate -->
 
 ## 2. introduction
 
