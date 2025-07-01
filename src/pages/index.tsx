@@ -87,7 +87,7 @@ export default function Home() {
           <div className={styles.buttons}>
             <Link
               className={classnames('button button--outline button--secondary button--lg', styles.getStarted)}
-              to="docs/intro" // ✅ 设置真实跳转链接
+              to="" // ✅ 设置真实跳转链接
             >
               Get Started
             </Link>

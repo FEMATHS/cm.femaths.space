@@ -106,12 +106,6 @@ const config = {
         links: [
           {
             title: '文档',
-            items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
           },
           {
             title: '社区',
