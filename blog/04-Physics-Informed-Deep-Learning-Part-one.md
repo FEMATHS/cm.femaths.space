@@ -1,5 +1,5 @@
 ---
-title: Physics Informed Deep Learning (Part I):Data-driven Solutions of Nonlinear Partial Differential Equations
+title: Physics Informed Deep Learning (Part I) Data-driven  Solutions of Nonlinear Partial Differential Equations
 authors: [Tanger]
 tags: [PINN, Machine Learn, Thesis Study Notes]
 date: 2023-06-17
@@ -39,4 +39,10 @@ date: 2023-06-17
 
 &ensp;&ensp;&ensp;&ensp;翻译成中文（deepl 翻译）：我们介绍了物理学上的神经网络 - 神经网络被训练来解决监督学习任务，同时尊重由一般非线性偏微分方程描述的任何特定的物理学规律。在这两部分论文中，我们介绍了我们在解决两类主要问题方面的发展：数据驱动的解决方案和数据驱动的偏微分方程的发现。根据可用数据的性质和安排，我们设计了两类不同的算法，即连续时间和离散时间模型。由此产生的神经网络形成了一类新的数据高效的通用函数近似器，自然地将任何潜在的物理规律编码为先验信息。在这第一部分，我们展示了这些网络如何被用来推断偏微分方程的解决方案，并获得物理信息的代用模型，这些模型对于所有输入坐标和自由参数是完全可微的。
 
-##
+原文中有一段话：`These developments are presented in the context of two main problem classes: data-driven solution and data-driven discovery of partial differential equations.`这些进展围绕两类核心问题展开：数据驱动的 PDE 求解与 PDE 结构的自动发现，分别引导了 PINN 在数据利用和物理约束建模两个方向上的持续优化。
+
+## 相关研究
+
+定义方程
+
+### Burgers 方程
