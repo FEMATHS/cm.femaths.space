@@ -1,20 +1,21 @@
 ---
-title: linux操作指南之上游分析
+title: Bioinformatic analysis:linux操作指南之上游分析(Part 1)
 authors: [zqqqj]
-tags: []
+tags: [Bioinformatic analysis]
 date: 2025-06-08
 ---
+
 # 上游分析
 
-## 1. 安装linux
+## 1. 安装 linux
 
-这就不多说了，自己搞一个虚拟机，我用的是Centos7。
+这就不多说了，自己搞一个虚拟机，我用的是 Centos7。
 
-ps：如果使用的是学校集群的话，注意在修改密码中改一下自己的密码，开启后账号为：root，密码自定义（注意是暗文，你敲进去是不会显示的）结束了enter即可
+ps：如果使用的是学校集群的话，注意在修改密码中改一下自己的密码，开启后账号为：root，密码自定义（注意是暗文，你敲进去是不会显示的）结束了 enter 即可
 
 ## 2. 预先安装
 
-首先要安装anaconda，为了不污染环境
+首先要安装 anaconda，为了不污染环境
 
 ```
 -- 安装linux安装包（如果报错自己去anaconda网站找地址）
@@ -27,13 +28,15 @@ bash Anaconda3-2023.07-Linux-x86_64.sh
 source ~/.bashrc
 ```
 
-至此，anaconda安装完成。我们再创建一个环境，专门用于生信分析
+<!-- truncate -->
 
-tips：anaconda教程请查看TensorFlow1教程，需要包含的步骤为：
+至此，anaconda 安装完成。我们再创建一个环境，专门用于生信分析
 
-1. create一个虚拟环境
+tips：anaconda 教程请查看 TensorFlow1 教程，需要包含的步骤为：
+
+1. create 一个虚拟环境
 2. 设置镜像中除了最后一个，其他都跑
-3. 下载fastqc
+3. 下载 fastqc
 
 ## 3. 安装分析软件
 
@@ -54,7 +57,7 @@ conda install sra-tools
 
 ```
 
-cellranger单独拎出来讲，这个软件应该使用到的频率比较大
+cellranger 单独拎出来讲，这个软件应该使用到的频率比较大
 
 ```
 -- 下载安装包（上官网找，复制粘贴即可，如果报错和anaconda一样）
@@ -102,13 +105,14 @@ ok，开始正式的质量评估
 
 **双端测序数据处理**：
 
-  `cutadapt` 支持双端测序数据，可以同时处理两端的序列，并保持双端读段的配对关系。
-  
-  ps：在做cutadapt之前，首先是需要通过fastqc的质控报告观测是否需要去除的，具体在Adapter Content这一栏中，如果是打钩就不需要，打叉的话分情况讨论：
-1. 数据数据集上down下来的数据一般会显示测序的平台是啥，这时候使用平台默认的就ok了
+`cutadapt` 支持双端测序数据，可以同时处理两端的序列，并保持双端读段的配对关系。
+
+ps：在做 cutadapt 之前，首先是需要通过 fastqc 的质控报告观测是否需要去除的，具体在 Adapter Content 这一栏中，如果是打钩就不需要，打叉的话分情况讨论：
+
+1. 数据数据集上 down 下来的数据一般会显示测序的平台是啥，这时候使用平台默认的就 ok 了
 2. 自己的数据也知道用的测序平台是啥，同上
 
-如果用的是illumina的话，read1为AGATCGGAAGAGC，read2为AATGATACGGCGACC。如果用的是其他测序平台的话，建议翻看手册查询（一般都会给出的）
+如果用的是 illumina 的话，read1 为 AGATCGGAAGAGC，read2 为 AATGATACGGCGACC。如果用的是其他测序平台的话，建议翻看手册查询（一般都会给出的）
 
 ```
 -- 检查接头序列
@@ -123,13 +127,11 @@ cutadapt -a AGATCGGAAGAGC -q 20 --minimum-length 50 \
 
 ```
 
-在预处理完数据之后，就可以通过fastqc可视化数据质量了，可以百度网页结果
+在预处理完数据之后，就可以通过 fastqc 可视化数据质量了，可以百度网页结果
 
 ```
 fastqc -t 4 -o ~/fastqc_output /root/rowdata/Rhesus-Liver-1_L1_2.fq.gz
 ```
-
-
 
 #### 4.2 cellranger
 
@@ -151,7 +153,6 @@ cellranger mkref --genome=mmul_ref \
 
 ```
 
-
 2. **使用 `cellranger count` 进行比对和分析**
 
 ```
@@ -167,13 +168,11 @@ cellranger count \
 
 ```
 
-需要注意的是，如果我有liver_PE-1和liver_PE-2，那需要分别跑两次，然后对其进行合并
-
-
+需要注意的是，如果我有 liver_PE-1 和 liver_PE-2，那需要分别跑两次，然后对其进行合并
 
 3. **使用`cellranger arr`对结果进行合并**
 
-首先船舰csv文件，列出每个样本的`molecule_info.h5` 文件路径，内容如下：
+首先船舰 csv 文件，列出每个样本的`molecule_info.h5` 文件路径，内容如下：
 
 ```
 library_id,molecule_h5
@@ -194,18 +193,9 @@ cellranger aggr \
 
 生成一个新的文件夹 `liver_combined_analysis`，其中包含合并后的 `filtered_feature_bc_matrix` 文件夹。
 
-********************************
+---
+
 ps:在此推荐两个小工具了，下载和安装就百度吧，基本上都有教程的
-1. winscp用于本地到服务器上的文件传输（可视化，很方便，并且也可以在这里增删改查文件）
-2. finalshell可以复制粘贴代码（学校集群cv不了），并且旁边有当前内存，储存空间，cpu占用等有用的信息
 
-
-
-
-
-
-
-
-
-
-
+1. winscp 用于本地到服务器上的文件传输（可视化，很方便，并且也可以在这里增删改查文件）
+2. finalshell 可以复制粘贴代码（学校集群 cv 不了），并且旁边有当前内存，储存空间，cpu 占用等有用的信息

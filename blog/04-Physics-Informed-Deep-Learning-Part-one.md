@@ -1,7 +1,7 @@
 ---
 title: Physics Informed Deep Learning (Part I):Data-driven Solutions of Nonlinear Partial Differential Equations
 authors: [Tanger]
-tags: []
+tags: [PINN, Machine Learn, Thesis Study Notes]
 date: 2023-06-17
 ---
 
@@ -14,6 +14,8 @@ date: 2023-06-17
 ![](https://pic.imgdb.cn/item/649d31dc1ddac507cc30c3f0.jpg)
 
 ![](https://pic.imgdb.cn/item/649d3c241ddac507cc427561.jpg)
+
+<!-- truncate -->
 
 &ensp;&ensp;&ensp;&ensp;他们也将这篇论文的工作产生的代码无私的奉献了出来，可以通过访问 Github 来查看相关代码，上面的代码是 tensorflow 的 1 版本写的，到现在 tensorflow 已经不支持 1 版本的 python 包安装，所以可能需要将上面的代码写成 2 版本的形式才能运行。 👉[点我查看 Github 仓库](https://github.com/maziarraissi/PINNs)
 
