@@ -106,7 +106,7 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 
 .container {
   width: 80%;
-  max-width: none;
+  max-width: none !important;
 }
 
 .col--7 {
