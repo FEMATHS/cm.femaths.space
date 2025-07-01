@@ -77,21 +77,20 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   transition: scrollbar-color .1s;
 }
 
-.blog-list-page article {
-  box-shadow: 3px 3px 10px #7777;
+.margin-bottom--xl {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* 更自然柔和的阴影 */
   border-radius: 19px;
   padding: 20px;
   margin-bottom: 20px !important;
 }
 
-.blog-list-page article .markdown h2 {
+.margin-bottom--xl h2 {
   font-size: 26px;
+  font-weight: 600;
+  color: #007acc;
+  text-decoration: none; /* 默认无下划线 */
 }
 
-.blog-list-page article > header > h2 {
-  font-size: 30px;
-}
-
-.blog-list-page main {
-  --ifm-col-width: calc(9 / 12 * 100%)!important;
+.margin-bottom--xl h2:hover {
+  text-decoration: underline; /* 鼠标悬停时显示下划线 */
 }
