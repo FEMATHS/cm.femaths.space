@@ -102,3 +102,13 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 .sidebarItem__DBe{
   font-weight: bold;
 }
+
+
+.container {
+  width: 80%;
+  max-width: none;
+}
+
+.col--7 {
+    --ifm-col-width: calc(9 / 12 * 100%);
+}
