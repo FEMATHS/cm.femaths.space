@@ -81,7 +81,7 @@ $$
 ![17.png](https://s2.loli.net/2025/07/02/SavtuBKZiRA8zWL.png)
 
 <p align="center">
-  <img src="https://s2.loli.net/2025/07/02/AznBjYR2JgLPpdK.png" alt="18.png">
+  <img src="https://s2.loli.net/2025/07/02/AznBjYR2JgLPpdK.png" alt="18.png" />
 </p>
 
 该实验在当时取得了较为优秀的结果。虽然近年来 PINN 方法的精度已有显著提升，误差已可降至极低水平，但考虑到该论文发表于 2017 年，其工作在当时仍具有代表性和参考价值。
