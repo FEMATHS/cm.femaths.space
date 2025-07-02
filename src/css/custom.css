@@ -110,7 +110,7 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 }
 
 .col--7 {
-    --ifm-col-width: calc(9 / 12 * 100%);
+    --ifm-col-width: calc(7 / 12 * 100%);
 }
 
 .navbar__items {
