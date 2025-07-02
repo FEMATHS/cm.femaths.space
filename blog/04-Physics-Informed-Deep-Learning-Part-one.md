@@ -78,7 +78,9 @@ $$
 作者使用 TensorFlow 构建并训练神经网络，具体的实现细节可参考原论文，其方法遵循了物理信息神经网络（PINN）中较为常见的损失函数设计。如果读者对此**尚不熟悉，建议认真研读论文代码以加深理解**。接下来的理论部分主要为 PINN 方法的原理介绍，内容较为经典，读者可快速浏览。
 在实验设置方面，作者选用了 L-BFGS 优化器，构建了一个包含 9 层、每层 20 个神经元的前馈神经网络，总参数量为 3021，激活函数采用双曲正切函数（tanh）。训练过程中共采样 10000 个点，最终得到误差为$6.7×10^{−4}$的实验结果，图像如下：
 
-![17.png](https://s2.loli.net/2025/07/02/SavtuBKZiRA8zWL.png)
+<p align="center">
+  <img src="https://s2.loli.net/2025/07/02/SavtuBKZiRA8zWL.png" alt="17.png" />
+</p>
 
 <p align="center">
   <img src="https://s2.loli.net/2025/07/02/AznBjYR2JgLPpdK.png" alt="18.png" />
