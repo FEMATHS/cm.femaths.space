@@ -1,5 +1,5 @@
 ---
-title: Machine‑learning‑based spectral methods for partial differential equations
+title: DeepONet Learning nonlinear operators for identifying
 authors: [Tanger]
 tags: [PINN, Machine Learn, spectral methods, Thesis Study Notes]
 date: 2025-07-15
