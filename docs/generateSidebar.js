@@ -3,9 +3,9 @@ const path = require('path')
 
 // 中文标题映射
 const indexData = {
-  ch0: '首页',
-  ch1: '第零章：在开始之前',
-  ch2: '第一章上：HelloWorld',
+  ch0: '📕首页',
+  ch1: '📗第零章：在开始之前',
+  ch2: '📘第一章上：HelloWorld',
 }
 
 function getDocsInFolder(folder) {
@@ -63,14 +63,6 @@ function generateSidebar() {
       '❌ 未找到任何首页文档作为默认入口，请检查 docs 目录及文件命名'
     )
   }
-
-  sidebar.unshift({
-    type: 'doc',
-    id: introDocId,
-    label: '📘 主页',
-  })
-
-  console.log('生成的 sidebar:', JSON.stringify(sidebar, null, 2)) // 打印调试
 
   return sidebar
 }
