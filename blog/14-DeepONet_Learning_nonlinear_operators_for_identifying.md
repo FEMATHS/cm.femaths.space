@@ -1,5 +1,5 @@
 ---
-title: DeepONet: Learning nonlinear operators for identifying differential equations based on the universal approximation theorem of operators
+title: 'DeepONet: Learning nonlinear operators for identifying differential equations based on the universal approximation theorem of operators'
 authors: [Tanger]
 tags: [PINN, Machine Learn, spectral methods, Thesis Study Notes]
 date: 2025-07-16
