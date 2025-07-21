@@ -5,7 +5,7 @@ const path = require('path')
 const indexData = {
   ch0: '📕首页',
   ch1: '📗第零章：在开始之前',
-  ch2: '📘第一章上：HelloWorld',
+  ch2: '📘第一章上：Hello，有限元',
 }
 
 function getDocsInFolder(folder) {
