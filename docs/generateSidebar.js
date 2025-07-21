@@ -29,39 +29,20 @@ function getDocsInFolder(folder) {
 function generateSidebar() {
   const sidebar = []
 
-  let introDocId = null // 👉 用于注册 /docs/intro
-
   for (const [folder, label] of Object.entries(indexData)) {
     const files = getDocsInFolder(folder)
     if (files.length === 0) continue
 
-    const intro = files[0]
-    const others = files.slice(1)
+    const items = files.map((f) => `${folder}/${f.id}`)
 
     const category = {
       type: 'category',
       label,
-      items: others.map((f) => `${folder}/${f.id}`),
-    }
-
-    if (intro) {
-      category.link = {
-        type: 'doc',
-        id: `${folder}/${intro.id}`,
-      }
-
-      if (!introDocId) {
-        introDocId = `${folder}/${intro.id}`
-      }
+      items,
+      // link: { type: 'doc', id: `${folder}/${files[0].id}` }, // 👈 不再设置 intro
     }
 
     sidebar.push(category)
-  }
-
-  if (!introDocId) {
-    throw new Error(
-      '❌ 未找到任何首页文档作为默认入口，请检查 docs 目录及文件命名'
-    )
   }
 
   return sidebar
