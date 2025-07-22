@@ -44,10 +44,14 @@ $$
 
 上述方法就是 Euler 方法，也称 Euler-Cauchy 折线法。
 
-<div style={{ textAlign: 'center' }}>
-  <img src="https://s2.loli.net/2025/07/22/OQyzv9j21tNYbgC.jpg" alt="Euler方法示意图" width="60%" />
+<div style={{ textAlign: 'center', marginTop: '10px' }}>
+  <img
+    src="https://s2.loli.net/2025/07/22/OQyzv9j21tNYbgC.jpg"
+    alt="Euler方法示意图"
+    style={{ width: '60%' }}
+  />
   <p style={{ fontSize: '90%', color: 'gray' }}>
-    <em>图 1：Euler 方法示意图</em>
+    <em>图 1：示意图</em>
   </p>
 </div>
 
@@ -94,16 +98,24 @@ $$
 
 这是使用了 Euler 最基本的方法对应上面提到的(1) 数值微分
 
-<div style="display: flex; justify-content: center; gap: 2%; margin-top: 10px;">
-  <figure style="width: 49%; text-align: center; margin: 0;">
-    <img src="https://s2.loli.net/2025/07/22/qi7zdsrm9Ot4nTy.png" alt="Euler方法示意图" style="width: 100%;" />
-    <figcaption style="font-size: 90%; color: gray; font-style: italic; margin-top: 4px;">
+<div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://s2.loli.net/2025/07/22/qi7zdsrm9Ot4nTy.png"
+      alt="Euler方法示意图"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
       图 2：三种不同的步长Euler法计算结果
     </figcaption>
   </figure>
-  <figure style="width: 49%; text-align: center; margin: 0;">
-    <img src="https://s2.loli.net/2025/07/22/BvaofKD8m7wcbpM.png" alt="Euler方法示意图" style="width: 100%;" />
-    <figcaption style="font-size: 90%; color: gray; font-style: italic; margin-top: 4px;">
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://s2.loli.net/2025/07/22/BvaofKD8m7wcbpM.png"
+      alt="Euler方法示意图"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
       图 3：三种不同的步长Euler法计算误差
     </figcaption>
   </figure>
