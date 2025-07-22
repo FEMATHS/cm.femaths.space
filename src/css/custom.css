@@ -132,3 +132,15 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 .theme-doc-markdown h1 {
   font-weight: bold;
 }
+
+/* 控制所有公式的字体 */
+.katex {
+  font-size: 1.2em;
+}
+
+/* 控制块级公式（通常是 $$...$$） */
+.katex-display {
+  font-size: 1.4em;
+  text-align: center;
+  margin: 1em 0;
+}
