@@ -21,6 +21,8 @@ Spectral methods are an important part of scientific computing’s arsenal for s
 
 其实只要细读了他的摘要就可以发现这篇论文的做法比较独特，他并不是把机器学习与谱方法相融合，而是采取了一种分阶段的模式，第一步是使用 DeepONet 去识别候选函数，再利用常规的谱方法来完成剩下的计算工作，他并不是一整块的模型而是耦合度低的分阶段模型。这种思想其实结合误差达到 $10^{-4}$ 到 $10^{-8}$ 就能够理解，不过也算是给机器学习融合谱方法提供了一种思路，接下来我们详细的阅读这篇文章的结果以及方法。
 
+<!-- truncate -->
+
 ## 结果
 
 该论文做了五个方程分别是具有 Dirichlet 边界条件的平流-扩散方程、粘性 Burgers 方程、Korteweg-de Vries 方程和 Kuramoto-Sivashinsky 方程，这个五个方程的结果表明使用该论文的方法与傅里叶变换的谱方法高度一致性。此外，对于带有 Dirichlet 边界条件的对流扩散方程，结果与整个时间域内的 Legendre 不连续 Galerkin 解具有良好一致性。时间上，在远超 DeepONet 之外仍旧保持非常良好误差有着非常良好的时间外推能力。
