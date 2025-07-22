@@ -44,13 +44,9 @@ $$
 
 上述方法就是 Euler 方法，也称 Euler-Cauchy 折线法。
 
-<div style={{ textAlign: "center" }}>
-  <img
-    src="https://s2.loli.net/2025/07/22/OQyzv9j21tNYbgC.jpg"
-    alt="Euler方法示意图"
-    width="60%"
-  />
-  <p style={{ fontSize: "90%", color: "gray" }}>
+<div style={{ textAlign: 'center' }}>
+  <img src="https://s2.loli.net/2025/07/22/OQyzv9j21tNYbgC.jpg" alt="Euler方法示意图" width="60%" />
+  <p style={{ fontSize: '90%', color: 'gray' }}>
     <em>图 1：Euler 方法示意图</em>
   </p>
 </div>
