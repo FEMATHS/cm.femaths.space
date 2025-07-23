@@ -143,12 +143,12 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 /* 控制所有公式的字体 */
 .katex {
   font-family: "Times New Roman", Times, serif !important;
-  font-size: 1.2em;
+  font-size: 18px;
 }
 
 /* 控制块级公式（通常是 $$...$$） */
 .katex-display {
-  font-size: 1.4em;
+  font-size: 18px;
   text-align: center;
   margin: 1em 0;
 }
