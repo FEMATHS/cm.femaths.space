@@ -52,7 +52,7 @@ date: 2023-06-17
 
 原文中有一段话：`These developments are presented in the context of two main problem classes: data-driven solution and data-driven discovery of partial differential equations.`这些进展围绕两类核心问题展开：数据驱动的 PDE 求解与 PDE 结构的自动发现，分别引导了 PINN 在数据利用和物理约束建模两个方向上的持续优化。
 
-## 相关研究
+## 连续时间模型
 
 作者提出了一个一般形式的参数化和非线性偏微分方程：
 
@@ -76,6 +76,26 @@ $$
 f:=u_{t}+u u_{x}-(0.01 / \pi) u_{x x}
 $$
 
+并使用 Python 简单的将 $u(x,t)$ 定义为：
+
+```Python
+def u(t, x):
+    u = neural_net(tf.concat([t,x],1), weights, biases)
+    return u
+```
+
+物理信息神经网络 $f(t,x)$ 可以使用 Python 代码形式为
+
+```Python
+def f(t, x):
+    u = u(t, x)
+    u_t = tf.gradients(u, t)[0]
+    u_x = tf.gradients(u, x)[0]
+    u_xx = tf.gradients(u_x, x)[0]
+    f = u_t + u*u_x - (0.01/tf.pi)*u_xx
+    return f
+```
+
 同时定义了损失函数为如下公式，这是很简单的损失函数设置，只考虑了
 
 $$
@@ -90,12 +110,69 @@ $$
 在实验设置方面，作者选用了 L-BFGS 优化器，构建了一个包含 9 层、每层 20 个神经元的前馈神经网络，总参数量为 3021，激活函数采用双曲正切函数（tanh）。训练过程中共采样 10000 个点，最终得到误差为$6.7×10^{−4}$的实验结果，图像如下：
 
 <p align="center">
-  <img src="https://s2.loli.net/2025/07/02/SavtuBKZiRA8zWL.png" alt="17.png" />
+  <img src="./src/4/1.png" alt="17.png" />
 </p>
+
+不同隐藏层数量和每层神经元数量下的相对 L2 值，而训练点和配置点的总数分别固定为 Nu = 100 和 Nf = 10,000。如预期所示，我们观察到随着层数和神经元数量的增加，误差会持续下降。
 
 <p align="center">
   <img src="https://s2.loli.net/2025/07/02/AznBjYR2JgLPpdK.png" alt="18.png" />
 </p>
+
+表 1：Burgers 方程：网络架构固定为 9 层，每层隐藏层包含 20 个神经元。对于不同的初始和边界训练数据 $N_u$和不同的插值点数量 $N_f$,预测解与精确解 u(t; x)之间的相 $L_2$ 误差。
+
+<p align="center">
+  <img src="./src/4/2.png" width="60%"  alt="17.png" />
+</p>
+
+表 2：Burgers 方程：固定初始和边界训练数据 $N_u=100$和不同的插值点数量 $N_f=10000$。对于不同隐藏层数量及每层神经元数量的组合,预测解与精确解 u(t; x)之间的相 $L_2$ 误差。
+
+### Schrödinger 方程
+
+作者使用这个例子是为了展示本文方法在处理周期性边界条件、复数解以及控制偏微分方程中不同类型非线性项的能力。
+
+非线性的 Schrödinger 方程考虑周期边界条件下，可以写成：
+
+$$
+\begin{array}{l}
+i h_{t}+0.5 h_{x x}+|h|^{2} h=0, \quad x \in[-5,5], \quad t \in[0, \pi / 2] \\
+h(0, x)=2 \operatorname{sech}(x) \\
+h(t,-5)=h(t, 5) \\
+h_{x}(t,-5)=h_{x}(t, 5)
+\end{array}
+$$
+
+其中 $h(t,x)$ 是复值解。我们定义 $f(t,x)$ 由以下公式给出：
+
+$$
+f:=i h_{t}+0.5 h_{x x}+|h|^{2} h,
+$$
+
+事实上，如果 $u$ 表示 $h$ 的实部， $v$ 表示 $h$ 的虚部， 那么我们可以在 $h(t,x)=[u(t,x) v(t,x)]$上多放置一个多输出的神经网络。这将得到一个多输出的神经网络 $f(t,x)$。
+
+本文作者设计的损失函数如下：
+
+$$
+M S E=M S E_{0}+M S E_{b}+M S E_{f}
+$$
+
+$$
+M S E_{0}=\frac{1}{N_{0}} \sum_{i=1}^{N_{0}}\left|h\left(0, x_{0}^{i}\right)-h_{0}^{i}\right|^{2} \\
+M S E_{b}=\frac{1}{N_{b}} \sum_{i=1}^{N_{b}}\left(\left|h^{i}\left(t_{b}^{i},-5\right)-h^{i}\left(t_{b}^{i}, 5\right)\right|^{2}+\left|h_{x}^{i}\left(t_{b}^{i},-5\right)-h_{x}^{i}\left(t_{b}^{i}, 5\right)\right|^{2}\right)\\
+M S E_{f}=\frac{1}{N_{f}} \sum_{i=1}^{N_{f}}\left|f\left(t_{f}^{i}, x_{f}^{i}\right)\right|^{2} .
+$$
+
+这里，$\{x_0^i,h^i_0\}^{N_0}_{i=1}$ 代表初始条件的点，$\{t^i_b\}^{N_b}_{i=1}$ 代表边界条件的点， $\{t^i_f,x^i_f\}^{N_f}_{i=1}$ 代表内部的配置点在 $f(t,x)$ 上。
+
+<p align="center">
+  <img src="./src/4/3.png"   alt="17.png" />
+</p>
+
+使用了通过 Latin Hypercube 采样策略生成的 20000 个共现点。底部：与顶部面板中虚线垂直线所示的三个时间快照对应的预测解与精确解的比较。此案例的相对 $L2$ 误差为 $1.97 × 10^(−3)$ 。
+
+## 离散时间模型
+
+## 总结
 
 该实验在当时取得了较为优秀的结果。虽然近年来 PINN 方法的精度已有显著提升，误差已可降至极低水平，但考虑到该论文发表于 2017 年，其工作在当时仍具有代表性和参考价值。
 

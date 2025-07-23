@@ -136,7 +136,7 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   font-weight: bold;
 }
 
-.markdown p ul li{
+.markdown p {
   font-size: 18px;
 }
 
