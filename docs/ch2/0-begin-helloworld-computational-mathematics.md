@@ -195,3 +195,5 @@ $$
     </figcaption>
   </figure>
 </div>
+
+## 显式方法和隐式方法

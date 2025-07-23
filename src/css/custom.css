@@ -5,7 +5,10 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
-
+/* 全局基础字体 */
+body {
+  font-family: "Times New Roman", Times, serif !important;
+}
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #007acc;
@@ -133,8 +136,13 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   font-weight: bold;
 }
 
+.markdown p {
+  font-size: 18px;
+}
+
 /* 控制所有公式的字体 */
 .katex {
+  font-family: "Times New Roman", Times, serif !important;
   font-size: 1.2em;
 }
 
