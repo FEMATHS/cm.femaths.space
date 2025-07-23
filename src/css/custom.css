@@ -140,6 +140,10 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   font-size: 18px;
 }
 
+.markdown h1 h2 h3 h4 h5 h6 {
+  font-family: "Times New Roman", Times, serif !important;
+}
+
 /* 控制所有公式的字体 */
 .katex {
   font-family: "Times New Roman", Times, serif !important;
