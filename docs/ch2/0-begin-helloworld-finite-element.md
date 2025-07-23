@@ -101,24 +101,97 @@ $$
 <div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
     <img
-      src="https://s2.loli.net/2025/07/22/qi7zdsrm9Ot4nTy.png"
+      src="https://github.com/FEMATHS/Example/blob/main/ch2/example1/1.png?raw=true"
       alt="Euler方法示意图"
       style={{ width: '100%' }}
     />
     <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
-      图 2：三种不同的步长Euler法计算结果
+      图 2：三种不同的步长Euler法-数值微分计算结果
     </figcaption>
   </figure>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
     <img
-      src="https://s2.loli.net/2025/07/22/BvaofKD8m7wcbpM.png"
+      src="https://github.com/FEMATHS/Example/blob/main/ch2/example1/2.png?raw=true"
       alt="Euler方法示意图"
       style={{ width: '100%' }}
     />
     <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
-      图 3：三种不同的步长Euler法计算误差
+      图 3：三种不同的步长Euler法-数值微分计算误差
     </figcaption>
   </figure>
 </div>
 
 这是使用了 Euler 进阶一点的方法对应上面提到的(2) 数值积分
+
+<div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch2/example1/3.png?raw=true"
+      alt="Euler方法示意图"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
+      图 4：三种不同的步长Euler法-数值积分计算结果
+    </figcaption>
+  </figure>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch2/example1/4.png?raw=true"
+      alt="Euler方法示意图"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
+      图 5：三种不同的步长Euler法-数值积分计算误差
+    </figcaption>
+  </figure>
+</div>
+
+这是使用了 Euler 进阶一点的方法对应上面提到的(3) 幂级数展开（只到二阶）
+
+<div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch2/example1/5.png?raw=true"
+      alt="Euler方法示意图"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
+      图 6：三种不同的步长Euler法-幂级数展开计算结果
+    </figcaption>
+  </figure>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch2/example1/6.png?raw=true"
+      alt="Euler方法示意图"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
+      图 7：三种不同的步长Euler法-幂级数展开计算误差
+    </figcaption>
+  </figure>
+</div>
+
+三种方法在耗时以及误差上的比较,可以看出最耗时间是积分法，幂级数展开法（二阶）与微分法差别不大：
+
+<div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch2/example1/error_vs_h.png?raw=true"
+      alt="三种方法在误差上的比较"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
+      图 8：三种方法在误差上的比较
+    </figcaption>
+  </figure>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch2/example1/time_vs_h.png?raw=true"
+      alt="三种方法在耗时上的比较"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
+      图 9：三种方法在耗时上的比较
+    </figcaption>
+  </figure>
+</div>
