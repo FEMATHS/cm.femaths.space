@@ -145,7 +145,10 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   font-family: "Times New Roman", Times, serif !important;
   font-size: 18px;
 }
-
+.title_f1Hy {
+  font-family: "Times New Roman", Times, serif !important;
+  font-size: 42px;
+}
 /* 控制块级公式（通常是 $$...$$） */
 .katex-display {
   font-size: 18px;
