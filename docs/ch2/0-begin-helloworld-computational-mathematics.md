@@ -24,7 +24,7 @@ $\{h_m\}^N_{m=1}$ 是一组被称为**步长**的正数(如果当 $h_m=h=C,C为�
 Euler 方法是通过斜率来研究的，因为斜率已经给出了，当 $h$ 很小的时候，用过 (t_0,u_0)的点斜式直线方程在 $t_1$ 处的值 $u_1$ 来近似代替 $u(t_1)$ ，即
 
 $$
-\frac{u_1-u_0}{t_1-t_0} = f(t_0,u_0)
+\frac{u_1-u_0}{t_1-t_0} = f(t_0,u_0),
 $$
 
 由于这时 $h=t_1-t_0$，所以公式可以转换成
@@ -91,7 +91,7 @@ $$
 它的真解为 $u(t)=\sqrt{1+2t}$，设定步长公式为 $h^{(i)}=\frac{1}{2^{4i}},(i=1,2),h^{(3)}=\frac{1}{2^{10}}$(h 取为 $2^{-n}$ 形式可避免计算步长时的误差)，则 $t^{(i)}_m=mh^{(i)}$，用 Euler 公式，有
 
 $$
-u^{(i)}_{m+1} = u^{(i)}_{m} + h^{(i)}(u^{(i)}_m-\frac{2mh^{(i)}}{u^{(i)}_m})。
+u^{(i)}_{m+1} = u^{(i)}_{m} + h^{(i)}(u^{(i)}_m-\frac{2mh^{(i)}}{u^{(i)}_m}).
 $$
 
 下面我们来进行实验
@@ -196,4 +196,109 @@ $$
   </figure>
 </div>
 
+### 多步法
+
 ## 显式方法和隐式方法
+
+等式右端不含有 $u_{m+1}$ ,即只要通过递推就可以获得 $u_{m+1}$ ,这种方法是**显示**的。
+
+但是有些方法不能显式地输出 $u_{m+1}$，如果对方程两端在 $[t_,,t_m+h]$ 上积分，并用梯形公式来近似，则有
+
+$$
+u(t_{m+1})-u(t_m) = \int^{t_m+h}_{t_m}f(\tau,u(\tau)) d\tau, \\
+\approx \frac{h}{2} [f(t_m,u(t_m))+f(t_{m+1},u(t_{m+1}))],
+$$
+
+可以得到著名的改进 Euler 法：
+
+$$
+\left\{\begin{matrix}
+u_{m+1}=u_m+\frac{h}{2} [f(t_m,u_m)+f(t_{m+1},u(t_{m+1}))],m=0,1,\dots,N-1, \\
+u_0=a,
+\end{matrix}\right.
+$$
+
+### 先验误差
+
+一般来说，即使 $u_m$ 精确地等于 $u(t_m)$ ，算出的 $u_{m+1}$ 一般也不会等于 $u(t_{m+1})$ ，这是方程的换算并非精确的，因此这个误差也就是近似格式对方程离散所产生的误差，我们称为**局部截断误差**，记为$R_m$。
+
+于是 $R_m$ 为精确值 $u(t_{m+1})$ 与 $u_{m+1}$ 的差，用近似格式算出的 $u(t_{m+1})$ 的近似值，即
+
+$$
+R_m = u(t_{m+1}) - u_{m+1} = u(t_{m+1}) - [u(t_m)+h \varphi (t_m,u(t_m);h) ].
+$$
+
+因此，$R_m$ 也可以看成用精确值代替近似值后左端减去右端的差。
+
+同样，我们可以导出线性多步方法的局部截断误差：
+
+$$
+R_m = \sum ^k _{j=0} \alpha_j u(t_m +jh) -h\sum^k_{j=0}\beta_j f(t_m+jh,u(t_m+jh)).
+$$
+
+由于，事实上 $u_m$ 决不会精确地等于 $u(t_m)$ ，所以总的误差应该是前面已经产生地误差与某种积累与本次所产生的误差的一个**合并效应**。
+
+所以，**整体截断误差**应为式之间所产生的误差为
+
+$$
+\varepsilon_m = u(t_m) -u_m
+$$
+
+定理 2.3 若 $f(t,u)$ 在 G 上分别关于 $t,u$ 满足 Lipschitz 条件，相应的 Lipschitz 常数分别为 $K$ 和 $L$ ，则 Euler 方法的整体截断误差的上界满足估计式
+
+$$
+\varepsilon < \frac{K+LM_1}{2L}(e^{L(T-t_0)}-1)h, (2)
+$$
+
+也即 Euler 方法是一阶收敛的。
+
+像这样不首先确定近似解就由所讨论问题的数据直接估计出的（原则上的）误差界称为**先验误差界**。
+
+当 $f(t,u)$ 关于 $t,u$ 的偏导数分别存在时，可以取
+
+$$
+M_1= \max_{t_0 \le t \le T}|u'(t)|=\max_{t_0 \le t \le T}|f(t,u(t))|, L=\max_{t_0 \le t \le T}|\frac{\partial f(t,u(t))}{\partial u}|, K=\max_{t_0 \le t \le T}|\frac{\partial f(t,u(t))}{\partial t}|.
+$$
+
+例 2 取 $h=\frac{1}{16}$, 用(2)式估计 Euler 方法求常微分方程初值问题
+
+$$
+\left\{\begin{matrix}
+u'=u-\frac{2t}{u},0<t\le1  \\
+u_0=1,
+\end{matrix}\right.
+$$
+
+的数值解 $u_m$ 与真解 $u(t_m)$ 的误差，并求实际误差相对照。
+
+解： 经过简单计算可得 $L=3,K=5,M_1=1$, 所以
+
+$$
+|\varepsilon_m| \le \frac{K+LM_1}{2L}[(1+hL)^m-1]h\\
+=\frac{1}{12}[(1+\frac{3}{16})^m-1], m=1,2,\dots,16.
+$$
+
+同样的，我们做了这些实验得到以下结果：
+
+<div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch2/example2/1.png?raw=true"
+      alt="三种方法在误差上的比较"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
+      图 10：先验证误差与正常方法误差比较图
+    </figcaption>
+  </figure>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch2/example2/2.png?raw=true"
+      alt="三种方法在耗时上的比较"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
+      图 11：先验证误差与正常方法误差的倍率图
+    </figcaption>
+  </figure>
+</div>
