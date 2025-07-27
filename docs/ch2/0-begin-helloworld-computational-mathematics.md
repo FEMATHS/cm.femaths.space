@@ -7,10 +7,12 @@
 对于初值问题(1)
 
 $$
-\left\{\begin{matrix}
-{u}'=f(t,u), t_0<t \le T,  \\
-u(t_0)=a,
-\end{matrix}\right.
+\left\{
+\begin{aligned}
+&{u}'=f(t,u), t_0<t \le T,  \\
+&u(t_0)=a,
+\end{aligned}
+\right.
 $$
 
 我们并不试图在自变量的整个连续区间上去逼近精确解 $u(t)$, 只是在 $N$ 个离散点 $\{t_m\}^N_{m=1}$上考虑近似解 $\{U_m\}^N_{m=1}$, 这里 $t_1,t_2,...,t_N \le T $ 称为 N 个**节点**, 它们满足关系
@@ -36,10 +38,12 @@ $$
 得到 $u_1$之后，由于 $t_1$ 是知道的，又可以推出 $u_2$。以此类推，得到 $\{u_m\}^N_{m=1}$ 的递推公式：
 
 $$
-\left\{\begin{matrix}
-u_{m+1}=u_m+hf(t_m,u_m), m=0,1,...,N-1,  \\
-u_0=u(t_0)=a,
-\end{matrix}\right.
+\left\{
+\begin{aligned}
+&u_{m+1}=u_m+hf(t_m,u_m), m=0,1,...,N-1,  \\
+&u_0=u(t_0)=a,
+\end{aligned}
+\right.
 $$
 
 上述方法就是 Euler 方法，也称 Euler-Cauchy 折线法。
@@ -82,10 +86,12 @@ $$
 用 Euler 方法解初值问题
 
 $$
-\left\{\begin{matrix}
-u'=u-\frac{2t}{u},0<t\le1  \\
-u_0=1,
-\end{matrix}\right.
+\left\{
+\begin{aligned}
+&u'=u-\frac{2t}{u},0<t\le1  \\
+&u_0=1,
+\end{aligned}
+\right.
 $$
 
 它的真解为 $u(t)=\sqrt{1+2t}$，设定步长公式为 $h^{(i)}=\frac{1}{2^{4i}},(i=1,2),h^{(3)}=\frac{1}{2^{10}}$(h 取为 $2^{-n}$ 形式可避免计算步长时的误差)，则 $t^{(i)}_m=mh^{(i)}$，用 Euler 公式，有
@@ -212,10 +218,12 @@ $$
 可以得到著名的改进 Euler 法：
 
 $$
-\left\{\begin{matrix}
-u_{m+1}=u_m+\frac{h}{2} [f(t_m,u_m)+f(t_{m+1},u(t_{m+1}))],m=0,1,\dots,N-1, \\
-u_0=a,
-\end{matrix}\right.
+\left\{
+\begin{aligned}
+&u_{m+1}=u_m+\frac{h}{2} [f(t_m,u_m)+f(t_{m+1},u(t_{m+1}))],m=0,1,\dots,N-1, \\
+&u_0=a,
+\end{aligned}
+\right.
 $$
 
 ### 先验误差
@@ -263,10 +271,12 @@ $$
 例 2 取 $h=\frac{1}{16}$, 用(2)式估计 Euler 方法求常微分方程初值问题
 
 $$
-\left\{\begin{matrix}
-u'=u-\frac{2t}{u},0<t\le1  \\
-u_0=1,
-\end{matrix}\right.
+\left\{
+\begin{aligned}
+&u'=u-\frac{2t}{u},0<t\le1  \\
+&u_0=1,
+\end{aligned}
+\right.
 $$
 
 的数值解 $u_m$ 与真解 $u(t_m)$ 的误差，并求实际误差相对照。
