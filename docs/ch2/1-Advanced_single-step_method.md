@@ -114,7 +114,7 @@ $$
 u_{m+1} = u_{m} + hu\prime(t_m) + \dots + \frac{h^q}{q!}u^{(q)}(t_m)+O(h^{q+1}),
 $$
 
-我们设置初始条件为 $u_0=0,t_0=0,T=1$,步长跟算例 1 一致设置三种步长分别为 $2^4,2^8,2^{10}$，以下是我们得到的结果，首先是不同阶在步长都是 $2^4$ 情况下的图像展示：
+我们设置初始条件为 $u_0=0,t_0=0,T=1$,步长跟算例 1 一致设置三种步长分别为 $\frac{1}{2^4},\frac{1}{2^8},\frac{1}{2^{10}}$，以下是我们得到的结果，首先是不同阶在步长都是 $\frac{1}{2^4}$ 情况下的图像展示：
 
 <div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
@@ -124,7 +124,7 @@ $$
       style={{ width: '100%' }}
     />
     <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
-      图 1：2,5,8阶Taylor级数法在步长为 $2^4$ 的结果
+      图 1：2,5,8阶Taylor级数法在步长为 $\frac{1}{2^4}$ 的结果
     </figcaption>
   </figure>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
@@ -134,12 +134,12 @@ $$
       style={{ width: '100%' }}
     />
     <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
-      图 2：2,5,8阶Taylor级数法在步长为 $2^4$ 的误差
+      图 2：2,5,8阶Taylor级数法在步长为 $\frac{1}{2^4}$ 的误差
     </figcaption>
   </figure>
 </div>
 
-为了能够看出步长对 Taylor 级数法的影响，我们还对 8 阶 Taylor 级数法使用了不同的步长分别为 $2^4,2^8,2^{10}$ 得到了如下图的结果：
+为了能够看出步长对 Taylor 级数法的影响，我们还对 8 阶 Taylor 级数法使用了不同的步长分别为 $\frac{1}{2^4},\frac{1}{2^8},\frac{1}{2^{10}}$ 得到了如下图的结果：
 
 <div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
@@ -149,7 +149,7 @@ $$
       style={{ width: '100%' }}
     />
     <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
-      图 3：8阶Taylor级数法在步长为 $2^4,2^8,2^{10}$ 的结果
+      图 3：8阶Taylor级数法在步长为 $\frac{1}{2^4},\frac{1}{2^8},\frac{1}{2^{10}}$ 的结果
     </figcaption>
   </figure>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
@@ -159,7 +159,7 @@ $$
       style={{ width: '100%' }}
     />
     <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
-      图 4：8阶Taylor级数法在步长为 $2^4,2^8,2^{10}$ 的误差
+      图 4：8阶Taylor级数法在步长为 $\frac{1}{2^4},\frac{1}{2^8},\frac{1}{2^{10}}$ 的误差
     </figcaption>
   </figure>
 </div>
@@ -275,10 +275,10 @@ $$
 
 $$
 \left\{\begin{aligned}
-u_{m+1} & =u_{m}+\frac{h}{6}\left(k_{1}+4 k_{2}+k_{3}\right) \\
-k_{1} & =f\left(t_{m}, u_{m}\right) \\
-k_{2} & =f\left(t_{m}+\frac{h}{2}, u_{m}+\frac{h}{2} k_{1}\right) \\
-k_{3} & =f\left(t_{m}+h, u_{m}-h k_{1}+2 h k_{2}\right)
+&u_{m+1} =u_{m}+\frac{h}{6}\left(k_{1}+4 k_{2}+k_{3}\right) \\
+&k_{1} =f\left(t_{m}, u_{m}\right) \\
+&k_{2} =f\left(t_{m}+\frac{h}{2}, u_{m}+\frac{h}{2} k_{1}\right) \\
+&k_{3} =f\left(t_{m}+h, u_{m}-h k_{1}+2 h k_{2}\right)
 \end{aligned}\right.
 $$
 
@@ -290,10 +290,10 @@ $$
 
 $$
 \left\{\begin{aligned}
-u_{m+1} & =u_{m}+\frac{h}{4}\left(k_{1}+3 k_{3}\right) \\
-k_{1} & =f\left(t_{m}, u_{m}\right) \\
-k_{2} & =f\left(t_{m}+\frac{h}{3}, u_{m}+\frac{h}{3} k_{1}\right) \\
-k_{3} & =f\left(t_{m}+\frac{2 h}{3}, u_{m}+\frac{2 h}{3} k_{2}\right)
+&u_{m+1} =u_{m}+\frac{h}{4}\left(k_{1}+3 k_{3}\right) \\
+&k_{1} =f\left(t_{m}, u_{m}\right) \\
+&k_{2} =f\left(t_{m}+\frac{h}{3}, u_{m}+\frac{h}{3} k_{1}\right) \\
+&k_{3} =f\left(t_{m}+\frac{2 h}{3}, u_{m}+\frac{2 h}{3} k_{2}\right)
 \end{aligned}\right.
 $$
 
@@ -307,11 +307,11 @@ $$
 
 $$
 \left\{\begin{array}{l}
-u_{m+1}=u_{m}+\frac{h}{6}\left(k_{1}+2 k_{2}+2 k_{3}+k_{4}\right), \\
-k_{1}=f\left(t_{m}, u_{m}\right), \\
-k_{2}=f\left(t_{m}+\frac{h}{2}, u_{m}+\frac{h}{2} k_{1}\right), \\
-v_{3}=f\left(t_{m}+\frac{h}{2}, u_{m}+\frac{h}{2} k_{2}\right), \\
-k_{4}=f\left(t_{m}+h, u_{m}+h k_{3}\right) .
+&u_{m+1}=u_{m}+\frac{h}{6}\left(k_{1}+2 k_{2}+2 k_{3}+k_{4}\right), \\
+&k_{1}=f\left(t_{m}, u_{m}\right), \\
+&k_{2}=f\left(t_{m}+\frac{h}{2}, u_{m}+\frac{h}{2} k_{1}\right), \\
+&v_{3}=f\left(t_{m}+\frac{h}{2}, u_{m}+\frac{h}{2} k_{2}\right), \\
+&k_{4}=f\left(t_{m}+h, u_{m}+h k_{3}\right) .
 \end{array}\right.
 $$
 
@@ -330,3 +330,113 @@ k_{4} & =f\left(t_{m}+h, u_{m}+h k_{1}-h k_{2}+h k_{3}\right)
 $$
 
 ## 算例 2.5
+
+用 Runge-Kutta 方法求解:
+
+$$
+\left\{\begin{aligned}
+& u\prime = u - \frac{2t}{u},0<t\le1, \\
+&u(0)=1.
+\end{aligned}\right.
+$$
+
+解：
+我们使用上面的所有格式进行实验，首先取步长为 $\frac{1}{2^4}$ 然后得到了二阶 Runge-Kutta 方法的比较如下图所示：
+
+<div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch2/example4/1.png?raw=true"
+      alt="Euler方法示意图"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
+      图 5：2阶Runge-Kutta法在步长为 $\frac{1}{2^4}$ 的结果
+    </figcaption>
+  </figure>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch2/example4/2.png?raw=true"
+      alt="Euler方法示意图"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
+      图 6：2阶Runge-Kutta法在步长为 $\frac{1}{2^4}$ 的误差
+    </figcaption>
+  </figure>
+</div>
+
+三阶 Runge-Kutta 方法的比较如下：
+
+<div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch2/example4/3.png?raw=true"
+      alt="Euler方法示意图"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
+      图 7：3阶Runge-Kutta法在步长为 $\frac{1}{2^4}$ 的结果
+    </figcaption>
+  </figure>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch2/example4/4.png?raw=true"
+      alt="Euler方法示意图"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
+      图 8：3阶Runge-Kutta法在步长为 $\frac{1}{2^4}$ 的误差
+    </figcaption>
+  </figure>
+</div>
+
+四阶 Runge-Kutta 方法的比较如下：
+
+<div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch2/example4/5.png?raw=true"
+      alt="Euler方法示意图"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
+      图 9：4阶Runge-Kutta法在步长为 $\frac{1}{2^4}$ 的结果
+    </figcaption>
+  </figure>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch2/example4/6.png?raw=true"
+      alt="Euler方法示意图"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
+      图 10：4阶Runge-Kutta法在步长为 $\frac{1}{2^4}$ 的误差
+    </figcaption>
+  </figure>
+</div>
+
+上文中提到所有 Runge-Kutta 方法在时间步长为 $\frac{1}{2^4},\frac{1}{2^{10}}$ 的误差结果比较
+
+<div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch2/example4/7.png?raw=true"
+      alt="Euler方法示意图"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
+      图 9：所有Runge-Kutta法在步长为 $\frac{1}{2^4}$ 的误差比较
+    </figcaption>
+  </figure>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch2/example4/8.png?raw=true"
+      alt="Euler方法示意图"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'italic', marginTop: '4px' }}>
+      图 10：所有Runge-Kutta法在步长为 $\frac{1}{2^{10}}$ 的误差比较
+    </figcaption>
+  </figure>
+</div>
