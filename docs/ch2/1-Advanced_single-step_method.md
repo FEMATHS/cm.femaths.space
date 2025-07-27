@@ -133,7 +133,7 @@ $$
       alt="Euler方法示意图"
       style={{ width: '100%' }}
     />
-    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
       图 2：2,5,8阶Taylor级数法在步长为 $\frac{1}{2^4}$ 的误差
     </figcaption>
   </figure>
@@ -148,7 +148,7 @@ $$
       alt="Euler方法示意图"
       style={{ width: '100%' }}
     />
-    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
       图 3：8阶Taylor级数法在步长为 $\frac{1}{2^4},\frac{1}{2^8},\frac{1}{2^{10}}$ 的结果
     </figcaption>
   </figure>
@@ -158,7 +158,7 @@ $$
       alt="Euler方法示意图"
       style={{ width: '100%' }}
     />
-    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
       图 4：8阶Taylor级数法在步长为 $\frac{1}{2^4},\frac{1}{2^8},\frac{1}{2^{10}}$ 的误差
     </figcaption>
   </figure>
@@ -350,7 +350,7 @@ $$
       alt="Euler方法示意图"
       style={{ width: '100%' }}
     />
-    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
       图 5：2阶Runge-Kutta法在步长为 $\frac{1}{2^4}$ 的结果
     </figcaption>
   </figure>
@@ -360,7 +360,7 @@ $$
       alt="Euler方法示意图"
       style={{ width: '100%' }}
     />
-    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
       图 6：2阶Runge-Kutta法在步长为 $\frac{1}{2^4}$ 的误差
     </figcaption>
   </figure>
@@ -375,7 +375,7 @@ $$
       alt="Euler方法示意图"
       style={{ width: '100%' }}
     />
-    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
       图 7：3阶Runge-Kutta法在步长为 $\frac{1}{2^4}$ 的结果
     </figcaption>
   </figure>
@@ -385,7 +385,7 @@ $$
       alt="Euler方法示意图"
       style={{ width: '100%' }}
     />
-    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
       图 8：3阶Runge-Kutta法在步长为 $\frac{1}{2^4}$ 的误差
     </figcaption>
   </figure>
@@ -400,7 +400,7 @@ $$
       alt="Euler方法示意图"
       style={{ width: '100%' }}
     />
-    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
       图 9：4阶Runge-Kutta法在步长为 $\frac{1}{2^4}$ 的结果
     </figcaption>
   </figure>
@@ -410,7 +410,7 @@ $$
       alt="Euler方法示意图"
       style={{ width: '100%' }}
     />
-    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
       图 10：4阶Runge-Kutta法在步长为 $\frac{1}{2^4}$ 的误差
     </figcaption>
   </figure>
@@ -425,7 +425,7 @@ $$
       alt="Euler方法示意图"
       style={{ width: '100%' }}
     />
-    <figcaption style={{ fontSize: '90%', color: 'gray', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
       图 9：所有Runge-Kutta法在步长为 $\frac{1}{2^4}$ 的误差比较
     </figcaption>
   </figure>
