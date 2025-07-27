@@ -40,7 +40,7 @@ $$
 \left\{
 \begin{aligned}
 u_{m+1} &= u_m+h\varphi(t_m,u_m;h),\\
-u_0&=a.
+u_0&=a. \tag{4}
 \end{aligned}
 \right.
 $$
@@ -48,7 +48,7 @@ $$
 这里
 
 $$
-\varphi (t,u(t);h)=\sum^q_{j=1}\frac{h^{j-1}}{j!}\frac{d^{j-1}}{dt^{j-1}}f(t,u(t)).
+\varphi (t,u(t);h)=\sum^q_{j=1}\frac{h^{j-1}}{j!}\frac{d^{j-1}}{dt^{j-1}}f(t,u(t)).\tag{5}
 $$
 
 上面的两条式子就称为 **$q$ 阶 Taylor 记数法**，其局部截断误差就是 Taylor 展开的余项，即
@@ -165,3 +165,168 @@ $$
 </div>
 
 ## Runge-Kutta 法
+
+$N$ 级 Runge-Kutta 方法只是将(4)中的增量函数取作
+
+$$
+\varphi(t,u;h)=\sum^N_{i=1}c_ik_i,\tag{6}
+$$
+
+其中
+
+$$
+\left\{\begin{aligned}
+&k_1=f(t,u), \\
+&k_i=f(t+a_ih,u+h\sum^{i-1}_{j=1}b_{ij}k_j),i=2,3,\dots N, \\
+&a_i=\sum^{i-1}_{j=1}b_{ij}. \\
+\end{aligned} \tag{7}
+\right.
+$$
+
+当 $N=1$ 时，又回到了 Euler 方法。当 $N>1$ 时，我们通过选取参数，使方法具有尽可能高的精度。具体做法是，利用二元函数的 Taylor 展开形式：
+
+$$
+f(x+h,y+k)=\sum^{\infty}_{i=0}\frac{1}{i!}(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y})^if(x,y) \tag{8}
+$$
+
+将(7)式中各项在 $(t,u)$ 处展开后代入(6)式，再令其与(5)式中幂次相同的 $h$ 项的系数相等，便得到一个关于 $a_i,b_{ij},c_i$ 的方程组就得到了具体的计算格式。
+
+### 二阶方法：
+
+取 $N=2$ ,利用(8)式将 $k_2$ 在 $(t,u)$ 展开成 Taylor 级数，得到
+
+$$
+\begin{aligned}
+k_{2}= & f\left(t+a_{2} h, u+h b_{21} k_{1}\right) \\
+= & f(t, u)+\left[a_{2} h f_{t}+h b_{21} k_{1} f_{u}\right] +\frac{1}{2}\left[\left(a_{2} h\right)^{2} f_{u}+2 a_{2} b_{21} h^{2} k_{1} f_{t u}+\left(b_{21} h\right)^{2} k_{1}^{2} f_{u u}\right]+O\left(h^{3}\right)
+\end{aligned}
+$$
+
+注意到 $k_1=f(t,u),b_{21}=a_2$, 所以
+
+$$
+\varphi(t, u ; h)=\left(c_{1}+c_{2}\right) f+c_{2} a_{2} h F+\frac{c_{2} a_{2}^{2} h^{2}}{2} G+O\left(h^{3}\right) \tag{9}
+$$
+
+这里 $F=f*{t}+f f*{u}, G=f*{u}+2 f*{t u} f+f\_{u u} f^{2} $.
+
+另一方面，根据(3)和(5)，有
+
+$$
+\begin{aligned}
+\varphi(t, u ; h) & =f(t, u)+\frac{h}{2} \frac{\mathrm{~d}}{\mathrm{~d} t} f(t, u)+\frac{h^{2}}{6} \frac{\mathrm{~d}^{2}}{\mathrm{~d} t^{2}} f(t, u)+O\left(h^{3}\right) \\
+& =f+\frac{h}{2} F+\frac{h^{2}}{6}\left(G+f_{u} F\right)+O\left(h^{3}\right) \tag{10}
+\end{aligned}
+$$
+
+比较(9)式和(10)式中关于 h 幂次项的系数，即有方程组：
+
+$$
+\left\{\begin{array}{l}
+c_{1}+c_{2}=1 \\
+c_{2} a_{2}=\frac{1}{2}
+\end{array}\right.
+$$
+
+从而得到一个参数的**解族**。比较常见的二级方法如下：
+
+#### 中点法：
+
+取 $c_1=0,c_2=1,a_2=\frac{1}{2}$,此时
+
+$$
+u_{m+1}=u_{m}+h f\left(t_{m}+\frac{h}{2}, u_{m}+\frac{h}{2} f\left(t_{m}, u_{m}\right)\right),
+$$
+
+这被称为**修正的 Euler 法（或中点法）**。
+
+#### Runge-Kutta 二阶法：
+
+取 $c_1=c_2=\frac{1}{2},a_2=1$,此时
+
+$$
+u_{m+1}=u_m+\frac{h}{2}[f(t_m,u_m)+f(t_m+h,u_m+hf(t_m,u_m))]
+$$
+
+#### Heun 二阶法：
+
+当 $c_2a_2^2=\frac{1}{3}$,也即当 $c_1=\frac{1}{4},c_2=\frac{3}{4},a_2=\frac{2}{3}$ 时，即
+
+$$
+u_{m+1}=u_m+\frac{h}{4}[f(t_m,u_m)+3f(t_m+\frac{2}{3}h,u_m+\frac{2h}{3}f(t_m,u_m))]
+$$
+
+### 三阶方法：
+
+取 $N=3$ ,可得方程组为
+
+$$
+\left\{\begin{array}{l}
+c_{1}+c_{2}+c_{3}=1 \\
+c_{2} a_{2}+c_{3} a_{3}=\frac{1}{2} \\
+c_{2} a_{2}^{2}+c_{3} a_{3}^{2}=\frac{1}{3} \\
+c_{3} a_{2} b_{32}=\frac{1}{6}
+\end{array}\right.
+$$
+
+该格式对应的局部截断误差为 $O(h^4)$ ,下面是常用的两个三阶算法
+
+#### Kutta 三阶方法：
+
+$$
+\left\{\begin{aligned}
+u_{m+1} & =u_{m}+\frac{h}{6}\left(k_{1}+4 k_{2}+k_{3}\right) \\
+k_{1} & =f\left(t_{m}, u_{m}\right) \\
+k_{2} & =f\left(t_{m}+\frac{h}{2}, u_{m}+\frac{h}{2} k_{1}\right) \\
+k_{3} & =f\left(t_{m}+h, u_{m}-h k_{1}+2 h k_{2}\right)
+\end{aligned}\right.
+$$
+
+容易看出， $f(t,u)$ 与 $u$ 无关时，它恰为 Simpson 公式。
+
+#### Henu 三阶方法：
+
+其导出思想与 Heun 二阶方法完全一致，形式也差不多，为
+
+$$
+\left\{\begin{aligned}
+u_{m+1} & =u_{m}+\frac{h}{4}\left(k_{1}+3 k_{3}\right) \\
+k_{1} & =f\left(t_{m}, u_{m}\right) \\
+k_{2} & =f\left(t_{m}+\frac{h}{3}, u_{m}+\frac{h}{3} k_{1}\right) \\
+k_{3} & =f\left(t_{m}+\frac{2 h}{3}, u_{m}+\frac{2 h}{3} k_{2}\right)
+\end{aligned}\right.
+$$
+
+### 四阶方法：
+
+类似地，当 $N=4$ 时，含 13 个未知量，11 个方程组成的方程组，局部截断误差为 $O(h^5)$. 常用以下两种：
+
+#### 古典 Runge-Kutta 方法
+
+这是最常用的，当 $f(t,u)$ 与 u 无关的时就是 Simpson 公式。
+
+$$
+\left\{\begin{array}{l}
+u_{m+1}=u_{m}+\frac{h}{6}\left(k_{1}+2 k_{2}+2 k_{3}+k_{4}\right), \\
+k_{1}=f\left(t_{m}, u_{m}\right), \\
+k_{2}=f\left(t_{m}+\frac{h}{2}, u_{m}+\frac{h}{2} k_{1}\right), \\
+v_{3}=f\left(t_{m}+\frac{h}{2}, u_{m}+\frac{h}{2} k_{2}\right), \\
+k_{4}=f\left(t_{m}+h, u_{m}+h k_{3}\right) .
+\end{array}\right.
+$$
+
+#### Kutta 四阶方法
+
+它的导出思想与 Kutta 三阶方法相四个结点的 Newton－Cotes 数值积分公式（四个结点的 Newton-Cotes 数值积分公式）。
+
+$$
+\left\{\begin{aligned}
+u_{m+1} & =u_{m}+\frac{h}{8}\left(k_{1}+3 k_{2}+3 k_{3}+k_{4}\right) \\
+k_{1} & =f\left(t_{m}, u_{m}\right) \\
+k_{2} & =f\left(t_{m}+\frac{h}{3}, u_{m}+\frac{h}{3} k_{1}\right) \\
+k_{3} & =f\left(t_{m}+\frac{2 h}{3}, u_{m}-\frac{h}{3} k_{1}+h k_{2}\right) \\
+k_{4} & =f\left(t_{m}+h, u_{m}+h k_{1}-h k_{2}+h k_{3}\right)
+\end{aligned}\right.
+$$
+
+## 算例 2.5
