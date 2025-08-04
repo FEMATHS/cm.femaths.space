@@ -149,6 +149,10 @@ html, body {
   font-family: '宋体', 'SimSun', 'Times New Roman', Times, serif;
 }
 
+[data-theme=dark] .featureItem h3 {
+  color: #fff; /* 暗黑主题下设置为白色 */
+}
+
 .imageCaption {
   font-size: 1.5rem;
   color: #fff;
