@@ -1,4 +1,4 @@
-import { Comment, List, Spin } from 'antd';
+import { Comment, List, Spin, Avatar } from 'antd';
 import React, { useEffect, useState } from 'react';
 import './index.css';
 import axios from 'axios';
@@ -94,7 +94,7 @@ export default function App() {
           <li key={item.key} className="comment-item">
             <Comment
               author={item.author}
-              avatar={item.avatar}
+              avatar={<Avatar src={item.avatar} size={48} />}
               content={<p className="comment-list-p">{item.mainContent}</p>}
               datetime={item.datetime}
             />
@@ -102,7 +102,7 @@ export default function App() {
               <div key={reply.key} className="comment-reply-wrapper">
                 <Comment
                   author={reply.author}
-                  avatar={reply.avatar}
+                  avatar={<Avatar src={item.avatar} size={48} />}
                   content={<pre className="comment-reply">{reply.replyContent}</pre>}
                   datetime={reply.datetime}
                 />
