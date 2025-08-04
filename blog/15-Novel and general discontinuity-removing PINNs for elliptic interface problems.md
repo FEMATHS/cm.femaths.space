@@ -176,6 +176,119 @@ DR-PINNs 框架（左）分别按顺序学习 𝑉 和 𝑈 的解耦学习方�
 
 先考虑一个简化的泊松方程，并具有恒定系数 $𝛽 = 1$ ：
 
-## 总结
+从上述方程式可以观察到解决方案 $𝑢$ 及其一阶和二阶导数的不连续性来自以下三个来源：
 
-这是一篇非常不错的深度学习识别函数的神经网络，值得利用这个框架去做一些别的问题。
+$$
+\left\{\begin{array}{lll}
+-\Delta u=f, & \text { in } \Omega / \Gamma, & \text { (a) } \\
+\llbracket u \rrbracket=w, & \text { on } \Gamma, & \text { (b) } \\
+\llbracket \partial_{n} u \rrbracket=v, & \text { on } \Gamma, & \text { (c) } \\
+u=g, & \text { on } \partial \Omega, & \text { (d) }
+\end{array}\right.\tag{1}
+$$
+
+从上述方程式可以观察到解决方案 𝑢 及其一阶和二阶导数的不连续性来自以下三个来源：
+
+- （i）在界面上的解决方案中的跳跃，即等式（1b）;
+- （ii）跨界面的溶液的一阶法线衍生物的跳跃，即等式（1C）;
+- （iii）跨界面上的溶液中的跳跃，即 $\llbracket \Delta 𝑢 \rrbracket (\textbf{x}_\Gamma) = −\llbracket𝑓\rrbracket（\textbf{x}_\Gamma），\textbf{x}_\Gamma \in \Gamma$ 。
+
+在这里，目标是将它们分为不同的子问题组 $U$ 和 $V$ ，以确保在一定程度上表现出指定的平滑属性，并且可以单独解决。我们以三种潜在的方式适当地分配了这些跳跃来源：$(\mathcal{A})𝑉$ 包括所有三个跳跃，即(i)- (iii)。 $(\mathcal{B})𝑉$ 包括前两个跳跃，即(i)- (ii)。 $(\mathcal{C})𝑉$ 专门容纳第一个跳跃，即(i)。 $𝑈$ 的特定平滑度是根据 $V$ 的分配程度确定的 $V$。一旦可用，可以很容易地从 $𝑈=𝑢-𝑉$ 中得出 $𝑈$ 的条件。
+
+这些分配的好处是两个方面。一个是，$𝑈$ 将保持低阶导数的连续性，同时在界面处的高阶导数上不连续。可以使用先前已经描述过的尖峰捕获技术有效地处理这种不连续性。另一个是，解决了解决 $𝑉$ 和 $𝑈$ 的两个阶段任务，从而使每个任务的效率和单独完成，而无需在模型之间发生冲突的通信。这与域分解方法形成鲜明对比，在这种方法中经常遇到这种冲突。
+
+请注意，上述分配策略（$\mathcal{A}$）与 Hybrid-NNFD 中使用的方法有些相似[24]。关键区别在于事实是，后者通过有限差异技术解决了解决方案，而我们的神经网络专门采用了普遍的尖峰捕获技术的帮助。接下来，我们将探索以恒定系数解决椭圆界面问题的三种不同策略.
+
+#### 🅐 Scheme (A)：$U$ 为 $C^2$ 连续
+
+- $V$ 包含三种跳跃：
+
+  1. $\llbracket u \rrbracket = w(\mathbf{x}_\Gamma)$
+  2. $\llbracket \partial_n u \rrbracket = v(\mathbf{x}_\Gamma)$
+  3. $\llbracket \Delta u \rrbracket = -\llbracket f \rrbracket(\mathbf{x}_\Gamma)$
+
+- $\mathcal{V}$ 的边界条件为：
+
+  $$
+  \begin{aligned}
+  \mathcal{V}(\mathbf{x}_\Gamma) &= -w(\mathbf{x}_\Gamma) \\
+  \partial_n \mathcal{V}(\mathbf{x}_\Gamma) &= -v(\mathbf{x}_\Gamma) \\
+  \Delta \mathcal{V}(\mathbf{x}_\Gamma) &= \llbracket f \rrbracket(\mathbf{x}_\Gamma)
+  \end{aligned}
+  $$
+
+- $U$ 的方程变为：
+
+$$
+\begin{aligned}
+- \Delta U &= f, \quad \mathbf{x} \in \Omega \setminus \Gamma \\
+\llbracket U \rrbracket &= 0, \quad \llbracket \partial_n U \rrbracket = 0, \quad \mathbf{x} \in \Gamma \\
+U &= g, \quad \mathbf{x} \in \partial \Omega
+\end{aligned}
+$$
+
+---
+
+#### 🅑 Scheme (B)：$U$ 为 $C^1$ 连续
+
+- $V$ 包含两种跳跃：
+
+  1. $\llbracket u \rrbracket = w(\mathbf{x}_\Gamma)$
+  2. $\llbracket \partial_n u \rrbracket = v(\mathbf{x}_\Gamma)$
+
+- $\mathcal{V}$ 的边界条件为：
+
+  $$
+  \begin{aligned}
+  \mathcal{V}(\mathbf{x}_\Gamma) &= -w(\mathbf{x}_\Gamma) \\
+  \partial_n \mathcal{V}(\mathbf{x}_\Gamma) &= -v(\mathbf{x}_\Gamma)
+  \end{aligned}
+  $$
+
+$U$ 满足：
+
+$$
+\begin{aligned}
+- \Delta U &= f, \quad \mathbf{x} \in \Omega \setminus \Gamma \\
+\llbracket U \rrbracket &= 0, \quad \llbracket \partial_n U \rrbracket = 0 \\
+U &= g, \quad \mathbf{x} \in \partial \Omega
+\end{aligned}
+$$
+
+---
+
+#### 🅒 Scheme (C)：$U$ 为 $C^0$ 连续
+
+- $V$ 仅包含一个跳跃项：
+
+  1. $\llbracket u \rrbracket = w(\mathbf{x}_\Gamma)$
+
+- $\mathcal{V}$ 的边界条件为：
+
+  $$
+  \mathcal{V}(\mathbf{x}_\Gamma) = -w(\mathbf{x}_\Gamma)
+  $$
+
+- $U$ 满足：
+
+$$
+\begin{aligned}
+- \Delta U &= f, \quad \mathbf{x} \in \Omega \setminus \Gamma \\
+\llbracket U \rrbracket &= 0 \\
+\llbracket \partial_n U \rrbracket &= v(\mathbf{x} \in \Gamma) + \partial_n \mathcal{V}(\mathbf{x} \in \Gamma) \\
+U &= g, \quad \mathbf{x} \in \partial \Omega
+\end{aligned}
+$$
+
+- 跳跃项显式建模：
+  $$
+  \llbracket \partial_n U \rrbracket(\mathbf{x}_\Gamma) = 2 \cdot \partial_z \mathcal{N}(\mathbf{x}_\Gamma, 0) \cdot \|\nabla \phi(\mathbf{x}_\Gamma)\|
+  $$
+
+---
+
+> ✅ 总结：
+>
+> - Scheme A：高精度但训练成本大，适合规则问题；
+> - Scheme B：更灵活，适配中等复杂度问题；
+> - Scheme C：最通用，支持变系数与复杂几何，依赖 cusp-enforcing。
