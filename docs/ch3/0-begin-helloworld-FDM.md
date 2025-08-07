@@ -163,7 +163,7 @@ $$
 
 ![1](https://s2.loli.net/2025/08/07/cfAgDTvt7hEwI6C.jpg)
 
-<figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+<figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px', textAlign: 'center' }}>
 图 1 对区间 $[a, b]$ 的剖分
 </figcaption>
 
