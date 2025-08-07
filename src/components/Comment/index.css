@@ -54,7 +54,7 @@
 
 [data-theme='dark'] .ant-comment-content-author-time {
   font-size: 20px !important;
-  color: #ddd;
+  color: #ddd !important;
 }
 
 /* 回复框样式 */
