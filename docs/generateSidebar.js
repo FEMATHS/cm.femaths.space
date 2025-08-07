@@ -6,7 +6,9 @@ const indexData = {
   ch0: '📕首页',
   ch1: '📗第零章：在开始之前',
   ch2: '📘第一章：Hello，计算数学',
-  ch3: '📙第二章：神奇的有限元',
+  ch3: '📙第二章：差分法',
+  ch4: '📕第三章：神奇的有限元',
+  ch5: '📗第四章：谱方法',
 }
 
 function getDocsInFolder(folder) {
