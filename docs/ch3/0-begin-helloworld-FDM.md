@@ -9,10 +9,11 @@
 考虑最简单的常微分方程边值问题
 
 $$
-\left\{\begin{array}{l}
-{\rm L} u \equiv-\frac{\mathrm{d}^{2} u}{\mathrm{~d} x^{2}}+q u=f, \quad x \in(a, b), \\
-u(a)=\alpha_{0}, u^{\prime}(b)+\beta u(b)=\alpha_{1},
-\end{array}\right.\tag{1}
+{\rm L} u \equiv-\frac{\mathrm{d}^{2} u}{\mathrm{~d} x^{2}}+q u=f, \quad x \in(a, b), \tag{1}
+$$
+
+$$
+u(a)=\alpha_{0}, u^{\prime}(b)+\beta u(b)=\alpha_{1},\tag{2}
 $$
 
 其中, $q, f \in C^{0}([a, b]), q \geqslant 0, \alpha_{0}, \alpha_{1}, \beta$ 为给定常数 $(\beta>0)$ 。(1)式中 $\rm L$ 为微分算子（ $\rm L$ 用白正体字母表示，今后同）。
@@ -34,20 +35,20 @@ $$
 $$
 \begin{array}{c}
 u^{\prime \prime}\left(x_{i}\right)=\frac{1}{h^{2}}\left[u\left(x_{i+1}\right)-2 u\left(x_{i}\right)+u\left(x_{i-1}\right)\right]-\frac{h^{2}}{12} u^{(4)}\left(\xi_{i}\right) \\
-x_{i-1} \leqslant \xi_{i} \leqslant x_{i+10}
+x_{i-1} \leqslant \xi_{i} \leqslant x_{i+1}.\tag{3}
 \end{array}
 $$
 
 记余项
 
 $$
-R_{i}(u)=-\frac{h^{2}}{12} u^{(t)}\left(\xi_{i}\right)
+R_{i}(u)=-\frac{h^{2}}{12} u^{(t)}\left(\xi_{i}\right),\tag{4}
 $$
 
 则在 $x_{i}$ 处可将方程(1)写成
 
 $$
--\frac{u\left(x_{i+1}\right)-2 u\left(x_{i}\right)+u\left(x_{i-1}\right)}{h^{2}}+q\left(x_{i}\right) u\left(x_{i}\right)=f\left(x_{i}\right)+R_{i},
+-\frac{u\left(x_{i+1}\right)-2 u\left(x_{i}\right)+u\left(x_{i-1}\right)}{h^{2}}+q\left(x_{i}\right) u\left(x_{i}\right)=f\left(x_{i}\right)+R_{i},\tag{5}
 $$
 
 舍去余项，便得到逼近方程(1)的差分方程：
@@ -55,13 +56,13 @@ $$
 $$
 \begin{array}{r}
 L_{\mathrm{h}} u_{i} \equiv-\frac{u_{i+1}-2 u_{i}+u_{i-1}}{h^{2}}+q_{i} u_{i}=f_{i}, \\
-i=1,2, \cdots, N=1,
+i=1,2, \cdots, N=1,\tag{6}
 \end{array}
 $$
 
-其中, $q_{i}=q\left(x_{i}\right), f_{i}=f\left(x_{i}\right)$ ,而 $u_{i}$ 是 $u(x)$ 在 $x_{i}$ 处的近似值，也就是所要寻找的差分解。(3．6)式中 $\mathrm{L}_{\mathrm{h}}$ 为差分算子（ $\mathrm{L}_{\mathrm{h}}$ 用白正体字母表示，今后同）。
+其中, $q_{i}=q\left(x_{i}\right), f_{i}=f\left(x_{i}\right)$ ,而 $u_{i}$ 是 $u(x)$ 在 $x_{i}$ 处的近似值，也就是所要寻找的差分解。(6)式中 $\mathrm{L}_{\mathrm{h}}$ 为差分算子（ $\mathrm{L}_{\mathrm{h}}$ 用白正体字母表示，今后同）。
 
-利用差分算子 $\mathrm{L}_{\mathrm{h}}$ ，（3．5）可写成：
+利用差分算子 $\mathrm{L}_{\mathrm{h}}$ ,(5)可写成：
 
 $$
 {\rm L_{h}} u\left(x_{i}\right)=f\left(x_{i}\right)+R_{i},
@@ -70,7 +71,7 @@ $$
 所以, $ R*{i} $ 就是差分算子 $\mathrm{L}*{\mathrm{h}}$ 代替微分算子 $\rm L$ 所引起的截断误差，它的阶是 $O\left(h^{2}\right)$ 。
 
 第三步，边界条件的处理。
-在（3．6）式中出现了 $N+1$ 个未知量 $u_{0}, u_{1}, \cdots, u_{N-1}, u_{N}$ ，但只有 N-1 个方程，所缺的两个方程可以通过对边界条件的处理来获得。
+在(6)式中出现了 $N+1$ 个未知量 $u_{0}, u_{1}, \cdots, u_{N-1}, u_{N}$ ，但只有 N-1 个方程，所缺的两个方程可以通过对边界条件的处理来获得。
 
 **对于第一类边界条件**，如在左端 $x=a$ 处，只要直接将函数值代入就行了，即取
 
@@ -84,10 +85,10 @@ $$
 u^{\prime}(b) \approx \frac{u_{N}-u_{N-1}}{h},
 $$
 
-但这样做将使得边界点上的截断误差(为 $O(h)$ )低于内点的截断误差；而由于 $x_{N}$ 是端点，又不能采取具有 $O\left(h^{2}\right)$ 精度的中心差分，所以在实际中常常采用二阶 Gear 公式。由第二章 § 3．1（见 45 页表 2．9），有
+但这样做将使得边界点上的截断误差(为 $O(h)$ )低于内点的截断误差；而由于 $x_{N}$ 是端点，又不能采取具有 $O\left(h^{2}\right)$ 精度的中心差分，所以在实际中常常采用二阶 Gear 公式。由前面章节，有
 
 $$
-u(x+2 h)-\frac{4}{3} u(x+h)+\frac{1}{3} u(x)=\frac{2 h}{3} u^{\prime}(x+2 h)+O\left(h^{2}\right) .
+u(x+2 h)-\frac{4}{3} u(x+h)+\frac{1}{3} u(x)=\frac{2 h}{3} u^{\prime}(x+2 h)+O\left(h^{2}\right) .\tag{7}
 $$
 
 令 $x+2 h=x\_{N}$ ，舍去余项，即有近似式：
@@ -96,16 +97,16 @@ $$
 u^{\prime}(b) \approx \frac{1}{2 h}\left(3 u_{N}-4 u_{N-1}+u_{N-2}\right),
 $$
 
-于是，（3．2）式的后一个条件可处理成
+于是，(2)式的后一个条件可处理成
 
 $$
-\frac{1}{2 h}\left(3 u_{N}-4 u_{N-1}+u_{N-2}\right)+\beta u_{N}=\alpha_1.
+\frac{1}{2 h}\left(3 u_{N}-4 u_{N-1}+u_{N-2}\right)+\beta u_{N}=\alpha_1.\tag{8}
 $$
 
 区间的剖分和边界条件的处理可采取多种多样的形式。比如，若 $u(x)$ 能够被光滑地延拓到区间 $[a, b]$ 之外，则可取分点
 
 $$
-x\_{j}=a+\left(j-\frac{1}{2}\right) h, \quad j=0,1,2, \cdots, N,
+x\_{j}=a+\left(j-\frac{1}{2}\right) h, \quad j=0,1,2, \cdots, N,\tag{9}
 $$
 
 其中 $h=\frac{b-a}{N-1}$ ，这时分点 $x_{0}=a-\frac{h}{2}$ 和 $x_{N}=b+\frac{N}{2}$ 将在 $[a, b]$ 之外。
@@ -127,16 +128,16 @@ $$
 $$
 \left\{\begin{array}{l}
 u_{1}+u_{0}=2 \alpha_{0}, \\
-\frac{1}{h}\left(u_{N}-u_{N-1}\right)+\frac{\beta}{2}\left(u_{N}+u_{N-1}\right)=\alpha_{1} 。
-\end{array}\right.
+\frac{1}{h}\left(u_{N}-u_{N-1}\right)+\frac{\beta}{2}\left(u_{N}+u_{N-1}\right)=\alpha_{1} .
+\end{array}\right.\tag{10}
 $$
 
-将（3．10）式与（3．6）式联立就可以得到一个由 $N+1$ 个方程组成的含有 $n+1$ 个未知量的线性方程组，其中每一个方程所略去的余项都是 $O\left(h^{2}\right)$ 。
+将(10)式与(6)式联立就可以得到一个由 $N+1$ 个方程组成的含有 $n+1$ 个未知量的线性方程组，其中每一个方程所略去的余项都是 $O\left(h^{2}\right)$ 。
 
-通常遇到的方程当然要比方程（3．1）复杂得多，然而不管怎样，导出线性方程组的思想是类似的。如对二阶自共轭方程
+通常遇到的方程当然要比方程(1)复杂得多，然而不管怎样，导出线性方程组的思想是类似的。如对二阶自共轭方程
 
 $$
--\frac{\mathrm{d}}{\mathrm{~d} x}\left(p \frac{\mathrm{~d} u}{\mathrm{~d} x}\right)+q(x) u(x)=f(x), \quad a<x<b,
+-\frac{\mathrm{d}}{\mathrm{~d} x}\left(p \frac{\mathrm{~d} u}{\mathrm{~d} x}\right)+q(x) u(x)=f(x), \quad a<x<b,\tag{11}
 $$
 
 其中, $p(x) \in C^{1}([a, b]), p(x) \geqslant p_ {min}>0, q, f \in C^{0}([a, b]) 且 q(x) \geqslant 0$ 。取结点为
@@ -158,11 +159,15 @@ $$
 a=x_{0}<x_{\frac{1}{2}}<x_{\frac{3}{2}}<\cdots<x_{i-\frac{1}{2}}<\cdots<x_{N-\frac{1}{2}}<x_{N}=b
 $$
 
-又作成了 $[a, b]$ 的一个网格剖分，它被称为原剖分的对偶剖分。如图 3．1 所示，打＂－＂号的是原剖分结点，打＂$\times$＂号的是对偶剖分结点。
+又作成了 $[a, b]$ 的一个网格剖分，它被称为原剖分的对偶剖分。如图 1 所示，打＂－＂号的是原剖分结点，打＂$\times$＂号的是对偶剖分结点。
 
-图 3．1 对区间 [a, b] 的剖分
+![1](https://s2.loli.net/2025/08/07/cfAgDTvt7hEwI6C.jpg)
 
-接着用差商代替微商的方法将方程（3．1）在内点 $x_{i}$ 处离散。
+<figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+图 1 对区间 $[a, b]$ 的剖分
+</figcaption>
+
+接着用差商代替微商的方法将方程(1)在内点 $x_{i}$ 处离散。
 
 $$
 \begin{aligned}
@@ -176,16 +181,16 @@ $$
 $$
 \begin{array}{r}
 -\frac{2}{h_{i}+h_{i+1}}\left[p_{i+\frac{1}{2}} \frac{u_{i+1}-u_{i}}{h_{i+1}}-p_{i-\frac{1}{2}} \frac{u_{i}-u_{i-1}}{h_{i}}\right]+q_{i} u_{i}=f_{i} \\
-i=1,2, \cdots, N-1
+i=1,2, \cdots, N-1,\tag{12}
 \end{array}
 $$
 
-用（3．12）式代替（3．11）式的截断误差的阶为 $O(h)$。而所缺的两个方程同样可由边界条件得到。
+用(12)式代替(11)式的截断误差的阶为 $O(h)$。而所缺的两个方程同样可由边界条件得到。
 Step4: 是研究这个线性代数方程组的性态，即解的存在性、唯一性以及当 $h \rightarrow 0 $ 时差分解的极限性质，也就是收敛性。(略)
 
 Step5:求解得到的线性代数方程组。
 
-在差分方程组（3．13）中，将由两个边界条件得到的等式代入 $i=1$ 和 $i=N-1$ 两个方程中消去 $u_{0}$ 和 $u_{N}$ ，便得到了关于 $\boldsymbol{u}=\left(u_{1}, u_{2}, \cdots\right.  ，  \left.u_{N-1}\right)^{T}$ 的 $N-1$ 维的线性代数方程组
+在差分方程组中，将由两个边界条件得到的等式代入 $i=1$ 和 $i=N-1$ 两个方程中消去 $u_{0}$ 和 $u_{N}$ ，便得到了关于 $\boldsymbol{u}=\left(u_{1}, u_{2}, \cdots\right.  ，  \left.u_{N-1}\right)^{T}$ 的 $N-1$ 维的线性代数方程组
 
 $$
 Au=f
@@ -255,11 +260,11 @@ $$
 a_{1}=0, s_{0}, t_{0} \text { 任意, } & \\
 s_{j+1}=-\frac{c_{j+1}}{b_{j+1}+a_{j+1} s_{j}}, & j=0,1, \cdots, N-3 \\
 t_{j+1}=\frac{f_{j+1}-a_{j+1} t_{j}}{b_{j+1}+a_{j+1} s_{j}}, & j=0,1,2, \cdots, N-2 \\
-u_{N-1}=t\_{N-1}, & j=N-2, N-3, \cdots, 1 .
+u_{N-1}=t\_{N-1}, & j=N-2, N-3, \cdots, 1 .\tag{13}
 \end{array}\right.
 $$
 
-求 $s_{j}$ 和 $t_{j}$ 时的下标由小到大，这被称为＂追＂的过程；求 $u_{j}$ 时恰恰相反，下标由大到小，这被称为＂赶＂的过程，所以（3．19）式被称为解三对角方程组的**追赶法**。
+求 $s_{j}$ 和 $t_{j}$ 时的下标由小到大，这被称为＂追＂的过程；求 $u_{j}$ 时恰恰相反，下标由大到小，这被称为＂赶＂的过程，所以(13)式被称为解三对角方程组的**追赶法**。
 
 ## 算例
 
@@ -323,7 +328,7 @@ $$
 <div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
     <img
-      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example1_1.png?raw=true"
+      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example2_1.png?raw=true"
       alt="Adams-Bashforth方法数值解比较"
       style={{ width: '100%' }}
     />
@@ -333,7 +338,7 @@ $$
   </figure>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
     <img
-      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example1_2.png?raw=true"
+      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example2_2.png?raw=true"
       alt="Adams-Moulton方法数值解比较"
       style={{ width: '100%' }}
     />
@@ -363,7 +368,7 @@ $$
 <div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
     <img
-      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example1_1.png?raw=true"
+      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example3_1.png?raw=true"
       alt="Adams-Bashforth方法数值解比较"
       style={{ width: '100%' }}
     />
@@ -373,7 +378,7 @@ $$
   </figure>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
     <img
-      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example1_2.png?raw=true"
+      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example3_2.png?raw=true"
       alt="Adams-Moulton方法数值解比较"
       style={{ width: '100%' }}
     />
