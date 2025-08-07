@@ -283,22 +283,106 @@ $$
 <div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
     <img
-      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/1.png?raw=true"
+      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example1_1.png?raw=true"
       alt="Adams-Bashforth方法数值解比较"
       style={{ width: '100%' }}
     />
     <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
-      图 1：差分法不同步长与精确解的比较
+      图 1：算例1差分法不同步长与精确解的比较
     </figcaption>
   </figure>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
     <img
-      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/2.png?raw=true"
+      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example1_2.png?raw=true"
       alt="Adams-Moulton方法数值解比较"
       style={{ width: '100%' }}
     />
     <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
-      图 2：差分法不同步长绝对误差的比较
+      图 2：算例1差分法不同步长绝对误差的比较
     </figcaption>
   </figure>
 </div>
+
+### 算例 2
+
+$$
+\left\{\begin{array}{l}
+\frac{\mathrm{d}^{2} u}{\mathrm{~d} x^{2}} -\frac{\mathrm{d}u}{\mathrm{~d}x} + u = e^x - 3sinx, \quad x \in(0, \pi), \\
+u(0)=-2, u(\pi)=e^{\pi} +3,
+\end{array}\right.
+$$
+
+真实解为
+
+$$
+u=e^x-3cosx.
+$$
+
+我们设置时间步长为 $\frac{1}{64},\frac{1}{128},\frac{1}{256}$,我们可以得到如下实验结果：
+
+<div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example1_1.png?raw=true"
+      alt="Adams-Bashforth方法数值解比较"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+      图 3：算例2差分法不同步长与精确解的比较
+    </figcaption>
+  </figure>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example1_2.png?raw=true"
+      alt="Adams-Moulton方法数值解比较"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+      图 4：算例2差分法不同步长绝对误差的比较
+    </figcaption>
+  </figure>
+</div>
+
+### 算例 3
+
+$$
+\left\{\begin{array}{l}
+\frac{\mathrm{d}^{2} u}{\mathrm{~d} x^{2}} -x\frac{\mathrm{d}u}{\mathrm{~d}x} + u = -2xcosx +x, \quad x \in(0, \pi), \\
+u(0)=0, u(\pi)=\pi,
+\end{array}\right.
+$$
+
+真实解为
+
+$$
+u=x+2sinx.
+$$
+
+我们设置时间步长为 $\frac{1}{64},\frac{1}{128},\frac{1}{256}$,我们可以得到如下实验结果：
+
+<div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example1_1.png?raw=true"
+      alt="Adams-Bashforth方法数值解比较"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+      图 5：算例3差分法不同步长与精确解的比较
+    </figcaption>
+  </figure>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example1_2.png?raw=true"
+      alt="Adams-Moulton方法数值解比较"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+      图 6：算例3差分法不同步长绝对误差的比较
+    </figcaption>
+  </figure>
+</div>
+
+## 总结
+
+我们可以看到边界处都能够算好，中间好像不能算好，算例 3 不知道怎么回事反正是照着书上照抄出来的，好像该方法并没有考虑时间上的变化，就是一个瞬态方程。
