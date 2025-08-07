@@ -260,3 +260,45 @@ u_{N-1}=t\_{N-1}, & j=N-2, N-3, \cdots, 1 .
 $$
 
 求 $s_{j}$ 和 $t_{j}$ 时的下标由小到大，这被称为＂追＂的过程；求 $u_{j}$ 时恰恰相反，下标由大到小，这被称为＂赶＂的过程，所以（3．19）式被称为解三对角方程组的**追赶法**。
+
+## 算例
+
+### 算例 1
+
+$$
+\left\{\begin{array}{l}
+\frac{\mathrm{d}^{2} u}{\mathrm{~d} x^{2}} = \frac{(1-x)u+1}{(1+x)^2}, \quad x \in(0, 1), \\
+u(0)=1, u(1)=0.5,
+\end{array}\right.
+$$
+
+真实解为
+
+$$
+u=\frac{1}{1+x}
+$$
+
+我们设置时间步长为 $\frac{1}{64},\frac{1}{128},\frac{1}{256}$,我们可以得到如下实验结果：
+
+<div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/1.png?raw=true"
+      alt="Adams-Bashforth方法数值解比较"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+      图 1：差分法不同步长与精确解的比较
+    </figcaption>
+  </figure>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/2.png?raw=true"
+      alt="Adams-Moulton方法数值解比较"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+      图 2：差分法不同步长绝对误差的比较
+    </figcaption>
+  </figure>
+</div>
