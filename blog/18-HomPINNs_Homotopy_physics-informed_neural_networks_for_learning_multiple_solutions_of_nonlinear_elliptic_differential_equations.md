@@ -47,7 +47,7 @@ Physics-informed neural networks (PINNs) based machine learning is an emerging f
 
 我们使用 3 个隐藏层的神经网络，1D 实例每层 30 个神经元，2D 实例每层 80 个神经元，相应的激活函数选择双曲正切函数。所有神经网络都使用 He 初始化，这是 pytorch 库中的一种默认初始化方法。
 
-<div style="text-align: center;">
+<div style={{textAlign: 'center'}}>
   <img src="./src/18/32.png" alt="" />
 </div>
 
@@ -69,15 +69,15 @@ $$
 
 文献[33]表明，这个例子有两个解析解。由于公式 (19) 没有实数三元解，我们定义 $\mathcal{U}_{0} = \{1, -1, \sqrt{2}, -\sqrt{2}\}$，求解 $f (u) = (u^2 - 1)(u^2 - 2) = 0$。图 4 和图 5 展示了这两个解的学习过程以及每个同调步骤的相应损失。表 1 和表 2 分别显示了 L2 准则下的损失和数值误差，证明了 HomPINNs 在不同网络结构上的良好精度。
 
-<div style="text-align: center;">
+<div style={{textAlign: 'center'}}>
   <img src="./src/18/33.png" alt="" />
 </div>
 
-<div style="text-align: center;">
+<div style={{textAlign: 'center'}}>
   <img src="./src/18/34.png" alt="" />
 </div>
 
-<div style="text-align: center;">
+<div style={{textAlign: 'center'}}>
   <img src="./src/18/35.png" alt="" />
 </div>
 
@@ -99,15 +99,15 @@ $$
 
 其中 $u_N(xg_i; θ, p)$ 是方程 (21) 在任意给定参数 $p$ 下的解。通过追踪从 $p = 18$ 到 $p = 0$ 的解，我们将参数 $p$ 离散化为 $p = p₀, p₁, ⋯, p_{m_p}$，其中 $p₀ = 18，p_{m_p} = 0$，且 $m_p + 1$ 是参数 $p$ 的离散点数。然后，我们得到由 HomPINNs 学习的初始七个解$\{ui(x; θ_i, p_0)\}^7_{i=1}$，并计算 $u(\bm x; θ_j , p_j ) (j > 0)$ 通过将 $u(x; θ_{j−1}, p_{j−1})$ 作为优化求解器的初始猜测，直到 $j = m_p$。因此，我们获得了参数微分方程 (20) 的解行为，如图 6d 所示。
 
-<div style="text-align: center;">
+<div style={{textAlign: 'center'}}>
   <img src="./src/18/36.png" alt="" />
 </div>
 
-<div style="text-align: center;">
+<div style={{textAlign: 'center'}}>
   <img src="./src/18/37.png" alt="" />
 </div>
 
-<div style="text-align: center;">
+<div style={{textAlign: 'center'}}>
   <img src="./src/18/38.png" alt="" />
 </div>
 
