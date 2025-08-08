@@ -66,7 +66,7 @@ const config = {
       href: 'https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css',
       type: 'text/css',
       integrity:
-        'sha384-K9P2+4+PNL1EfCT7eKZxLS9P9m1M9L3CwM2X7ZzZsda6CyaZozkn2lW7lRg3p2Ek',
+        'sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC',
       crossorigin: 'anonymous',
     },
   ],
@@ -140,6 +140,7 @@ const config = {
         ],
         copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
       },
+
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,

@@ -5,6 +5,7 @@ import axios from 'axios';
 import moment from 'moment';
 import { CommentAPI } from '../../api';
 import Link from '@docusaurus/Link';
+import 'antd/dist/antd.css';
 
 function parseContent(content) {
   const lines = content.split('\n');
