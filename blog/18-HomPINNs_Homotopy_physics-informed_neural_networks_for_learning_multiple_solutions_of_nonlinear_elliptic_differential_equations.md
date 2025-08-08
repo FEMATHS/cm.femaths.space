@@ -8,7 +8,7 @@ tags:
     Nonlinear elliptic differential equation,
     Homotopy method,
   ]
-date: 2025-08-07
+date: 2025-08-08
 ---
 
 这是一篇使用同调法与 PINN 相结合解决非线性椭圆微分方程的论文，并处理了不规则边界区域。
