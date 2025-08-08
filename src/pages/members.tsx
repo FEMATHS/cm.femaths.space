@@ -67,7 +67,7 @@ export default function Members(): JSX.Element {
   return (
     <Layout>
       <PageMetadata
-        title="Our Members"
+        title="FEMATHS小组成员"
         description="The members directory of the team"
       />
       <main>
