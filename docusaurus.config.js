@@ -95,6 +95,11 @@ const config = {
             position: 'left',
           },
           {
+            to: '/members',
+            label: 'FEMATHS小组成员',
+            position: 'left',
+          },
+          {
             href: 'https://github.com/FEMATHS',
             label: 'GitHub',
             position: 'right',
