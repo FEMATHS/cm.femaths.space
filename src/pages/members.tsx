@@ -16,7 +16,7 @@ const membersData = [
     memberList: [
       {
         name: "Tanger",
-        role: "FEMATHS创始人，主要Wiki和日志编辑",
+        role: "FEMATHS小组创始人",
         description: "领导团队，负责整体方向",
         avatar: "https://avatars.githubusercontent.com/u/57751257?v=4",
         github: "https://github.com/redhat123456",
