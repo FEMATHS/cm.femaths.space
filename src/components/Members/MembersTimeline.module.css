@@ -192,14 +192,18 @@
 }
 
 /* 图标链接悬停颜色 */
+.iconLink {
+  color: #000; /* 默认黑色 */
+}
+
 .iconLink:hover {
-  color: #0056b3;
+  color: red;
 }
 
 /* 图标大小与颜色 */
 .icon {
   width: 28px;
   height: 28px;
-  fill: #000; /* 默认黑色 */
+  fill: currentColor; /* 继承父元素颜色 */
   transition: fill 0.3s ease;
 }
