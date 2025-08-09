@@ -73,8 +73,8 @@ export default function Members(): JSX.Element {
       <main>
         <div style={{ marginTop: '-100px' }} >
           <Section
-            title="我们的小组成员"
-            description="这里是我们团队的详细成员介绍"
+            title="FEMATHS小组 · 团队成员成员"
+            description="这里是我们小组团队成员的简单介绍"
             bannerStyle={{  }}
           >
             <div className={styles.content}>
