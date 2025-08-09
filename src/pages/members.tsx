@@ -16,8 +16,8 @@ const membersData = [
     memberList: [
       {
         name: "Tanger",
-        role: "FEMATHS创始人，常务主席",
-        description: "领导团队，负责整体方向",
+        role: "FEMATHS老大",
+        description: "大方向",
         avatar: "https://avatars.githubusercontent.com/u/57751257?v=4",
         github: "https://github.com/redhat123456",
         blog: "https://tanger.ltd",
@@ -25,7 +25,7 @@ const membersData = [
       },
       {
         name: "zqqqj",
-        role: "FEMATHS法人兼财务",
+        role: "老大的头脑小弟",
         description: "超级Bug工程师",
         avatar: "https://avatars.githubusercontent.com/u/95482898?v=4",
         github: "https://github.com/zqqqqqqj1110",
