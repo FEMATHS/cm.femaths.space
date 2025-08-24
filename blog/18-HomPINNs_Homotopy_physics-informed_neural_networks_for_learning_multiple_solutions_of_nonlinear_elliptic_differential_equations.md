@@ -57,7 +57,7 @@ Physics-informed neural networks (PINNs) based machine learning is an emerging f
 
 #### 优化器设置
 
-我们使用 Pytorch 库中的 Adam 训练算法[68]，参数如下：$betas = (0.9, 0.999)，eps = 10-8，weight\_decay = 0，amsgrad = False，maximize = False$，以解决 (8) 和 (9) 中定义的优化问题 ${L(θ, t_i)}^m*{i=0}$ 。学习率设定为 $τ_n = τ_{initial} × γ^{[\frac{n}{Δ}]}$，即每迭代一次，学习率衰减 $γ$ 。在所有例子和每个同调步骤 $t_i$ 中，我们设置 $τ_{initial} = 0.002$ 和 $Δ = 1000$，而一维例子的衰减率 $γ = 0.85$，二维例子的衰减率 $γ = 0.95$。此外，在亚当优化之后，对求解进行了细化 LBFGS 是 Pytorch 库中的一种准牛顿方法，参数为 1D 示例 $max\_iter = 10000$，2D 示例 $max\_iter = 50000，tolerance\_grad = 1.0 × np.finfo(float).eps$ ，以获得更好的精度。
+我们使用 Pytorch 库中的 Adam 训练算法[68]，参数如下：$betas = (0.9, 0.999)，eps = 10-8，weight\_{decay} = 0，amsgrad = False，maximize = False$，以解决 (8) 和 (9) 中定义的优化问题 ${L(θ, t_i)}^m_{i=0}$ 。学习率设定为 $τ_n = τ_{initial} × γ^{[\frac{n}{Δ}]}$，即每迭代一次，学习率衰减 $γ$ 。在所有例子和每个同调步骤 $t_i$ 中，我们设置 $τ_{initial} = 0.002$ 和 $Δ = 1000$，而一维例子的衰减率 $γ = 0.85$，二维例子的衰减率 $γ = 0.95$。此外，在亚当优化之后，对求解进行了细化 LBFGS 是 Pytorch 库中的一种准牛顿方法，参数为 1D 示例 $max\_iter = 10000$，2D 示例 $max\_{iter}= 50000，tolerance\_{grad} = 1.0 × np.finfo(float).eps$ ，以获得更好的精度。
 
 ### 算例 1：有两个解的一维示例
 
@@ -97,7 +97,7 @@ $$
 \begin{split}\tilde{L}(\theta,p)&=\frac{1}{N_{g}} \sum_{i=1}^{N_{g}}\big(\mathcal{L}u_{N}(\mathbf{x}_{i}^{g};\theta,p)-f(u_{N} (\mathbf{x}_{i}^{g};\theta,p),p)\big)^{2}\\ &+\alpha\frac{1}{N_{b}}\sum_{j=1}^{N_{b}}\big(\mathcal{B}u_{N} (\mathbf{x}_{j}^{b};\theta,p)-b(\mathbf{x}_{j}^{b})\big)^{2},\end{split}
 $$
 
-其中 $u_N(xg_i; θ, p)$ 是方程 (21) 在任意给定参数 $p$ 下的解。通过追踪从 $p = 18$ 到 $p = 0$ 的解，我们将参数 $p$ 离散化为 $p = p₀, p₁, ⋯, p_{m_p}$，其中 $p₀ = 18，p_{m_p} = 0$，且 $m_p + 1$ 是参数 $p$ 的离散点数。然后，我们得到由 HomPINNs 学习的初始七个解$\{ui(x; θ_i, p_0)\}^7_{i=1}$，并计算 $u(\bm x; θ_j , p_j ) (j > 0)$ 通过将 $u(x; θ_{j−1}, p_{j−1})$ 作为优化求解器的初始猜测，直到 $j = m_p$。因此，我们获得了参数微分方程 (20) 的解行为，如图 6d 所示。
+其中 $u_N(xg_i; θ, p)$ 是方程 (21) 在任意给定参数 $p$ 下的解。通过追踪从 $p = 18$ 到 $p = 0$ 的解，我们将参数 $p$ 离散化为 $p = p₀, p₁, ⋯, p_{m_p}$，其中 $p₀ = 18，p_{m_p} = 0$，且 $m_p + 1$ 是参数 $p$ 的离散点数。然后，我们得到由 HomPINNs 学习的初始七个解$\{ui(x; θ_i, p_0)\}^7_{i=1}$，并计算 $u(\textbf{x} ; θ_j , p_j ) (j > 0)$ 通过将 $u(x; θ_{j−1}, p_{j−1})$ 作为优化求解器的初始猜测，直到 $j = m_p$。因此，我们获得了参数微分方程 (20) 的解行为，如图 6d 所示。
 
 <div style={{textAlign: 'center'}}>
   <img src="./src/18/36.png" alt="" />
@@ -161,13 +161,13 @@ $$
 D_{A}=2.5\times 10^{-4},\ D_{S}=5\times 10^{-4 },\ \rho=0.04,\ {\rm and}\ \mu=0.065.
 $$
 
-由于扩散系数很小，我们通过除以扩散系数来对方程进行归一化，以避免 （24） 的损失太小。此外，为了避免收敛到平凡的解 $(A,S)= (0,1)$ 。我们引入重新缩放的变量，$\tilde{\bm{\text{u}}} = (\tilde{A}, \tilde{S})$，使得 $\tilde{A} = 2A$ 和 $\tilde{S} = 2S$。因此，非线性微分方程组变成
+由于扩散系数很小，我们通过除以扩散系数来对方程进行归一化，以避免 （24） 的损失太小。此外，为了避免收敛到平凡的解 $(A,S)= (0,1)$ 。我们引入重新缩放的变量，$\tilde{\textbf{\text{u}}} = (\tilde{A}, \tilde{S})$，使得 $\tilde{A} = 2A$ 和 $\tilde{S} = 2S$。因此，非线性微分方程组变成
 
 $$
-\left\{\begin{aligned} \mathcal{F}_{1}(\tilde{A},\tilde{S})& =\Delta\tilde{A}+\frac{1}{4D_{\tilde{A}}}\tilde{S}\tilde{A}^{2}- \frac{\mu+\rho}{D_{\tilde{A}}}\tilde{A}=0,\\ \mathcal{F}_{2}(\tilde{A},\tilde{S})&=\Delta\tilde{ S}-\frac{1}{4D_{\bm{S}}}\tilde{S}\tilde{A}^{2}+\frac{\rho}{D_{\bm{S}}}(2- \tilde{S})=0,\\ \frac{\partial\tilde{A}}{\partial x} |_{\partial\Omega}& =\frac{\partial\tilde{S}}{\partial x} |_{\partial\Omega}=0, \end{aligned}\right.
+\left\{\begin{aligned} \mathcal{F}_{1}(\tilde{A},\tilde{S})& =\Delta\tilde{A}+\frac{1}{4D_{\tilde{A}}}\tilde{S}\tilde{A}^{2}- \frac{\mu+\rho}{D_{\tilde{A}}}\tilde{A}=0,\\ \mathcal{F}_{2}(\tilde{A},\tilde{S})&=\Delta\tilde{ S}-\frac{1}{4D_{\textbf{S}}}\tilde{S}\tilde{A}^{2}+\frac{\rho}{D_{\textbf{S}}}(2- \tilde{S})=0,\\ \frac{\partial\tilde{A}}{\partial x} |_{\partial\Omega}& =\frac{\partial\tilde{S}}{\partial x} |_{\partial\Omega}=0, \end{aligned}\right.
 $$
 
-首先，通过构建具有双宽度输出层的神经网络 $\tilde{\bm{\text{u}}}(\bm{\text{x}};θ)$ 来分别表示两个分量 $\tilde{A}$ 和 $\tilde{S}$，从而利用所提出的 HomPINNS 来求解系统（25）。通过求解 $(\tilde{A}+1) \tilde{A}(\tilde{A}-2)= 0,\mathcal{F}_{1}(\tilde{A},\tilde{S})$ 的平凡解集为 $\mathcal{A}_0={-1,0,2}$。$A$ 的起始函数 $A_s$ 是通过从 $\mathcal{A}_0$ 中随机选择系数，用高斯基函数构造的，$S$ 的起始函数定义为 $S_s = 2 − A_s$。通过选择 60 个起始函数，HomPIN 学习了 25 种不同的解，如图 10 和图 11 所示，适用于 $A(x,y)$ 和 $S(x,y)$。25 个学习神经网络的平均损耗为 $6.40 × 10^{−4}$，控制方程的平均残差为 $3.83 × 10^{−4}$。
+首先，通过构建具有双宽度输出层的神经网络 $\tilde{\textbf{\text{u}}}(\textbf{\text{x}};θ)$ 来分别表示两个分量 $\tilde{A}$ 和 $\tilde{S}$，从而利用所提出的 HomPINNS 来求解系统（25）。通过求解 $(\tilde{A}+1) \tilde{A}(\tilde{A}-2)= 0,\mathcal{F}_{1}(\tilde{A},\tilde{S})$ 的平凡解集为 $\mathcal{A}_0={-1,0,2}$。$A$ 的起始函数 $A_s$ 是通过从 $\mathcal{A}_0$ 中随机选择系数，用高斯基函数构造的，$S$ 的起始函数定义为 $S_s = 2 − A_s$。通过选择 60 个起始函数，HomPIN 学习了 25 种不同的解，如图 10 和图 11 所示，适用于 $A(x,y)$ 和 $S(x,y)$。25 个学习神经网络的平均损耗为 $6.40 × 10^{−4}$，控制方程的平均残差为 $3.83 × 10^{−4}$。
 
 <div style={{textAlign: 'center'}}>
   <img src="./src/18/40.png" alt="" />
@@ -194,13 +194,13 @@ $$
 
 ## 同伦延续法(Homotopy continuation method)
 
-将数值解表示为 $\bm{\text{U}}$，我们有以下离散多项式系统
+将数值解表示为 $\textbf{\text{U}}$，我们有以下离散多项式系统
 
 $$
 \mathbf{F}_{h} \left( \mathbf{U} \right) \equiv \mathcal{L}_{h} \mathbf{U}-f_{h} \left( \mathbf{U} \right)=0,\tag{4}
 $$
 
-其中，$\mathcal{L}_h$ 和 $f\_{h}$ 是采用有限差分法[58]、有限元法[59]或谱法[60]对 $\mathcal{L}$ 和 $f(⋅,x)$ 的离散化算子。如果 $f(u)$ 是 $u$ 的多项式函数，则 $\mathbf{F}_{h}$ 是 $\bm{\text{U}}$ 的多项式系统。为了计算椭圆方程的所有解，我们定义了以下同伦方程
+其中，$\mathcal{L}_h$ 和 $f\_{h}$ 是采用有限差分法[58]、有限元法[59]或谱法[60]对 $\mathcal{L}$ 和 $f(⋅,x)$ 的离散化算子。如果 $f(u)$ 是 $u$ 的多项式函数，则 $\mathbf{F}_{h}$ 是 $\textbf{\text{U}}$ 的多项式系统。为了计算椭圆方程的所有解，我们定义了以下同伦方程
 
 $$
 \mathbf{H}(\mathbf{U},t):=t\mathbf{F}_{h}(\mathbf{U})+\gamma(1-t)\mathbf{G}_{ h}(\mathbf{U})=0,\tag{5}
