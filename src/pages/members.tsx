@@ -29,8 +29,8 @@ const membersData = [
         description: "超级Bug工程师",
         avatar: "https://avatars.githubusercontent.com/u/95482898?v=4",
         github: "https://github.com/zqqqqqqj1110",
-        blog: "https://davidblog.com",
-        email: "",
+        blog: "http://8.130.141.48",
+        email: "zhouqijia1110@gmail.com",
       },
       {
         name: "JoyBun",
