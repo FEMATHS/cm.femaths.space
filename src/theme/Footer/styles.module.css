@@ -4,7 +4,10 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
+.container{
+  font-family: "Times New Roman", Times, serif !important;
+  font-size: 20px;
+}
 .footerLogoLink {
   opacity: 0.5;
   transition: opacity var(--ifm-transition-fast) var(--ifm-transition-timing-default);
