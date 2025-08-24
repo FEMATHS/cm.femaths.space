@@ -9,24 +9,49 @@
 <div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
     <img
-      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example3_1.png?raw=true"
+      src="https://github.com/FEMATHS/cm.femaths.space/blob/main/docs/src/ch5/bookcoverA.png?raw=true"
       alt="Adams-Bashforth方法数值解比较"
       style={{ width: '100%' }}
     />
     <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
-      图 5：算例3差分法不同步长与精确解的比较
+      图 1：Spectral Methods: Algorithms, Analysis and Applications（2011）
     </figcaption>
   </figure>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
     <img
-      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example3_2.png?raw=true"
+      src="https://github.com/FEMATHS/cm.femaths.space/blob/main/docs/src/ch5/bookcoverB.png?raw=true"
       alt="Adams-Moulton方法数值解比较"
       style={{ width: '100%' }}
     />
     <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
-      图 6：算例3差分法不同步长绝对误差的比较
+      图 2：Spectral Methods in MATLAB（2000）
     </figcaption>
   </figure>
 </div>
 
-这里考虑问题(1)如下：
+我们先来阅读 Spectral Methods in MATLAB（2000），因为这本书比较基础，Spectral Methods: Algorithms, Analysis and Applications（2011）阅读起来会比较困难，他适合有一定计算数学基础的人阅读。
+
+## Chapter 1 微分矩阵
+
+<div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch5/example1/p1.png?raw=true"
+      alt="Adams-Bashforth方法数值解比较"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+      图 3：算例2差分法不同步长与精确解的比较
+    </figcaption>
+  </figure>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch5/example1/p2.png?raw=true"
+      alt="Adams-Moulton方法数值解比较"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+      图 4：算例2差分法不同步长绝对误差的比较
+    </figcaption>
+  </figure>
+</div>
