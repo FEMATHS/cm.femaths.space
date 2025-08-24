@@ -48,7 +48,7 @@ Physics-informed neural networks (PINNs) based machine learning is an emerging f
 我们使用 3 个隐藏层的神经网络，1D 实例每层 30 个神经元，2D 实例每层 80 个神经元，相应的激活函数选择双曲正切函数。所有神经网络都使用 He 初始化，这是 pytorch 库中的一种默认初始化方法。
 
 <div style={{textAlign: 'center'}}>
-  <img src="./src/18/32.png" alt="" />
+  <img src="https://github.com/FEMATHS/cm.femaths.space/blob/main/blog/src/18/32.png?raw=true" alt="" />
 </div>
 
 #### 同调过程的超参数
@@ -70,15 +70,15 @@ $$
 文献[33]表明，这个例子有两个解析解。由于公式 (19) 没有实数三元解，我们定义 $\mathcal{U}_{0} = \{1, -1, \sqrt{2}, -\sqrt{2}\}$，求解 $f (u) = (u^2 - 1)(u^2 - 2) = 0$。图 4 和图 5 展示了这两个解的学习过程以及每个同调步骤的相应损失。表 1 和表 2 分别显示了 L2 准则下的损失和数值误差，证明了 HomPINNs 在不同网络结构上的良好精度。
 
 <div style={{textAlign: 'center'}}>
-  <img src="./src/18/33.png" alt="" />
+  <img src="https://github.com/FEMATHS/cm.femaths.space/blob/main/blog/src/18/33.png?raw=true" alt="" />
 </div>
 
 <div style={{textAlign: 'center'}}>
-  <img src="./src/18/34.png" alt="" />
+  <img src="https://github.com/FEMATHS/cm.femaths.space/blob/main/blog/src/18/34.png?raw=true" alt="" />
 </div>
 
 <div style={{textAlign: 'center'}}>
-  <img src="./src/18/35.png" alt="" />
+  <img src="https://github.com/FEMATHS/cm.femaths.space/blob/main/blog/src/18/35.png?raw=true" alt="" />
 </div>
 
 ### 算例 2：有多个解的一维示例
@@ -100,15 +100,15 @@ $$
 其中 $u_N(xg_i; θ, p)$ 是方程 (21) 在任意给定参数 $p$ 下的解。通过追踪从 $p = 18$ 到 $p = 0$ 的解，我们将参数 $p$ 离散化为 $p = p₀, p₁, ⋯, p_{m_p}$，其中 $p₀ = 18，p_{m_p} = 0$，且 $m_p + 1$ 是参数 $p$ 的离散点数。然后，我们得到由 HomPINNs 学习的初始七个解$\{ui(x; θ_i, p_0)\}^7_{i=1}$，并计算 $u(\textbf{x} ; θ_j , p_j ) (j > 0)$ 通过将 $u(x; θ_{j−1}, p_{j−1})$ 作为优化求解器的初始猜测，直到 $j = m_p$。因此，我们获得了参数微分方程 (20) 的解行为，如图 6d 所示。
 
 <div style={{textAlign: 'center'}}>
-  <img src="./src/18/36.png" alt="" />
+  <img src="https://github.com/FEMATHS/cm.femaths.space/blob/main/blog/src/18/36.png?raw=true" alt="" />
 </div>
 
 <div style={{textAlign: 'center'}}>
-  <img src="./src/18/37.png" alt="" />
+  <img src="https://github.com/FEMATHS/cm.femaths.space/blob/main/blog/src/18/37.png?raw=true" alt="" />
 </div>
 
 <div style={{textAlign: 'center'}}>
-  <img src="./src/18/38.png" alt="" />
+  <img src="https://github.com/FEMATHS/cm.femaths.space/blob/main/blog/src/18/38.png?raw=true" alt="" />
 </div>
 
 ### 算例 3：带有九个解的 2D Henon 方程
@@ -124,11 +124,11 @@ $$
 提出的 HomPINNs 模型学习到了九种不同的解，如图 8 所示。值得注意的是，解 $u_i$ 与解 $u_{10-i}$ 关于 x-y 平面呈对称关系，其中 $i = 1, 2, 3, 4$。传统方法[72]仅发现八个解 $\{u_i, u_{10-i}\}^{4}_{i=1}$，这些解成对出现，这可能是由计算前的某些变换引起的。HomPINNs 中不存在任何变换，我们直接使用非线性微分方程(22)定义损失函数。这是提出 HomPINNs 相对于传统方法计算非线性系统多个解的一大优势。此外，我们还测试了 HomPINNs 在不同神经网络结构下的鲁棒性，并总结了不同解的平均损失值，如表 4 所示。
 
 <div style={{textAlign: 'center'}}>
-  <img src="./src/18/43.png" alt="" />
+  <img src="https://github.com/FEMATHS/cm.femaths.space/blob/main/blog/src/18/43.png?raw=true" alt="" />
 </div>
 
 <div style={{textAlign: 'center'}}>
-  <img src="./src/18/39.png" alt="" />
+  <img src="https://github.com/FEMATHS/cm.femaths.space/blob/main/blog/src/18/39.png?raw=true" alt="" />
 </div>
 
 #### Gray-Scott 模型的稳态空间模式
@@ -152,7 +152,7 @@ $$
 $$
 
 <div style={{textAlign: 'center'}}>
-  <img src="./src/18/42.png" alt="" />
+  <img src="https://github.com/FEMATHS/cm.femaths.space/blob/main/blog/src/18/42.png?raw=true" alt="" />
 </div>
 
 在[73]之后，参数值设置为
@@ -170,10 +170,10 @@ $$
 首先，通过构建具有双宽度输出层的神经网络 $\tilde{\textbf{\text{u}}}(\textbf{\text{x}};θ)$ 来分别表示两个分量 $\tilde{A}$ 和 $\tilde{S}$，从而利用所提出的 HomPINNS 来求解系统（25）。通过求解 $(\tilde{A}+1) \tilde{A}(\tilde{A}-2)= 0,\mathcal{F}_{1}(\tilde{A},\tilde{S})$ 的平凡解集为 $\mathcal{A}_0={-1,0,2}$。$A$ 的起始函数 $A_s$ 是通过从 $\mathcal{A}_0$ 中随机选择系数，用高斯基函数构造的，$S$ 的起始函数定义为 $S_s = 2 − A_s$。通过选择 60 个起始函数，HomPIN 学习了 25 种不同的解，如图 10 和图 11 所示，适用于 $A(x,y)$ 和 $S(x,y)$。25 个学习神经网络的平均损耗为 $6.40 × 10^{−4}$，控制方程的平均残差为 $3.83 × 10^{−4}$。
 
 <div style={{textAlign: 'center'}}>
-  <img src="./src/18/40.png" alt="" />
+  <img src="https://github.com/FEMATHS/cm.femaths.space/blob/main/blog/src/18/40.png?raw=true" alt="" />
 </div>
 <div style={{textAlign: 'center'}}>
-  <img src="./src/18/41.png" alt="" />
+  <img src="https://github.com/FEMATHS/cm.femaths.space/blob/main/blog/src/18/41.png?raw=true" alt="" />
 </div>
 
 ## 结论
@@ -250,11 +250,11 @@ $$
 其中，$\tau_{n}$ 是第 $n$ 次迭代的学习率，$n=1,2, \cdots, N_{I, i}$ 且 $i=0,1, \cdots, m$。HomPINNs 的示意图如图 2 所示，其训练过程总结在算法 1 中。
 
 <div style={{textAlign: 'center'}}>
-  <img src="./src/18/44.png" alt="" />
+  <img src="https://github.com/FEMATHS/cm.femaths.space/blob/main/blog/src/18/44.png?raw=true" alt="" />
 </div>
 
 <div style={{textAlign: 'center'}}>
-  <img src="./src/18/45.png" alt="" />
+  <img src="https://github.com/FEMATHS/cm.femaths.space/blob/main/blog/src/18/45.png?raw=true" alt="" />
 </div>
 
 ### 启动函数(Starting functions)
@@ -337,7 +337,7 @@ $$
 其中系数 $v_i$ 随机选自平凡解集 $\mathcal{V}_0$。
 
 <div style={{textAlign: 'center'}}>
-  <img src="./src/18/46.png" alt="" />
+  <img src="https://github.com/FEMATHS/cm.femaths.space/blob/main/blog/src/18/46.png?raw=true" alt="" />
 </div>
 
 ## 总结
