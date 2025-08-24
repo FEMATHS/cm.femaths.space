@@ -9,6 +9,14 @@
 body {
   font-family: "Times New Roman", Times, serif !important;
 }
+
+.markdown > h1,h2,h3,h4,h5,h6 {
+  font-family: "Times New Roman", Times, serif !important;
+}
+
+.markdown > p, li {
+  font-size: 18px !important;
+}
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #007acc;
@@ -62,7 +70,6 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   font-size: 1rem !important;
   color: #007acc !important;
   font-weight: 600 !important;
-  font-family: "Georgia", serif !important;
   border-left: 4px solid #007acc;
   padding-left: 0.5rem;
   display: inline-block;
