@@ -6,24 +6,45 @@
 
 本网页内容主要参考了两本谱方法领域的重要著作：Lloyd N. Trefethen 的 Spectral Methods in MATLAB（2000），系统介绍了谱方法的基本理论与 MATLAB 实现；以及 Jie Shen、Tao Tang 和 Li-Lian Wang 合著的 Spectral Methods: Algorithms, Analysis and Applications（2011），详细讨论了谱方法的算法设计、误差分析及在偏微分方程中的应用。基于这两本书，本文将对谱方法的理论背景、数值实现及应用进行简明介绍。
 
-<div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
+<div
+  style={{
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '2%',
+    marginTop: '10px',
+  }}
+>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
     <img
       src="https://github.com/FEMATHS/cm.femaths.space/blob/main/docs/src/ch5/bookcoverA.png?raw=true"
-      alt="Adams-Bashforth方法数值解比较"
+      alt="Spectral Methods: Algorithms, Analysis and Applications（2011）"
       style={{ width: '100%' }}
     />
-    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+    <figcaption
+      style={{
+        fontSize: '90%',
+        color: 'black',
+        fontStyle: 'Times New Roman',
+        marginTop: '4px',
+      }}
+    >
       图 1：Spectral Methods: Algorithms, Analysis and Applications（2011）
     </figcaption>
   </figure>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
     <img
       src="https://github.com/FEMATHS/cm.femaths.space/blob/main/docs/src/ch5/bookcoverB.png?raw=true"
-      alt="Adams-Moulton方法数值解比较"
+      alt="Spectral Methods in MATLAB（2000）"
       style={{ width: '100%' }}
     />
-    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+    <figcaption
+      style={{
+        fontSize: '90%',
+        color: 'black',
+        fontStyle: 'Times New Roman',
+        marginTop: '4px',
+      }}
+    >
       图 2：Spectral Methods in MATLAB（2000）
     </figcaption>
   </figure>
@@ -37,7 +58,10 @@
 
 考虑均匀网格 $\{x_1,\dots,x_N\}$ ，每个 $j$ 的 $x_{j+1} - x_j = h$，以及一组对应的数据值 $\{u_1,\dots,u_N\}$：
 
-![](../src/ch5/1.png)
+<img
+src="https://github.com/FEMATHS/cm.femaths.space/blob/main/docs/src/ch5/1.png?raw=true"
+style={{ display: 'block',margin: '0 auto',width: '50%' }}
+/>
 
 让 $w_j$ 表示 $u\prime(x_j)$ 的近似值，即 $x_j$ 处的 $u$ 的导数。标准的二阶恒距近似值为
 
@@ -81,7 +105,10 @@ $$
 
 我们取 $u(x) = e^{sin(x)},u\prime(x)=cos(x)e^{sin(x)}$ 并给出域 $[-\pi ;\pi ]$ 的周期性数据：
 
-![](../src/ch5/2.png)
+<img
+src="https://github.com/FEMATHS/cm.femaths.space/blob/main/docs/src/ch5/2.png?raw=true"
+style={{ display: 'block',margin: '0 auto',width: '50%' }}
+/>
 
 因为它使用了 Matlab 稀疏矩阵，所以这段代码在工作站上运行的时间只有几分之一秒，即使它作的维度高达 4096 的矩阵 [GMS92]。结果显示在输出 1 中，它绘制了网格上针对 N 的最大误差。四阶精度是显而易见的。这是我们第一个也是最后一个没有说明谱方法的例子！
 
@@ -204,14 +231,28 @@ Program 2 与 Program 1 相同，只是 (1.3) 替换为 (1.5)。它对结果的�
 
 我们描述的矩阵已经流传。循环矩阵的作用是卷积，正如我们将在第 3 章中看到的，卷积可以使用离散傅里叶变换来计算。从历史上看，正是 1965 年针对此类问题的快速傅里叶变换 （FFT） 的发现导致了 1970 年代人们对谱方法的兴趣激增。我们将在第 8 章中看到，FFT 不仅适用于等距网格上的三角多项式，也适用于切比雪夫网格上的代数多项式。然而，在没有 FFT 的情况下实现的频谱方法也很强大，在许多应用中，使用显式矩阵是相当令人满意的。本书中的大多数问题都是通过矩阵解决的。
 
-<div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
+<div
+  style={{
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '2%',
+    marginTop: '10px',
+  }}
+>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
     <img
       src="https://github.com/FEMATHS/Example/blob/main/ch5/example1/p1.png?raw=true"
       alt="Adams-Bashforth方法数值解比较"
       style={{ width: '100%' }}
     />
-    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+    <figcaption
+      style={{
+        fontSize: '90%',
+        color: 'black',
+        fontStyle: 'Times New Roman',
+        marginTop: '4px',
+      }}
+    >
       图 3：四阶有限差分的收敛性
     </figcaption>
   </figure>
@@ -221,8 +262,16 @@ Program 2 与 Program 1 相同，只是 (1.3) 替换为 (1.5)。它对结果的�
       alt="Adams-Moulton方法数值解比较"
       style={{ width: '100%' }}
     />
-    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
-      图 4：error：谱法 （1.5） 的 “Spectral accuracy”，直到舍入误差接管 $10^{-14}$ 左右。现在矩阵很密集，但 N 的值比程序 1 中的值小得多。
+    <figcaption
+      style={{
+        fontSize: '90%',
+        color: 'black',
+        fontStyle: 'Times New Roman',
+        marginTop: '4px',
+      }}
+    >
+      图 4：error：谱法 （1.5） 的 “Spectral accuracy”，直到舍入误差接管 $10^
+      {-14}$ 左右。现在矩阵很密集，但 N 的值比程序 1 中的值小得多。
     </figcaption>
   </figure>
 </div>
