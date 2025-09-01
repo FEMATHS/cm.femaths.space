@@ -278,4 +278,13 @@ Program 2 与 Program 1 相同，只是 (1.3) 替换为 (1.5)。它对结果的�
 
 ## Chapter 2 无界网格：半离散傅里叶变换
 
+我们现在推导出第一个谱方法，该方案适用于一个**离散的无限域**。因此不是一个**实用的方法**，但是它确定了我们接下来看到的实用方案的推导和分析的数学思想。
+
+我们的无限网格用 $h\mathbb{Z} $表示，网格中有 $x_j=jh,j\in \mathbb{Z}$。这是所有整数集合：
+
+<img
+src="https://github.com/FEMATHS/cm.femaths.space/blob/main/docs/src/ch5/3.png?raw=true"
+style={{ display: 'block',margin: '0 auto',width: '50%' }}
+/>
+
 ![](https://github.com/FEMATHS/Example/blob/main/ch5/example1/p3.png?raw=true)
