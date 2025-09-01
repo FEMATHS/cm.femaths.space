@@ -5,6 +5,8 @@ tags: [Legendre–Galerkin, Multidomain, Chebyshev collocation, Spectral method]
 date: 2025-08-28
 ---
 
+![](./src/20/72.png)
+
 这是一篇使用 VPinn 来求解 Navier-Stokes 方程的论文。
 
 # An efficient hp-Variational PINNs framework for incompressible Navier-Stokes equations
@@ -179,6 +181,6 @@ $$
 
 在本节中，我们将简要说明使用 hp-VPINNs 求解标量 PDE 的 FastVPINNs 方法，然后陈述 FastVPINNs 中使用的基于张量的损耗计算例程。
 
-### Variational form of a scalar PDE
+## 总结
 
-我们从 2D 中的泊松问题开始，均匀的 dirichlet 边界条件，在开放域和有限域 $\Omega \in \$ 上定义
+该论文介绍了一种用于流体力学问题的 PINNs 框架，效果看着挺好，感兴趣的可以尝试文章中的方法。
