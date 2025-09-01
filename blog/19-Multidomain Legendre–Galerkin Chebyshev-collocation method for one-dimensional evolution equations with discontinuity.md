@@ -66,3 +66,5 @@ $$
 $$
 
 设 $τ$ 为变量 $t$ 中的网格大小，并设置 $t_{k}=k\tau\text{, }k=0\text{, }1\text{, }\cdots\text{, }n_{T}\text{ (}n_{T}\tau=T\text{).}$。为简单起见，我们用 uk 表示 uk（x） ：= u（x， tk） 并定义
+
+📌 **欢迎关注 FEMATHS 小组与山海数模，持续学习更多数学建模与科研相关知识！**
