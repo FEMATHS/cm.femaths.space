@@ -404,6 +404,40 @@ $$
 S_{h}^{\prime}(x_{j})=\left\{\begin{aligned} & 0&& j=0,\\ & \frac{(-1)^{j}}{jh}&& j\neq 0.\end{aligned}\right.\tag{2.12}
 $$
 
-![](https://github.com/FEMATHS/Example/blob/main/ch5/example1/p3.png?raw=true)
+```Matlab
+% p3.m - band-limited interpolation
+h = 1; xmax = 10; clf
+x = -xmax:h:xmax; % computational grid
+xx = -xmax-h/20:h/10:xmax+h/20; % plotting grid
 
-三种网格函数的带限插值；首个插值函数为 sinc 函数 Sh(x)。此类插值函数是谱方法的基础，但这些示例不够光滑，无法实现高精度。
+figure('Position',[100 100 800 500]); % 调大图像窗口
+
+for plt = 1:3
+    subplot(3,1,plt)
+    switch plt
+        case 1, v = (x==0); % delta function
+        case 2, v = (abs(x)<=3); % square wave
+        case 3, v = max(0,1-abs(x)/3); % hat function
+    end
+    plot(x,v,'.','markersize',14), grid on
+    p = zeros(size(xx));
+    for i = 1:length(x)
+        p = p + v(i)*sin(pi*(xx-x(i))/h)./(pi*(xx-x(i))/h);
+    end
+    line(xx,p,'linewidth',.7), axis([-xmax xmax -.5 1.5])
+    set(gca,'xtick',[],'ytick',[0 1])
+    set(gca,'FontName','Times New Roman','FontSize',20)
+end
+
+% 设置整体标题
+sgtitle('Band-limited Interpolation','FontName','Times New Roman','FontSize',20)
+saveas(gcf,'p3.png')
+```
+
+![](https://github.com/FEMATHS/Example/blob/main/ch5/example2/p3.png?raw=true)
+
+图 6：三种网格函数的带限插值；首个插值函数为 sinc 函数 $S_h(x)$。此类插值函数是谱方法的基础，但这些示例不够光滑，无法实现高精度。
+
+### Chapter 3 周期性网格：密度泛函理论(DFT)与快速傅里叶变换(FFT)
+
+现在，我们转向有限的周期性网格上的谱分化。该过程以等式（1.5）的 n n 矩阵操作的形式说明。最后一章介绍了与无限网格 Hz 相对应的无限矩阵（1.4），但本章制定了一个实用的计算方案。从数学上讲，这两个方案之间存在密切的连接，我们的光谱方法的推导将与以前相同。不同之处在于，半混凝土傅立叶变换被离散的傅立叶变换（DFT）取代，可以通过快速傅立叶变换（FFT）计算。
