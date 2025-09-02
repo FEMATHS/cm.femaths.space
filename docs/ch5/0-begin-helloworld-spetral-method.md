@@ -287,4 +287,123 @@ src="https://github.com/FEMATHS/cm.femaths.space/blob/main/docs/src/ch5/3.png?ra
 style={{ display: 'block',margin: '0 auto',width: '50%' }}
 />
 
+我们将根据半离散傅里叶和带限制的 Sinc 函数插值的关键思想得出(1.4)，在离散之前，我们会考虑连续案例。函数 $u(x),x \in \mathbb{R} $ 的傅里叶变换由函数 $\hat{u}(k)$ 定义的：
+
+$$
+\hat{u}(k)=\int_{-\infty}^{\infty}e^{-\mathit{ikx}}u(x) dx,\qquad k\in \mathbb{R}.\tag{2.1}
+$$
+
+$\hat{u}(k)$ 可以理解为“在波数 $k$ 处的 $u$ 的振幅密度”，将函数分解到其组成波中的过程叫 "傅里叶变换"
+
+相反，我们可以通过逆傅里叶变换从 $\hat{u}$ 重建 $u$ ，有
+
+$$
+u(x)=\frac{1}{2\pi}\int_{-\infty}^{\infty}e^{\mathit{ikx}} \hat{u}(k) dk, \qquad x\in \mathbb{R}. \tag{2.2}
+$$
+
+这里“傅里叶合成”变量 x 是物理变量，k 是傅里叶变量或波数。
+
+我们想考虑 $x$ 在 $h\mathbb{Z}$ 上而不是 $R$ 范围内，傅里叶变换的精确解和它的反问题存在。关键在于，由于空间结构域是离散的，因此波数 k 将不再范围在所有 $\mathbb{R}$ 上，$k$ 是有限的，因为 $x$ 是离散的；
+
+物理空间： 离散， 无限 : $x \in h\mathbb{R}$
+
+傅里叶空间： 有界， 连续 : $k \in [-\pi / h , \pi / h]$
+
+这些关联的成因在于一种称为**混叠的现象**。当 $k_1 ≠ k_2$ 时，两个复指数函数 $f(x) = exp(ik_1x)$ 与 $g(x) = exp(ik_2x)$ 在实数域 $\mathbb{R}$ 上不相等。然而若将函数限制在 $h\mathbb{Z}$ 网格上，它们分别取值为 $f_j = exp(ik_1x_j)$ 和 $g_j = exp(ik_2x_j)$ 。当 $k_1$ 和 $k_2$ 是 $2\pi /h$ 的整数倍时，则对任意 $j$ 均有 $f_j = g_j$。由此可知，对于任意复指数函数 $exp(ikx)$ ，在 $k$ 的 $h\mathbb{Z}$ 网格上存在无限多个与其匹配的复指数函数。因此只需在长度为 $2\pi/h$ 的区间内测量该网格的波数，基于对称性考虑，我们选取区间 $[-\pi/h, \pi/h]$ 。
+
+![](../src/ch5/4.png)
+
+图 5 说明了函数 $sin(x)$ 和 $sin(9x)$ 的**混叠**，点表示对网格 $\frac{1}{4}\mathbb{Z}$ 的限制，其中这两个函数值是相同的。
+
+对于在 $x_j$ 处用值 $v_j$ 在 $h\mathbb{Z}$ 上定义的函数 $v_j$，半离散的傅里叶变换是由
+
+$$
+\hat{v}(k)=h\sum_{j=-\infty}^{\infty}e^{-\mathit{ikx}_{j}}v_{j},\qquad k\in[- \pi/h,\pi/h],\tag{2.3}
+$$
+
+和反向半离散傅里叶变换是
+
+$$
+v_{j}=\frac{1}{2\pi}\int_{-\pi/h}^{\pi/h}e^{\mathit{ikx}_{j}}\hat{v}(k) dk, \qquad j\in \mathbb{Z}.\tag{2.4}
+$$
+
+注意：(2.3) 通过梯形规则近似 (2.1) ，而(2.4)通过将 $\mathbb{R}$ 截断为 $[-\pi/h,\pi/h]$。当$h \to 0$ 时两公式相等。
+
+对于不同的谱频，我们需要一个插值，而反变形 (2.4) 为我们提供一个。我们要做的是评估 $x\in \mathbb{R}$ 相同的公式。不仅仅是 $x_j \in h \mathbb{Z}$ ，也就是说，在确定 $\hat{v}$ 之后，我们通过
+
+$$
+p(x)=\frac{1}{2\pi}\int_{-\pi/\hbar}^{\pi/\hbar}e^{\mathit{ikx}} \hat{v}(k) \mathit{d}k,\qquad x\in\mathbb{R}.\tag{2.5}
+$$
+
+这是每个 $j$ 的 x 的分析函数。此外，通过**构造**，由定义傅里叶变换 $\hat{p}$ ，有
+
+$$
+\hat{p}(k)=\left\{\begin{aligned} & \hat{v}(k)&& k\in[-\pi/h,\pi/h],\\ & 0&&\text{otherwise}.\end{aligned}\right.
+$$
+
+因此, $\hat{p}$ 在区间 $[-\pi/h,\pi/h]$ 上具有紧凑的支撑集。我们称 $p$ 是 $v$ 的带限插值函数，这不仅意味着 $\hat{p}$ 具有紧支集，更意味着该支集被限定在特定区间 $[-\pi/h,\pi/h]$ 内。尽管任意网格函数可能存在无穷多个插值函数，但按此定义仅存在唯一的带限插值函数。
+
+我们给出对 $h\mathbb{Z}$ 定义的函数 $v$ 的谱微分的前两个描述，有
+
+- 给定 $v$ ，通过(2.5) 确定其带限的插值 $p$ 。
+- 设 $w_j = p \prime (x_j)$
+
+另一个通过傅里叶空间可获得，如果 $u$ 是具有傅里叶变换 $\hat{u}$ 的可区分函数，则 $u\prime$ 的傅里叶变换是 $ik\hat{u}(k)$:
+
+$$
+\widehat{u^{\prime}}(k) = ik \hat{u}(k).\tag{2.6}
+$$
+
+可以通过相对于 $x$ 区分(2.2)或(2.5)来获得此结果。因此，我们有一个系数的谱微分：
+
+- 给定 $v$ ，计算其半离散傅里叶变换 $\hat{v} $ 用(2.3)。
+
+- 定义 $\hat{w}(k)=ik\hat{v}(k)$ 。
+
+- 根据 (2.4)式计算 $w$ 的值为 $\hat{w}$ 。
+
+这两个对谱不同描述在数学上是完整的，但我们尚未得出矩阵的系数(1.4)。为此，我们可以使用傅里叶变换来返回并深入了解带限制的插值 $p(x)$ ，令 kronecker-delta 函数：
+
+$$
+\delta_{j}=\left\{\begin{aligned} 1&\quad j=0,\\ 0&\quad j\neq 0.\end{aligned}\right.\tag{2.7}
+$$
+
+根据(2.3)， $\delta$ 的半离散傅里叶变换为常数：$\hat{\delta}(k)=h$，对所有 $k\in[-\pi/h,\pi/h]$。根据(2.5)，$\delta$ 的带限插值函数相应为
+
+$$
+p(x)\ =\ \frac{h}{2\pi}\int_{-\pi/h}^{\pi/h}e^{\mathit{ikx}} dk\ =\ \frac{\sin(\pi x/h)}{\pi x/h}
+$$
+
+(x=0 的插值为 1)，这个著名的功能称为 Sinc 功能：
+
+$$
+S_{\hbar}(x)=\frac{\sin(\pi x/h)}{\pi x/h}.\tag{2.8}
+$$
+
+带限插值本质上是一种平移不变的过程，具体而言，对于任意 $m$，$\delta_{j-m}$ 的带限插值是 $S_h(x-x_m)$。一般网格函数 $v$ 可表示为：
+
+$$
+v_{j}=\sum_{m=-\infty}^{\infty}v_{m}\delta_{j-m},\tag{2.9}
+$$
+
+因此根据半离散傅里叶变换的线性性质，可知 $v$ 的带限插值函数是平移 Sinc 函数的线性组合：
+
+$$
+p(x)=\sum_{m=-\infty}^{\infty}v_{m}S_{\hbar}(x-x_{m}).\tag{2.10}
+$$
+
+导数相应为
+
+$$
+w_{j}=p^{\prime}(x_{j})=\sum_{m=-\infty}^{\infty}v_{m}S^{\prime}_{h}(x_{j}-x_{ m}).\tag{2.11}
+$$
+
+现在我们推导式(1.4)中双无限托普利茨矩阵 D 的元素。若将式(2.11)视为式(1.5)中的矩阵方程，可知向量 $S^{'}_h(x_j)$ 即为 $D$ 的第 $m=0$ 列，其余列可通过适当上移或下移该列获得。式(1.4)的元素由微积分习题确定：对式(2.8)求导可得
+
+$$
+S_{h}^{\prime}(x_{j})=\left\{\begin{aligned} & 0&& j=0,\\ & \frac{(-1)^{j}}{jh}&& j\neq 0.\end{aligned}\right.\tag{2.12}
+$$
+
 ![](https://github.com/FEMATHS/Example/blob/main/ch5/example1/p3.png?raw=true)
+
+三种网格函数的带限插值；首个插值函数为 sinc 函数 Sh(x)。此类插值函数是谱方法的基础，但这些示例不够光滑，无法实现高精度。
