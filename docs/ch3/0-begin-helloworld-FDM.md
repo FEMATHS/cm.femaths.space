@@ -391,3 +391,185 @@ $$
 ## 总结
 
 我们可以看到边界处都能够算好，中间好像不能算好，算例 3 不知道怎么回事反正是照着书上照抄出来的，好像该方法并没有考虑时间上的变化，就是一个瞬态方程。
+
+## 解椭圆边值问题的差分方法
+
+### 矩形网格
+
+这里以 Poisson 方程
+
+$$
+-\Delta u=f(x, y), \quad(x, y) \in G,\tag{3.20}
+$$
+
+的边值问题为例来讨论如何构造相应的差分方程组。
+
+为简单起见，设 $G$ 是 $O-xy$ 平面上的一个有界单连通区域，其边界 $\Gamma$ 是分段光滑曲线，方程(3.20)的定解条件通常有以下三类：
+
+- （1）第一类边值条件： $\left.u\right|_{\Gamma}=\alpha(x, y)$;
+- （2）第二类边值条件： $\left.\frac{\partial u}{\partial n}\right|_{\Gamma}=\beta(x, y)$;
+- （3）第三类边值条件： $\left.\left(\frac{\partial u}{\partial n}+k u\right)\right|\_{\Gamma}=\gamma(x, y) $,
+
+其中 $\alpha(x, y), \beta(x, y), \gamma(x, y), k(x, y)$ 是定义在 $\Gamma$ 上的已知函数， $k(x, y) \geqslant 0$ 且不恒为零， $n$ 表示 $\Gamma$ 的单位外法线方向（但习惯上，在方向导数中它就表示为标量形式）。求方程(3．20)满足边值条件(3．21)、 (3．22)、(3．23)的解相应地称为解第一、第二、第三边值问题。
+
+用差分法求解椭圆型方程边值问题与前面叙述的用差分方法解常微分方程边值问题一样，在于构造一个含有若干个未知数的线性方程组，这个方程组的唯一解是所求的微分方程定解问题的解函数 $u(x, y)$ 在某个点集 $\left\{\left(x_{i}, y_{j}\right)\right\}$ 处的值 $\left\{u\left(x_{i}, y_{j}\right)\right\}$ 的近似值。
+
+因此，边值问题离散化的第一步是用一个离散的点集来代替有界区域 $\bar{G}=G \cup \Gamma$ ，这里先介绍矩形网格。
+
+取定沿 $x$ 方向和 $y$ 方向的步长分别为 $h_{1}$ 和 $h_{2}$ ，记 $h=\sqrt{h_{1}^{2}+h_{2}^{2}}$ ，从某个定点 $\left(x_{0}, y_{0}\right)$ 开始作**两族与坐标轴平行的直线**：
+
+$$
+\begin{array}{ll}
+x=x_{0}+i h_{1}, & i=0,1,2, \cdots, N_{1} \\
+y=y_{0}+j h_{2}, & j=0,1,2, \cdots, N_{2}
+\end{array}
+$$
+
+让区域 $\bar{G}$ 包含在区域 $\left\{(x, y) \mid x_{0} \leqslant x \leqslant x_{0}+N_{1} h_{1}, y_{0} \leqslant y \leqslant\right. \left.y_{0}+N_{2} h_{2}\right\}$ 中。两族直线的交点 $\left(x_{0}+i h_{1}, y_{0}+j h_{2}\right)$ 称为**网格结点**，记为 $\left(x_{i}, y_{j}\right)$ 或 $(i, j)$ 。属于 $G$ 的结点称为**内点**，用 $G_{h}=\left\{\left(x_{i}, y_{j}\right) \in G\right\}$ 表示内点全体组成的集合。网线与 $\Gamma$ 的交点称为**界点**，用 $\Gamma_{n}$ 来记界点全体所组成的集合。若两个结点 $\left(x_{i_{1}}, y_{j_{1}}\right),\left(x_{i_{2}}, y_{j_{2}}\right)$ 满足
+
+$$
+\left|i_{1}-i_{2}\right|+\left|j_{1}-j_{2}\right|=1,\tag{3.24}
+$$
+
+![](../src/ch3/1.jpg)
+图 3.2 界点、非正则内点、正则内点
+
+则称这两个结点是相邻的。于是， $G_{h}$ 中的点又可以分成两类：一类是其四个邻点都属于 $G_{h}$ ，这种点称为正则内点，其全体组成的集合记为 $G_{h}^{\prime}$ ；另一类是其四个邻点中至少有一个不属于 $G_{h}$ ，这种点被称为非正则内点，其全体组成的集合记为 $G_{h}^{\prime \prime}$ （如图 3.2 所示）。于是有
+
+$$
+G_{h}^{\prime}=G_{h}^{\prime} \cup G_{h}^{\prime \prime}, \quad G_{h}^{\prime} \cap G_{h}^{\prime \prime}=\varnothing .
+$$
+
+此外，用 $\bar{G}_{h}$ 表示内点与界点的并集，即
+
+$$
+\bar{G}_{h}=G_{h} \cup \Gamma_{h}=G_{h}^{\prime} \cup G_{h}^{\prime \prime} \cup \Gamma_{h}
+$$
+
+记 $u_{h}(x, y)$ 是定义在 $\bar{G}_{h}$ 上的**网函数**， $u_{h}\left(x_{i}, y_{j}\right)=u_{i j}$ 是 $u(x, y)$ 在 $\left(x_{i}, y_{j}\right)$ 处的近似值，下面先就 $\left(x_{i}, y_{j}\right)$ 是正则内点时导出 $u_{i j}$ 所满足的方程。
+
+沿 $x, y$ 方向分别用两阶中心差商代替两阶偏导数，得到
+
+$$
+\begin{aligned}
+-\Delta_{h} u_{i j} & \triangleq-\left[\frac{u_{i+1, j}-2 u_{i j}+u_{i-1, j}}{h_{1}^{2}}+\frac{u_{i, j+1}-2 u_{i, j}+u_{i, j-1}}{h_{2}^{2}}\right] \\
+& =f_{i j}
+\end{aligned}
+\tag{3.25}
+$$
+
+这里 $f_{i j}=f\left(x_{i}, y_{j}\right)$, f 是 $\bar{G}$ 上的连续函数。由于差分方程（3．25）式中出现的只是结点 $\left(x_{i}, y_{j}\right)$ 及其四个邻点上的网函数值，故通常称之为 ＂**五点差分格式**＂。
+
+利用 Taylor 展式，当 $u(x, y)$ 充分光滑时，有
+
+$$
+\begin{aligned}
+& \frac{u\left(x_{i+1}, y_{j}\right)-2 u\left(x_{i}, y_{j}\right)+u\left(x_{i-1}, y_{j}\right)}{h_{1}^{2}} \\
+= & \frac{\partial^{2} u\left(x_{i}, y_{j}\right)}{\partial x^{2}}+\frac{h_{1}^{2}}{12} \frac{\partial^{4} u\left(x_{i}, y_{j}\right)}{\partial x^{4}}+\frac{h_{1}^{4}}{360} \frac{\partial^{6} u\left(x_{i}, y_{j}\right)}{\partial x^{6}}+O\left(h_{1}^{6}\right),
+\end{aligned}
+\tag{3.26}
+$$
+
+和
+
+$$
+\begin{aligned}
+& \frac{u\left(x_{i}, y_{j+1}\right)-2 u\left(x_{i}, y_{j}\right)+u\left(x_{i}, y_{j-1}\right)}{h_{2}^{2}} \\
+= & \frac{\partial^{2} u\left(x_{i}, y_{j}\right)}{\partial y^{2}}+\frac{h_{2}^{2}}{12} \frac{\partial^{4} u\left(x_{i}, y_{j}\right)}{\partial y^{4}}+\frac{h_{2}^{4}}{360} \frac{\partial^{6} u\left(x_{i}, y_{j}\right)}{\partial y^{6}}+O\left(h_{2}^{6}\right),
+\end{aligned}
+\tag{3.27}
+$$
+
+因而五点差分格式的截断误差为
+
+$$
+\begin{aligned}
+R_{i j}(u) & =\Delta u\left(x_{i}, y_{j}\right)-\Delta_{h} u\left(x_{i}, y_{j}\right) \\
+& =-\left.\frac{1}{12}\left(h_{1}^{2} \frac{\partial^{+} u}{\partial x^{4}}+h_{2}^{2} \frac{\partial^{+} u}{\partial y^{4}}\right)\right|\_{(i, j)}+O\left(h^{4}\right)
+\end{aligned}
+\tag{3.28}
+$$
+
+特别，若取正方形网格， $h_{1}=h_{2}=h$ ，则差分方程(3．25)化为
+
+$$
+-\diamond u_{i j}=f_{i j},\tag{3.29}
+$$
+
+这里
+
+$$
+\diamond u_{i j} \triangleq \frac{1}{h^{2}}\left(u_{i+1, j}+u_{i-1, j}+u_{i, j+1}+u_{i, j-1}-4 u_{i j}\right).\tag{3.30}
+$$
+
+表示用网格结点 $(i, j)$ 及其四个邻点（在菱形的端点）的 $u$ 的值的线性组合来表示 $(\Delta u)_{i j}$ 的差分逼近。
+
+很自然地会想到，是否可以用其他点上的 $u$ 值的线性组合（比如矩形的端点）来表示 $(\Delta u)_{i j}$ 的差分逼近？进一步，能否利用更多的结点上的 $u$ 的值的线性组合去得到 $(\Delta u)_{i j}$ 的具有更高精度的差分逼近？在一定条件下，对上述问题的回答是肯定的。
+
+比如，对正方形网格，只要把网格旋转 $45^{\circ}$ 就可以得到近似代替㥕分方程 $(3.20)$ 的另一种差分形式：
+
+$$
+-\square u_{i j}=f_{i j}, \tag{3.31}
+$$
+
+这里
+
+$$
+\begin{aligned}
+\square u_{i j}= & \frac{1}{2 h^{2}}\left(u_{i+1, j+1}+u_{i+1, j-1}+u_{i-1, j+1}\right. \\
+& \left.+u_{i-1, j-1}-4 u_{i j}\right)_{0}
+\end{aligned}
+\tag{3.32}
+$$
+
+容易知道，其对于方程 $(3.20)$ 的截断误差为
+
+$$
+R_{i j}^*(u)=-\frac{h^{2}}{12}\left(\frac{\partial^{4} u}{\partial x^{4}}+6 \frac{\partial^{4} u}{\partial x^{2} \partial y^{2}}+\frac{\partial^{4} u}{\partial y^{4}}\right)_{i j}+O\left(h^{4}\right) .
+\tag{3.33}
+$$
+
+将 $(3．29)$ 式与 $(3.31)$ 式结合起来，可以得到逼近 $\Delta u$ 的差分算子
+
+$$
+\begin{aligned}
+\boxplus u_{i j}= & \frac{2}{3} \diamond u_{i j}+\frac{1}{3} \square u_{i j} \\
+= & \frac{1}{6 h^{2}}\left[u_{i+1, j+1}+u_{i+1, j-1}+u_{i-1, j+1}+u_{i-1, j-1}\right. \\
+& \left.+4\left(u_{i+1, j}+u_{i-1, j}+u_{i, j+1}+u_{i, j-1}\right)-20 u_{i j}\right]
+\end{aligned}
+\tag{3.34}
+$$
+
+$(3.24)$ 式用到了以 $(i, j)$ 为中心的上下左右共九个结点上的 $u$ 的值，所以称为＂**九点差分格式**＂。如果 $u(x, y)$ 足够光滑，可以用 Taylor 展开式证明其截断误差为
+
+$$
+\begin{aligned}
+R_{i j}(u) & =\Delta u\left(x_{i}, y_{i}\right)-\boxplus u_{i j} \\
+& =-\left[\frac{2}{4!} h^{2}\left(\Delta^{2} u\right)+\frac{2}{6!} h^{4}\left(\Delta^{3} u+2(\Delta u)_{x(x y y)}\right)\right]_{i j}+O\left(h^{5}\right),
+\end{aligned}
+$$
+
+因此，用差分方程
+
+$$
+\begin{aligned}
+-\boxplus u_{i j} & \triangleq-\frac{2}{3} \diamond u_{i j}+\frac{1}{3} \square u_{i j} \\
+& =f_{i j}+\frac{h^{2}}{12}(\Delta f)_{i j}+\frac{h^{4}}{360}\left(\Delta^{2} f+2 f_{x x y y}\right)_{i j}
+\end{aligned}
+$$
+
+近似代替一 $\Delta u=f $ ，逼近的阶为  $O\left(h^{6}\right)$ ，若舍去右边的第三项，逼近的误差也可达到 $O\left(h^{4}\right)$ 。
+
+五点差分格式也可以通过方程(3.20)的积分守恒形式
+
+$$
+-\oint_{\Gamma} \frac{\partial u}{\partial n} \mathrm{~d} s=-\iint_{D} \Delta u \mathrm{~d} x \mathrm{~d} y=\iint_{D} f \mathrm{~d} x \mathrm{~d} y, \quad \forall D \subset G
+$$
+
+来导出。推导(3.37)式时利用了 Green 公式， $n$ 是 $\Gamma$ 上单位外法线方向。
+
+在图 3.2 所示的网格上引进＂半线＂（图 3.3 中的虚线）：
+
+![](../src/ch3/2.jpg)
+
+图 3.3 对偶剖分
