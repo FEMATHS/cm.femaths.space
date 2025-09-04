@@ -622,7 +622,7 @@ $$
 
 设 $\bar{G}_{h}$ 中正则内点的个数为 $M_{1}$ ，非正则内点的个数为 $M_{2}$ ，则对于第一类边值问题，未知量共有 $M_{1}+M_{2}$ 个，而对于第二、三类边值问题，未知量一般也是 $M_{1}+M_{2}$ 个。前面已在正则内点上建立了 $M_{1}$ 个方程，因此还必须补充若干个方程。
 
-- 1．第一类边值条件
+#### 第一类边值条件
 
 显然，需要对非正则内点集合 $G_{h}^{\prime \prime}$ 中的每一个点补充一个方程，这样正好增加了 $M_{2}$ 个方程。
 
@@ -667,6 +667,113 @@ $$
     />
     <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
       图 6：沿y方向（或x方向）的插值
+    </figcaption>
+  </figure>
+</div>
+
+#### 第二、三类边值条件
+
+第二、三类边值条件可统一写成
+
+$$
+\left( \frac{ \partial u}{ \partial n}+ku \right) \left| \right._{r}= \gamma \left( x,y \right),k \left( x,y \right) \geq 0,
+$$
+
+当 $k(x,y)\equiv 0$ 时即为第二类边值条件。
+
+对于非正则内点 P ，可在 $\Gamma$ 上取一点 $P^*$ 使之与 $P$ 的距离最近，然后利用 $P^{*}$ 处的边界条件来列出点 $P$ 的方程。从图 3．6 可以看到（下面讨论 $h_{1}=h_{2}=h$ 的情形）：
+
+$$
+ \left.\quad \frac{\partial u}{\partial n}\right|_{P^*}\left.\doteq \frac{\partial u}{\partial n}\right|_{P} \doteq \frac{u(P)-u(Q)}{h} \cos \alpha+\frac{u(P)-u(R)}{h} \cos \beta ,
+$$
+
+这里 $\alpha$ 和 $\beta$ 分别是 $P^{\prime}$ 处的外法线方向与 $x$ 和 $y$ 轴的夹角，于是点 $P$ 的线性方程可以写成
+
+$$
+\frac{u_{P}-u_{Q}}{h} \cos \alpha+\frac{u_{P}-u_{R}}{h} \cos \beta+k\left(P^*\right) u_{P}=\gamma\left(P^*\right) .
+$$
+
+图 3.6 $P^*$ 点外法向
+
+图 3.7 曲边三角形 $\widetilde{\triangle}ABC$
+
+当 $P$ 恰为界点时，只要将上式看成 $P^{*}=P$ 就可以了（这时方程组的阶数将大于 $M_{1}+M_{2}$ ）。
+
+点 P 的方程也可以利用微分方程的积分守恒形式（3．37）式来导出。利用前述的＂对偶剖分＂的思想，在点 P 周围截出由线段 A B, B C 和 $\Gamma$ 上的一段弧 $\hat{A C}$ 所围成的曲边三角形 \widetilde{\triangle A B C} （图 3．7），记它的边界为 \partial \widetilde{\Delta} ，对这个小区域使用 Green 公式，得
+
+$$
+-\int_{\partial \widetilde{\Delta}} \frac{\partial u}{\partial n} \mathrm{~d} = \int_{\widetilde{\Delta} \cdot A B C} d x d y
+$$
+
+用差商代替外法向导数，得
+
+$$
+\int_{\overline{A B}} \frac{\partial u}{\partial n} \mathrm{~d} s \doteq \frac{u_{Q}-u_{P}}{h} \cdot|\overline{A B}|,
+$$
+
+## 算例
+
+### 算例 1
+
+设 G 是以原点为中心的单位正六边形的内部，用$h=\frac{1}{8}$的正方形网格进行剖分，用五点差分格式求方程：
+
+$$
+\left\{\begin{matrix}
+-\Delta u=1, (x,y) \in G, \\
+u=0, (x,y) \in \Gamma.
+\end{matrix}\right.
+$$
+
+既然是 Poisson 方程进行离散之后就按照前面的格式，因为 $\Delta u = f =1$，就离散为
+
+$$
+\frac{u_{i+1,j}+u_{i-1,j}+u_{i,j+1}+u_{i,j-1}-4u_{i,j}}{h^2} = f_{i,j} =1
+$$
+
+我们给出 $h=\frac{1}{3}$ 时的情况，一个一个方程写出来，首先我们给所有的未知点编个号如 7 图所示，我们还取了不同步长，包括$h=\frac{1}{8}$ 和 $h=\frac{1}{100}$ 的情况如图所示，我们发现网格越密集效果就越好，但是我们不知道真实解，所以不能给出误差。
+
+<div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch3/example2/solution_hexagon.png?raw=true"
+      alt="Adams-Bashforth方法数值解比较"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+      图 7：内部点编号
+    </figcaption>
+  </figure>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch3/example2/h=3.png?raw=true"
+      alt="Adams-Moulton方法数值解比较"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+      图 8：当步长取 $h=\frac{1}{3}$ 的情况
+    </figcaption>
+  </figure>
+</div>
+
+<div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch3/example2/h=8.png?raw=true"
+      alt="Adams-Bashforth方法数值解比较"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+      图 9：内部点编号
+    </figcaption>
+  </figure>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch3/example2/h=100.png?raw=true"
+      alt="Adams-Moulton方法数值解比较"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+      图 10：当步长取 $h=\frac{1}{3}$ 的情况
     </figcaption>
   </figure>
 </div>
