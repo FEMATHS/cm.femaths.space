@@ -570,6 +570,9 @@ $$
 
 在图 3.2 所示的网格上引进＂半线＂（图 3.3 中的虚线）：
 
-![](../src/ch3/2.jpg)
+<img
+src="https://github.com/FEMATHS/cm.femaths.space/blob/main/docs/src/ch3/2.png?raw=true"
+style={{ display: 'block',margin: '0 auto',width: '50%' }}
+/>
 
 图 3.3 对偶剖分
