@@ -651,7 +651,7 @@ $$
 <div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
     <img
-      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example3_1.png?raw=true"
+      src="https://github.com/FEMATHS/cm.femaths.space/blob/main/docs/src/ch3/3.jpg?raw=true"
       alt="Adams-Bashforth方法数值解比较"
       style={{ width: '100%' }}
     />
@@ -661,7 +661,7 @@ $$
   </figure>
   <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
     <img
-      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example3_2.png?raw=true"
+      src="https://github.com/FEMATHS/cm.femaths.space/blob/main/docs/src/ch3/4.jpg?raw=true"
       alt="Adams-Moulton方法数值解比较"
       style={{ width: '100%' }}
     />
