@@ -576,3 +576,97 @@ style={{ display: 'block',margin: '0 auto',width: '50%' }}
 />
 
 图 3.3 对偶剖分
+
+$$
+\begin{array}{l}
+x=x_{i+\frac{1}{2}}=x_{0}+\left(i+\frac{1}{2}\right) h_{1}, \quad i=0,1,2, \cdots, N_{1}-1, \\
+y=y_{j+\frac{1}{2}}=y_{0}+\left(j+\frac{1}{2}\right) h_{2}, \quad j=0,1,2, \cdots, N_{2}-1,
+\end{array}
+$$
+
+这些＂半线＂形成了另一套网格，与原网格相辅相成，它们被称为原网格的**对偶剖分**。对任一正则内点 $(i,j)$ ，取(3.37)式中的区域 $D \equiv D_{i j}$ 为 $(i, j)$ 四周的四个对偶结点 ABCD 所组成的正方形区域，由(3.37)式，有
+
+$$
+-\int_{\overbrace{ABCDA}} \frac{\partial u}{\partial n} \mathrm{~d} s=\iint_{D_{i j}} f \mathrm{~d} x \mathrm{~d} y
+\tag{3.38}
+$$
+
+用中矩形公式代替沿四边的线积分，再用中心差商代替外法向导数，则
+
+$$
+\begin{aligned}
+\int*{\hat{A B}} \frac{\partial u}{\partial n} \mathrm{~d} s & =\int*{x*{i-\frac{1}{2}}}^{x*{i+\frac{1}{2}}} \frac{\partial u}{\partial y} \mathrm{~d} x \approx\left(\frac{\partial u}{\partial y}\right)_{i, j+\frac{1}{2}} \cdot h_{1} \\
+& \approx \frac{u*{i, j+1}-u*{i, j}}{h*{2}} h*{1}
+\end{aligned}
+$$
+
+同理可得沿其他三边的线积分，所以
+
+$$
+\begin{aligned}
+\int \widehat{A B C D .} \frac{\partial u}{\partial n} \mathrm{~d} s \doteq & \frac{u*{i, j-1}-u*{i j}}{h*{2}} h*{1}+\frac{u*{i+1, j}-u*{i j}}{h*{1}} h*{2} \\
+& +\frac{u*{i, j+1}-u*{i j}}{h*{2}} h*{1}+\frac{u*{i-1, j}-u*{i j}}{h*{1}} h*{2}
+\end{aligned}
+$$
+
+代入(3.38)式，即有差分格式：
+
+$$
+-\Delta*{h} u*{i j}=\frac{1}{h*{1} h*{2}} \iint*{D*{i j}} f \mathrm{~d} x \mathrm{~d} y\_{0}
+\tag{3.39}
+$$
+
+若右边的二重积分用中矩形公式代替，则它与(3.25)式完全一致。
+
+### 边界条件处理
+
+设 $\bar{G}_{h}$ 中正则内点的个数为 $M_{1}$ ，非正则内点的个数为 $M_{2}$ ，则对于第一类边值问题，未知量共有 $M_{1}+M_{2}$ 个，而对于第二、三类边值问题，未知量一般也是 $M_{1}+M_{2}$ 个。前面已在正则内点上建立了 $M_{1}$ 个方程，因此还必须补充若干个方程。
+
+- 1．第一类边值条件
+
+显然，需要对非正则内点集合 $G_{h}^{\prime \prime}$ 中的每一个点补充一个方程，这样正好增加了 $M_{2}$ 个方程。
+
+为了保证计算的精度，需要根据不同情况采用不同的近似处理方法，通常有如下三种。
+
+- （1）零次插值：
+
+由于 $u(x, y)$ 在 $\Gamma$ 上的值是已知的，因此对点 $P=\left(x_{i}, y_{i}\right) \in G_{h}^{\prime \prime}$ ，取距 $P$ 最近的 $\Gamma$ 上的点 $P^{\prime}=\left(x_{i}^{\prime}, y_{j}^{\prime}\right)$ ，令
+
+$$
+u_{i j}=\alpha\left(x_{i}^{\prime}, y_{j}^{\prime}\right)
+$$
+
+也就是点 P 用点 $P^{\prime}$ 处的值作零次插值。对光滑函数，这么做的误差是 $O(h)$ 。实际应用中，由于最近的点 $P^{\prime}$ 不易获得，常用 x （或 y ）方向上处于同一条网线上的点 $Q_{1}$ （或 $Q_{2}$ ）来代替（图 3．4）。
+
+- （2）一次插值：这是一种较为精确的方法。设 $P=\left(x_{i}, y_{j}\right) \in G_{h}^{\prime \prime}$ 的
+
+图 3.4 零次插值点的选取邻点 N, E 在区域 G 之外，记 $N^{\prime}$ 和 $E^{\prime}$ 分别是线段 $\overline{P N}$ 和 $\overline{P E}$ 与 $\Gamma$ 的交点（即界点）， S 和 W 是内点，于是可以利用 $N^{\prime}$ 和 S （或 $E^{\prime}$ 和 W ）沿 y 方向（或 x 方向）作线性插值。例如，沿 y 方向的插值公式为
+
+$$
+u_{i j}=\frac{h_{2} u\left(N^{\prime}\right)+h_{2}^{\prime} u(S)}{h_{2}+h_{2}^{\prime}}
+$$
+
+这里 $h_{2}^{\prime}$ 表示 P 与 $N^{\prime}$ 的距离。这么做的误差是 $O\left(h^{2}\right)$ （图 3．5）。
+
+<div style={{ display: 'flex', justifyContent: 'center', gap: '2%', marginTop: '10px' }}>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example3_1.png?raw=true"
+      alt="Adams-Bashforth方法数值解比较"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+      图 3.4：零次插值点的选取
+    </figcaption>
+  </figure>
+  <figure style={{ width: '49%', textAlign: 'center', margin: 0 }}>
+    <img
+      src="https://github.com/FEMATHS/Example/blob/main/ch3/example1/example3_2.png?raw=true"
+      alt="Adams-Moulton方法数值解比较"
+      style={{ width: '100%' }}
+    />
+    <figcaption style={{ fontSize: '90%', color: 'black', fontStyle: 'Times New Roman', marginTop: '4px' }}>
+      图 6：沿y方向（或x方向）的插值
+    </figcaption>
+  </figure>
+</div>
