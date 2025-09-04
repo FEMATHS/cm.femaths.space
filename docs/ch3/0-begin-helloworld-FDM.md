@@ -695,7 +695,7 @@ $$
 
 当 $P$ 恰为界点时，只要将上式看成 $P^{*}=P$ 就可以了（这时方程组的阶数将大于 $M_{1}+M_{2}$ ）。
 
-点 P 的方程也可以利用微分方程的积分守恒形式（3．37）式来导出。利用前述的＂对偶剖分＂的思想，在点 P 周围截出由线段 A B, B C 和 $\Gamma$ 上的一段弧 $\hat{A C}$ 所围成的曲边三角形 \widetilde{\triangle A B C} （图 3．7），记它的边界为 \partial \widetilde{\Delta} ，对这个小区域使用 Green 公式，得
+点 P 的方程也可以利用微分方程的积分守恒形式 (3.37) 式来导出。利用前述的“对偶剖分”的思想，在点 P 周围截出由线段 $AB$, $BC$ 和 $\Gamma$ 上的一段弧 $\hat{AC}$ 所围成的曲边三角形 $\widetilde{\triangle ABC}$ （图 3.7），记它的边界为 $\partial \widetilde{\Delta}$，对这个小区域使用 Green 公式，得
 
 $$
 -\int_{\partial \widetilde{\Delta}} \frac{\partial u}{\partial n} \mathrm{~d} = \int_{\widetilde{\Delta} \cdot A B C} d x d y
@@ -711,7 +711,7 @@ $$
 
 ### 算例 1
 
-设 G 是以原点为中心的单位正六边形的内部，用$h=\frac{1}{8}$的正方形网格进行剖分，用五点差分格式求方程：
+设 G 是以原点为中心的单位正六边形的内部，用 $h=\frac{1}{8}$ 的正方形网格进行剖分，用五点差分格式求方程：
 
 $$
 \left\{\begin{matrix}
