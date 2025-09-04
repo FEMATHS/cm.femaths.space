@@ -790,14 +790,14 @@ $$
 
 $$
 \left\{\begin{array}{l}
-\frac{\partial u}{\partial t}=a \frac{\partial^{2} u}{\partial x^{2}} \quad(a>0), 0<t \leqslant T, 0<x<1, \\
-u(0, t)=u(1, t)=0, \quad t>0, \\
-u(x, 0)=\varphi(x), \quad 0 \leqslant x \leqslant 1,
+\frac{\partial u}{\partial t}=a \frac{\partial^{2} u}{\partial x^{2}} \quad(a>0), 0<t \leqslant T, 0<x<1,  (5.1) \\
+u(0, t)=u(1, t)=0, \quad t>0, (5.2)\\
+u(x, 0)=\varphi(x), \quad 0 \leqslant x \leqslant 1, (5.3)
 \end{array}\right.
 $$
 
 <img
-src="https://github.com/FEMATHS/cm.femaths.space/blob/main/docs/src/ch3/2.png?raw=true"
+src="https://github.com/FEMATHS/cm.femaths.space/blob/main/docs/src/ch3/5.jpg?raw=true"
 style={{ display: 'block',margin: '0 auto',width: '50%' }}
 />
 
@@ -810,19 +810,21 @@ style={{ display: 'block',margin: '0 auto',width: '50%' }}
 设 $u(x,t)=X(x) T(t)$ ，代入方程 $(5.1)$，有
 
 $$
-\frac{X^{\prime \prime}(x)}{X(x)}=\frac{T^{\prime}(t)}{a T(t)},
+\frac{X^{\prime \prime}(x)}{X(x)}=\frac{T^{\prime}(t)}{a T(t)},\tag{5.4}
 $$
 
 由于 $(5.4)$ 式的左边是 $x$ 的函数，其右边是 $t$ 的函数，所以它们必为常数，将该常数记为 $-\mu$ ，则由 $(5.4)$ 式和 $(5.2)$ 式，得到两个互相独立的方程：
 
 $$
-\begin{array}{l}
 \left\{\begin{array}{l}
 X^{\prime \prime}+\mu X=0 \\
 X(0)=X(1)=0
 \end{array}\right. \\
-T^{\prime}+\mu a T=0
-\end{array}
+\tag{5.5}
+$$
+
+$$
+T^{\prime}+\mu a T=0.\tag{5.6}
 $$
 
 方程 $(5.5)$ 的特征方程为
