@@ -37,8 +37,7 @@ v2 版本在体系结构上进行了彻底重构，支持模块化设计和多�
 ## 二. environment
 
 这是 Building model 的总体流程图
-
-<img src="http://8.130.141.48/wp-content/uploads/2025/10/17613885450058-scaled.jpg" alt="image" />
+![](https://8.130.141.48/wp-content/uploads/2025/10/17613885450058-scaled.jpg)
 
 ### 2.1 建筑模型（Building model）
 
@@ -58,10 +57,10 @@ E_{t,b}^{\text{grid}} = E_{t,b}^{\text{load}} - E_{t,b}^{\text{PV}} - E_{t,b}^{\
 
 其中：
 
-- `(E_{t,b}^{\text{grid}})`：从电网汲取的净电能；
-- `(E_{t,b}^{\text{load}})`：总电力负荷（包括 HVAC、DHW、家电与电动车等）；
-- `(E_{t,b}^{\text{PV}})`：光伏系统输出；
-- `(E_{t,b}^{\text{discharge}})`、`(E_{t,b}^{\text{charge}})`：分别为储能放电与充电功率。
+- ``(E_{t,b}^{\text{grid}})``：从电网汲取的净电能；
+- ``(E_{t,b}^{\text{load}})``：总电力负荷（包括 HVAC、DHW、家电与电动车等）；
+- ``(E_{t,b}^{\text{PV}})``：光伏系统输出；
+- ``(E_{t,b}^{\text{discharge}})``、``(E_{t,b}^{\text{charge}})``：分别为储能放电与充电功率。
 
 热力系统的能量守恒为：
 
@@ -265,8 +264,7 @@ CityLearn v2 为停电模型提供韧性相关指标，包括：
 ### 2.3 Key performance indicators（KPI）
 
 就是指标，注意是个最小化指标（越小越好）
-
-<img src="http://8.130.141.48/wp-content/uploads/2025/10/17613885450058-scaled.jpg" alt="dataset" style={{width: "90%", borderRadius: "8px", margin: "10px 0"}} />
+![](https://8.130.141.48/wp-content/uploads/2025/10/17613885450058-scaled.jpg)
 
 ### 2.4 Datasets
 
@@ -274,10 +272,8 @@ CityLearn v2 为停电模型提供韧性相关指标，包括：
 
 ### 2.5 Environment design workflow
 
-以 EULP dataset 为例，给出该框架的具体流程
-
-<img src="http://8.130.141.48/wp-content/uploads/2025/10/17615401546467.jpg" alt="workflow" style={{width: "90%", borderRadius: "8px", margin: "10px 0"}} />
-
+以 EULP dataset 为例，给出改框架的具体流程
+![](https://8.130.141.48/wp-content/uploads/2025/10/17615401546467.jpg)
 **1：数据收集**
 收集建筑元数据（如建筑类型、区域气候区、设备可用性等）
 收集真实或合成的负荷／光伏／天气／电价／碳排放时间序列数据
