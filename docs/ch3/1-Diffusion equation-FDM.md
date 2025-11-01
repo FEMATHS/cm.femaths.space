@@ -1,3 +1,5 @@
+import DiffusionSolver from '@site/src/components/DiffusionSolver';
+
 # 发展方程的差分方法
 
 自然现象和社会现象中许多要解决的问题所归结的数学模型中，大量的是含有两个或更多个独立变量的函数的微分方程，即偏微分方程。
@@ -675,3 +677,5 @@ alt="Diffusion Curves"
 />
 
 图 11 Crank–Nicolson 格式热力图
+
+<DiffusionSolver />
