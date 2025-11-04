@@ -1,5 +1,5 @@
 ---
-title: 'CityLearn'
+title: 'CityLearn experiment'
 authors: [zqqqj]
 tags: [RL]
 date: 2025-10-27
