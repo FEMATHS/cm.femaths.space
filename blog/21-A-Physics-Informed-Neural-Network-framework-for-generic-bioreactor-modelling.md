@@ -2,7 +2,7 @@
 title: 'A Physics-Informed Neural Network (PINN) framework for generic bioreactor modelling'
 authors: [Tanger]
 tags: [PINN, generic bioreactor modelling]
-date: 2025-09-03
+date: 2025-12-15
 ---
 
 ![](./src/21/88.png)
@@ -32,18 +32,22 @@ Many previous studies have explored hybrid semiparametric models merging Artific
 完全混和的搅拌槽生物反应器的态空间方程具有以下通用形式：
 
 $$
-\frac{dC}{dt}=Sr(C,u)-DC+DC_{in}\,\,,  C(0)=C_0, \tag{1a}
+\frac{dC}{dt}=Sr(C,u)-DC+DC_{in},  C(0)=C_0, \tag{1a}
 $$
 
 其中， $C$ 是相关生化物种浓度的 $(n × 1)$ 状态向量，$S$ 是一个 $(n×m)$ 产率系数矩阵，$r(C,u)$ 是生物反应动力学的 $(m×1)$ 向量，$D = F/V$ 为稀释速率（为简化起见，液体体积 V 由单一进料流控制，流量为： $F$ ），$C_{in}$ 是进料流中浓度的 $(n × 1)$ 向量，$t$ 是自变量时间。恒定液体密度和单一进料流的整体材料平衡方程定义为，
 
-$$\frac{dC}{dt}=Sr(C,u)-DC+DC_{in}\,\,,  C(0)=C_0, \tag{1b}$$
+$$
+\frac{dC}{dt}=Sr(C,u)-DC+DC_{in},  C(0)=C_0, \tag{1b}
+$$
 
 基于生物反应器状态空间方程(1.a,b)，在假设反应动力学项未知（即没有定义项 $r(C,u)$ 的前提下，概述了一个对偶 ANN 的 PINN 结构（见图 1A）。该 PINN 结构由状态参数化前馈神经网络（FFNN-S）和反应动力学前馈神经网络（FFNN-R）组成。这种双元反向神经网络结构背后的原理是将动态状态变量随时间的参数化和反应动力学作为状态变量的函数解耦。这种模块化设计反映了工艺的底层结构，并增强了模型的泛化能力，具体内容在结果部分有进一步阐述。
 
 这两种网络结构都是多层 FFNN，包含输入层、一个或多个隐藏层（用于捕捉系统中的复杂交互和非线性），以及输出层：
 
-$$y=\sigma \left( W_L\sigma \left( W_{L-1}\sigma \left( W_1x+b_1 \right) +b_{L-1} \right) +b_L, \right. \tag{2}$$
+$$
+y=\sigma ( W_L\sigma \left( W_{L-1}\sigma \left( W_1x+b_1 \right) +b_{L-1} )) +b_L, \right. \tag{2}
+$$
 
 其中， $y$ 是输出向量，$x$ 是输入向量，$W_i$ 是 $i$ 层权重矩阵，$b_i$ 是偏置参数向量，$\sigma$ 是激活函数。
 
@@ -51,7 +55,9 @@ $$y=\sigma \left( W_L\sigma \left( W_{L-1}\sigma \left( W_1x+b_1 \right) +b_{L-1
 
 按照方程 $(2)$ 的结构，FFNN-S 被实现为一步预测变量。它接收状态变量 $C(t-\Delta t)$、控制输入 $u_{[t-\Delta t,t]}$（在时间区间内保持恒定）以及时间步长 $\Delta t$ 作为输入。由于数据稀疏性异构，时间步长 $\Delta t$ 可能不是恒定的。当它保持恒定时，可能会从 FFNN-S 输入中掉落。预测浓度通过神经网络输出计算如下：
 
-$$C\left( t \right) =C\left( t-\Delta t \right) +y\left( t \right) \Delta t.\tag{3}$$
+$$
+C\left( t \right) =C\left( t-\Delta t \right) +y\left( t \right) \Delta t.\tag{3}
+$$
 
 方程（3）确保当 $\Delta t = 0$ 时 $C(t) = C(t-\Delta t)$ ，从而消除了训练 PINN 的损失函数中对初始边界条件的需求。自动微分（AD）用于计算 $dC/dt$ ，这是物理损耗函数中所要求的。第二个神经网络 FFNN-R 计算当前时间点 $r(t) = y(t)$ ，作为当前时间浓度 $C(t)$ 和控制输入 $u(t)$ 的函数。PINN 的输出因此为 $C(t)$ 、$r(t)$ 和 $dC/dt$ 。这些数据用于计算数据损耗和物理损耗项。值得注意的是，材料平衡方程的先验知识并非直接嵌入模型结构中，而是用于计算物理损耗项。
 
@@ -63,17 +69,25 @@ $$C\left( t \right) =C\left( t-\Delta t \right) +y\left( t \right) \Delta t.\tag
 
 为确保可比性，两种建模方法的训练、验证和测试方法相同，唯独损失函数的计算在本质上不同。采用标准的自适应力矩估计法（ADAM）以最小化总损耗。具体来说，应用了 Kingma 和 Ba（2014）中描述的标准 ADAM 方法。在 PINN 结构中，具有两项的损失函数会被最小化。数据丢失项的计算方式为加权均方误差（WMSE），具体如下，
 
-$$\mathcal{L} _{data}=\frac{1}{N\times M}\sum_{i=1}^N{\sum_{j=1}^M{\left( \frac{C_{i,j}^{*}-C_{i,j}}{\sigma _{cj}} \right) ^2,}} \tag{4}$$
+$$
+\mathcal{L} _{data}=\frac{1}{N\times M}\sum_{i=1}^N{\sum_{j=1}^M{\left( \frac{C_{i,j}^{*}-C_{i,j}}{\sigma _{cj}} \right) ^2,}} \tag{4}
+$$
 
 其中，$N$ 为观测数，$M$ 为生化物种数，$C^∗_{i,j}$ 和 $C_{i,j}$ 分别为时间 $i$ 处生化物种 j 的测量浓度和模型预测浓度，$\sigma _{cj}$ 为生化物种 j 在观测集合上的浓度标准差。物理损耗的计算方法如下：
 
-$$e=\frac{dC}{dt}-Sr+DC-DC_{in}, \tag{5a}$$
+$$
+e=\frac{dC}{dt}-Sr+DC-DC_{in}, \tag{5a}
+$$
 
-$$\mathcal{L} _{physics}=\frac{1}{K\times M}\sum_{i=1}^K{\sum_{j=1}^M{\left( \frac{\Delta te_{i,j}}{\sigma _{cj}} \right) ^2,}} \tag{5b}$$
+$$
+\mathcal{L} _{physics}=\frac{1}{K\times M}\sum_{i=1}^K{\sum_{j=1}^M{\left( \frac{\Delta te_{i,j}}{\sigma _{cj}} \right) ^2,}} \tag{5b}
+$$
 
 其中, $K$ 表示共配点的数量，$e_{i,j}$ 是生化物种 $j$ 在共配点 $i$ 处的物理残余。配理点的数量与观测点的数量不一致。采用随机搭配方法将这些点分布在域空间中。此外，确保剩余总数 $(N + K)M$ 总是大于对偶 ANN 的 PINN 结构权重总数。最后，总损耗计算为两个损耗项的加权和：
 
-$$\mathcal{L} _{total}=(1-\lambda )\mathcal{L} _{data}+\lambda \mathcal{L} _{physics}. \tag{6}$$
+$$
+\mathcal{L} _{total}=(1-\lambda )\mathcal{L} _{data}+\lambda \mathcal{L} _{physics}. \tag{6}
+$$
 
 参数 $\lambda$ 由用户设置在 0 到 1 之间，以调整物理和数据丢失项的相对重要性。对于混合半参数结构，物理损耗项下降，因此总损耗简单地表示为 $\mathcal{L} _{total} = \mathcal{L} _{data}$。
 
@@ -89,11 +103,17 @@ $$\mathcal{L} _{total}=(1-\lambda )\mathcal{L} _{data}+\lambda \mathcal{L} _{phy
 
 案例研究 1 是一个非常简单的物流生长过程，在一个供给批次生物反应器中，仅有两个状态变量，由两个常微分方程描述。（7a，b），以及逻辑增长模型方程（7c）：
 
-$$\frac{dX}{dt}=\mu X-DX,\tag{7a}$$
+$$
+\frac{dX}{dt}=\mu X-DX,\tag{7a}
+$$
 
-$$\frac{dV}{dt}=F,\tag{7b}$$
+$$
+\frac{dV}{dt}=F,\tag{7b}
+$$
 
-$$\mu =\mu _{max}\left( 1-\frac{X}{X_{max}} \right) ,\tag{7c}$$
+$$
+\mu =\mu _{max}\left( 1-\frac{X}{X_{max}} \right) ,\tag{7c}
+$$
 
 其中，$X$ 是生物量浓度，$V$ 是液体体积，$μ$ 是比增长速率，$F$ 是进入反应器的进料速率，$D = F /V$ 是稀释速率，$μ_{max}$ 是最大比增长速率，$X_{max}$ 是最大生物量浓度。合成实验使用 Runge-Kutta 四阶/五阶常微分方程求解器动态模拟，$\mu _{max} = 0.3 h^{-1},X_{max} = 47.3 g/L$。数据点采样为 1 小时，噪声为 5%（为真实值的 5%）。采用中央复合材料设计（CCD），包含 3 个因素（初始生物量浓度为 0.5–2.5 克/升，初始体积为 1.9–3.5 升，进料速率为 $F$ ，范围为 0.05–0.5 升/小时），得出了包含 15 项实验的数据集。鉴于其基础的简单性，本案例研究的主要目标是评估用单次喂食批次实验数据训练模型是否能有效捕捉底层过程动态。因此，数据划分包括一个训练子集，包含一个反应堆实验（CCD 中心点对应 24 个观测值）、与一个反应堆实验的交叉验证（中心点实验的重复，对应 24 个观测值），以及对其余 14 个实验（336 个观测值）进行验证和测试。数据集及相应分区的详细信息见补充文件 1。
 
@@ -101,23 +121,39 @@ $$\mu =\mu _{max}\left( 1-\frac{X}{X_{max}} \right) ,\tag{7c}$$
 
 案例研究 2 涉及一个高度非线性的酵母细胞供给生物反应器，表达外来蛋白。该过程由五个状态变量和随时间变化的输入进料速率（Park 和 Ramirez，1988）为特征。状态变量包括生物量浓度（$X$）、葡萄糖浓度（$S$）、分泌蛋白浓度（$Pm$）、总蛋白浓度（$Pt$）和反应器中的液体体积（$V$）。生物反应器受以下材料平衡方程控制：
 
-$$\frac{{dX}}{{dt}}={\mu X}-{DX},\tag{8a}$$
+$$
+\frac{{dX}}{{dt}}={\mu X}-{DX},\tag{8a}
+$$
 
-$$\frac{dS}{dt}=-Y\mu X+D(S_{in}-S),\tag{8b}$$
+$$
+\frac{dS}{dt}=-Y\mu X+D(S_{in}-S),\tag{8b}
+$$
 
-$$\frac{dP_m}{dt}=\theta \left( P_t-P_m \right) -DP_m,\tag{8c}$$
+$$
+\frac{dP_m}{dt}=\theta \left( P_t-P_m \right) -DP_m,\tag{8c}
+$$
 
-$$\frac{dP_t}{dt}=f_pX-DP_t,\tag{8d}$$
+$$
+\frac{dP_t}{dt}=f_pX-DP_t,\tag{8d}
+$$
 
-$$\frac{dV}{dt}=F.\tag{8e}$$
+$$
+\frac{dV}{dt}=F.\tag{8e}
+$$
 
 该工艺采用单一进料流，流量为 $F$ ，底物浓度为 $S_{in} = 20 g/L$ 。比反应速率由高度非线性的动力学方程定义：
 
-$$\mu =\frac{21.87S}{\left( S+0.4 \right) \left( S+62.5 \right)},\tag{8a}$$
+$$
+\mu =\frac{21.87S}{\left( S+0.4 \right) \left( S+62.5 \right)},\tag{8a}
+$$
 
-$$\theta =\frac{4.75\mu}{0.12+\mu},\tag{8b}$$
+$$
+\theta =\frac{4.75\mu}{0.12+\mu},\tag{8b}
+$$
 
-$$\theta =\frac{4.75\mu}{0.12+\mu},\tag{8c}$$
+$$
+\theta =\frac{4.75\mu}{0.12+\mu},\tag{8c}
+$$
 
 其中， $μ$ 为比生长速率，$Y$ 为底物/生物量产率系数，$θ$ 为外来蛋白分泌速率，$f_p$ 为外来蛋白合成速率。共模拟了 16 个实验，时间窗口为 0–15 小时，初始条件始终相同 $(X(0) = 1.0g/L，(0) = 5.0g/L，P_t(0) = 0g/L，P_m(0) = 0g/L，V(0) = 1.0L)$ ，但进给速率 $F$ 和时间轮廓各异。十五项实验由三因素 CCD 设计。这些因素是进料速率随时间的变化，定义如下：进料速率在 0 至 5 小时( $F_1$ )，进料速率在 5 至 10 小时($F_2$)之间，进料速率在 10 至 15 小时之间 ($F_3$)。每个因子的变速范围在 0 到 2 升/小时之间。对应 CCD 立方体和中心点的 9 个实验用于嵌入随机正则化的训练。对应 CCD 星点的 6 个实验被用于验证。第 16 项实验采用了最优对照进料速率曲线，在 10 升生物反应器（32.4 克）中实现最大可能分泌蛋白（Park 和 Ramirez，1988）。该最优对照实验被用作测试实验。过程仿真采用了 Runge-Kutta 四阶/五阶常微分方程求解器。数据点采样为 1 小时一次，噪声为 5%（为真实值的 5%）。数据集及相应分区的详细信息见补充文件 2。
 
