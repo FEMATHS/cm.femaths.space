@@ -25,6 +25,8 @@ Many previous studies have explored hybrid semiparametric models merging Artific
 
 通过摘要可以看出，文章利用 PINN 来求解一类同样由微分方程描述的生物反应器系统。这确实展示了 PINN 在传统物理模型之外的又一类应用场景——它同样能够有效处理其他类型的微分方程。至于该方法的具体实现方式，感兴趣的读者可以继续阅读下文以进一步了解。
 
+<!-- truncate -->
+
 ## 方法
 
 ### 生物反应器系统的双人工神经神经网络 PINN 结构

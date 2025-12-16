@@ -36,6 +36,8 @@ pip install -e .    # 源码控制版，仅用于复现
 pip install citylearn   # 后续试验可以直接用这个下载
 ```
 
+<!-- truncate -->
+
 如果是 macOS，pip install 的时候会发生如下报错：
 
 ```

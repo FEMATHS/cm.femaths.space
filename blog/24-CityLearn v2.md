@@ -24,6 +24,8 @@ v2 版本在体系结构上进行了彻底重构，支持模块化设计和多�
 · 电力与热能的多能源协同；
 · 公平、透明的算法评测与结果共享。
 
+<!-- truncate -->
+
 ### 常见缩写：
 
 **ESSs**：energy storage systems
@@ -57,10 +59,10 @@ E_{t,b}^{\text{grid}} = E_{t,b}^{\text{load}} - E_{t,b}^{\text{PV}} - E_{t,b}^{\
 
 其中：
 
-- ``(E_{t,b}^{\text{grid}})``：从电网汲取的净电能；
-- ``(E_{t,b}^{\text{load}})``：总电力负荷（包括 HVAC、DHW、家电与电动车等）；
-- ``(E_{t,b}^{\text{PV}})``：光伏系统输出；
-- ``(E_{t,b}^{\text{discharge}})``、``(E_{t,b}^{\text{charge}})``：分别为储能放电与充电功率。
+- `(E_{t,b}^{\text{grid}})`：从电网汲取的净电能；
+- `(E_{t,b}^{\text{load}})`：总电力负荷（包括 HVAC、DHW、家电与电动车等）；
+- `(E_{t,b}^{\text{PV}})`：光伏系统输出；
+- `(E_{t,b}^{\text{discharge}})`、`(E_{t,b}^{\text{charge}})`：分别为储能放电与充电功率。
 
 热力系统的能量守恒为：
 
