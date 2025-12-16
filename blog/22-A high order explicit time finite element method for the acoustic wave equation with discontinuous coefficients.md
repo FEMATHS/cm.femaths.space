@@ -2,7 +2,7 @@
 title: 'A high order explicit time finite element method for the acoustic wave equation with discontinuous coefficients'
 authors: [Tanger]
 tags: [discontinuous coefficients, wave equation, finite element method]
-date: 2025-09-03
+date: 2025-12-16
 ---
 
 ![](./src/22/89.png)
