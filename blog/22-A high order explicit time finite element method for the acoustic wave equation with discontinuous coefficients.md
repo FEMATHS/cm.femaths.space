@@ -193,3 +193,153 @@ $$
 $$
 
 这种表述使每个神经元能够独立适应其激活频率，使网络能够在不同神经元之间表示具有不同且可能高频成分的功能。
+
+#### Slope recovery
+
+边坡恢复项 $S(a)$ 动态调整激活函数的斜率，这对于保持网络中活跃且有效的梯度传播至关重要。通过引入这一受 Jagtap 等人[42]启发的术语，网络被迫快速提升激活斜率，从而加速训练过程。我们有
+
+$$
+S\left( a \right) =\frac{1}{\frac{1}{L-1}\sum_{k=1}^{L-1}{\exp \left( \frac{1}{N_k}\sum_{i=1}^{N_k}{f_{i}^{k}} \right)}},\tag{22}
+$$
+
+其中，$L$ 表示图层总数; $N_k$ 表示第 k 层的神经元数; ${f}_{{i}}^{{k}}$ 是第 $k$ 层中第 $i$ 个神经元的可训练频率。
+
+斜率恢复项被包含在损失函数中，以调节可训练频率对训练动力学的影响。带边坡恢复项的增减损函数写作
+
+$$
+L_{PINN}=L_{data}+L_{phys}+\lambda S\left( a \right) ,\tag{23}
+$$
+
+其中， $λ$ 是一个超参数，用于确定全损耗中边坡恢复项的权重，限制模型优化频率参数。
+
+#### 损失函数
+
+为了建立与 TSA-PINN 模型相关的损耗函数，考虑了一个涉及三维时间依赖湍流通道流的问题。控制流动的不可压缩纳维-斯托克斯方程以速度-压力（VP）形式表示：
+
+$$
+\frac{\partial {u}}{\partial t}+{u}\cdot \nabla {u}+\nabla p-\frac{1}{Re}\Delta {u}=0,\hskip 28.4528pt \mathrm{in}\hskip 5.69055pt \Omega ; \tag{24}
+$$
+
+$$
+\nabla \cdot {u}=0,\qquad \qquad \qquad \qquad \qquad \qquad \mathrm{in}\Omega ; \tag{25}
+$$
+
+$$
+{u}={u}_{\Gamma},\qquad \qquad \qquad \qquad \qquad \qquad \quad on\,\, \Gamma _D; \tag{26}
+$$
+
+$$
+\frac{\partial {u}}{\partial n}=0,\qquad \qquad \qquad \qquad \qquad \qquad on\Gamma _{{N}}.\tag{27}
+$$
+
+在此内容中，无维时间为 $t$ 。无量纲速度矢量记为 $u（x,y,z,t） = [u,v,w]^T$ 和 $P$ 表示无量纲压力。雷诺数 $Re$ 是一个参数，用于通过比较惯性力与粘性力来表征流动的动力学。定义为 $Re=\frac{\rho uL}{\mu}$ ，其中 $ρ$ 是流体密度，$u$ 是特征速度，$L$ 代表特征长度尺度，$μ$ 是动态粘度。狄利克雷边界条件和诺依曼边界条件分别由方程（26）和（27）给出。与动量守恒方程和连续性方程（24）和（25）相关的残差分别可表示为：
+
+$$
+R_x=\partial _tu+u\partial _{_x}u+\upsilon \partial _{_y}u+\upsilon \upsilon \partial _{_Z}u+\partial _{_X}p -\frac{1}{Re}(\partial _{xx}^{2}u+\partial _{yy}^{2}u+\partial _{_Zz}^{2}u);\tag{28}
+$$
+
+$$
+R_y=\partial _t\upsilon +u\partial _x\upsilon +\upsilon \partial _y\upsilon +\upsilon \partial _z\upsilon +\partial _yp-\frac{1}{Re}(\partial _{xx}^{2}\upsilon +\partial _{yy}^{2}\upsilon +\partial _{zz}^{2}\upsilon );\tag{29}
+$$
+
+$$
+{R}_z=\partial _t{w}+{u}\partial _x{w}+{\upsilon }\partial _y{w}+{w}\partial _z{w}+\partial _z{p}-\frac{1}{{Re}}(\partial _{xx}^{2}{w}+\partial _{yy}^{2}{w}+\partial _{zz}^{2}{w});\tag{30}
+$$
+
+$$
+R_c=\partial _xu+\partial _yv+\partial _zw.\tag{31}
+$$
+
+这里，$R_x$、$R_y$、$R_z$ 和 $R_c$ 分别表示 $x$、$y$ 和 $z$ 方向动量方程的残差，以及无散度约束。为了计算偏微分算子，使用自动微分[46]。该方法涉及计算计算图输出对变量 $x$ 、$y$、$z$ 和 $t$ 的导数，以近似控制方程中的导数。在 TSA-PINN 的背景下，近似问题被重新表述为涉及网络参数 $w$、$b$ 和 $f$ 的优化问题。目标是最小化与解近似相关的损失函数。损失函数表示为：
+
+$$
+{L}={L}_{{IC}}+{L}_{{BC}}+{L}_{{R}}+\lambda {L}_{{S}},\tag{32}
+$$
+
+以及损失函数项可以写成：
+
+$$
+L_{IC}=\frac{1}{N_1}\sum_{n=1}^{N_1}{\bigl| u_{\theta}^{n}-u_{IC}^{n} \bigr| ^2;}\tag{33}
+$$
+
+$$
+{L}_{{BC}}=\frac{1}{{N}_{{B}}}\sum_{{n}={1}}^{{N}_{{B}}}{\left| u_{\theta}^{n}-u_{\mathrm{BC}}^{n} \right|^2};\tag{34}
+$$
+
+$$
+L_{\mathrm{R}}=\frac{1}{N_{\mathrm{R}}}\biggl( \sum_{n=1}^{N_{\mathrm{R}}}{\bigl| R_{x}^{n} \bigr| ^2}+\sum_{n=1}^{N_{\mathrm{R}}}{\bigl| R_{y}^{n} \bigr| ^2}+\sum_{n=1}^{N_{\mathrm{R}}}{\bigl| R_{z}^{n} \bigr| ^2}+\sum_{n=1}^{N_{\mathrm{R}}}{\bigl| R_{c}^{n} \bigr| ^2} \biggr) ,\tag{35}
+$$
+
+其中，$L_{IC}$ 、 $L_{BC}$ 和 $L_R$ 分别表示与初始条件（$IC$）、边界条件（$BC$）和支配偏微分方程残差的近似相关的误差。方程（32）的最后一项代表了边坡恢复项，如方程（22）所示。优化问题会发现网络参数的最优值，使得最小化与近似相关的损失：
+
+$$
+W^*=arg\min_w \left( L\left( w \right) \right) ;\tag{36}
+$$
+
+$$
+b^*=arg\min_b \left( L\left( b \right) \right) ;\tag{37}
+$$
+
+$$
+f^*=arg\min_f \left( L\left( f \right) \right) .\tag{38}
+$$
+
+该最小化问题通过梯度下降方法近似。模型参数更新如下：
+
+$$
+{w}^{{m}+{1}}={w}^{{m}}-\eta \nabla _{{w}^{{m}}}{L}^{{m}}({w});\tag{39}
+$$
+
+$$
+{b}^{{m}+{1}}={b}^{{m}}-{\eta }\nabla _{{b}^{{m}}}{L}^{{m}}{(b)};\tag{40}
+$$
+
+$$
+f^{m+1}=f^m-\eta \nabla _{f^m}L^m(f),\tag{41}
+$$
+
+其中，在第 $m$ 次迭代中，$η$ 表示学习率，$L_m$ 为损失函数。
+
+## 结果与讨论
+
+这里边提出了五个算例，三个二维算例，两个三维算例。
+
+为了验证 TSA-PINN 的特性，应用它在各种场景下近似纳维斯托克斯方程：
+
+1. Re = 100 时的二维稳态盖驱动腔问题;
+2. Re = 3200 处的二维稳态盖驱动腔问题;
+3. 二维时变圆柱尾迹;
+4. 3D 时间依赖湍流通道流：近壁区;
+5. 3D 时间依赖湍流通道流动：覆盖更大范围。
+
+为了估计每种情景相关的误差，使用所有评估点误差的相对 $L_2$ 范数为
+
+$$
+\mathrm{Error}_i=\frac{\left\| \hat{{U}}_i-{U}_i \right\| _2}{\left\| {U}_i \right\| _2}\times 100, \tag{42}
+$$
+
+其中，下标 $i$ 表示变量的指标，$‖⋅‖_2$ 表示 $L_2$ 范数。$\hat{U}$ 和 $U$ 分别表示近似解和参考解的向量。标准 PINN 模型使用 tanh 激活函数。对于两种模型，TSA-PINN 和标准 PINN，权重和偏差均使用格洛罗特正规法初始化 [47]。可训练频率初始化时使用 $\sigma = 1.0$ ，除非另有说明。所有情况下均采用梯度下降法，配合 ADAM 优化器[48]。TensorFlow 用于自动微分和计算图构建[49]。
+
+### Re = 100 时的二维稳态盖驱动腔问题;
+
+第一个测试用例是在二维盖驱动腔内的稳态流动，受二维稳态不可压缩纳维斯托克斯方程（24）和（25）控制。对于这个问题，我们将雷诺数设为 Re = 100，系统预期收敛到稳态解 [50]。空间坐标 $x \in [0， 1]$ 和 $y \in [0， 1]$ 作为输入被提供给网络，输出流函数 $ψ$ 和压力场 $P$。所有变量都是无纲的。通过采用流函数表述，纳维-斯托克斯方程的解在一组无散度函数中得到探索
+
+$$
+u_x+v_y=0.\tag{43}
+$$
+
+在此环境中，速度分量为
+
+$$
+u=\partial _y\psi ,\tag{44}
+$$
+
+以及
+
+$$\upsilon =-\partial _x\psi .\tag{45}$$
+
+该假设自动满足连续性约束。需要注意的是，该领域内没有针对该问题的训练数据。培训完全依赖于无监督学习，使用领域内 4000 个搭配点，以及沿边界的 500 个边界条件点。在此情境下，控制方程的残差为：
+
+$$
+R_x=u\partial _xu+\upsilon \partial _yu+\partial _xp-\frac{1}{Re}(\partial _{xx}^{2}u+\partial _{yy}^{2}u);\tag{46}
+$$
