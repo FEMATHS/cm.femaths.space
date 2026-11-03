@@ -107,24 +107,19 @@ function MemberCard({ member }: { member: Member }) {
 export default function MembersTimeline({ members }: Props) {
   return (
     <div className={styles.timelineContainer}>
-  {members.map(({ classOf, memberList }, idx) => (
-    <div key={classOf} className={styles.timelineItem}>
-      {/* 左侧时间轴标记 */}
-      <div className={styles.timelineMarker}>
-        <span className={styles.timelineDot}></span>
-        <div className={styles.classLabel}>{classOf} 届</div>
-      </div>
-
-      {/* 右侧成员卡片列表 */}
-      <div className={styles.membersList}>
-        {memberList.map((m) => (
-          <MemberCard key={m.name} member={m} />
-        ))}
-      </div>
+      {members.map(({ classOf, memberList }) => (
+        <div key={classOf} className={styles.timelineItem}>
+          <div className={styles.timelineMarker}>
+            <span className={styles.timelineDot} />
+            <div className={styles.classLabel}>{classOf} 届</div>
+          </div>
+          <div className={styles.membersList}>
+            {memberList.map((member) => (
+              <MemberCard key={member.name} member={member} />
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
-  ))}
-</div>
-
-
   );
 }

@@ -306,7 +306,7 @@ $$
 这是最常用的，当 $f(t,u)$ 与 u 无关的时就是 Simpson 公式。
 
 $$
-\left\{\begin{array}{l}
+\left\{\begin{array}{rl}
 &u_{m+1}=u_{m}+\frac{h}{6}\left(k_{1}+2 k_{2}+2 k_{3}+k_{4}\right), \\
 &k_{1}=f\left(t_{m}, u_{m}\right), \\
 &k_{2}=f\left(t_{m}+\frac{h}{2}, u_{m}+\frac{h}{2} k_{1}\right), \\

@@ -14,6 +14,8 @@ const features = [
     icon: '∑',
     title: '数值分析',
     color: '#3b82f6',
+    image: '/img/1.png',
+    imageAlt: '流体数值模拟结果',
     description:
       '研究偏微分方程（PDE）的数值解法：有限差分、有限元与谱方法。应用于热传导、波动传播与流体模拟等科学计算场景。',
   },
@@ -21,6 +23,8 @@ const features = [
     icon: '∇',
     title: '优化算法',
     color: '#8b5cf6',
+    image: '/img/2.png',
+    imageAlt: '凸优化算法的收敛轨迹示意图',
     description:
       '探索凸优化与非凸优化的经典方法：梯度下降、牛顿法与约束优化，聚焦等高线分析与最优解轨迹的可视化。',
   },
@@ -28,6 +32,8 @@ const features = [
     icon: 'π',
     title: '物理信息神经网络',
     color: '#ec4899',
+    image: '/img/3.png',
+    imageAlt: '流体动力学与神经网络示意图',
     description:
       '结合神经网络与物理模型，引入 PDE 约束、残差分析与自适应采样机制，广泛用于模拟自然过程与求解逆问题。',
   },
@@ -35,6 +41,8 @@ const features = [
     icon: 'λ',
     title: '深度学习',
     color: '#06b6d4',
+    image: '/img/4.png',
+    imageAlt: '卷积神经网络结构示意图',
     description:
       '聚焦卷积神经网络的结构与原理，涵盖特征提取、池化与分类过程，应用于图像识别、语义分割与计算机视觉。',
   },
@@ -44,6 +52,7 @@ interface BlogPostMeta {
   title: string;
   permalink: string;
   date: string;
+  image: string;
   tags: { label: string; permalink: string }[];
 }
 
@@ -74,16 +83,21 @@ function StatsSection({ postCount }: { postCount: number }) {
   );
 }
 
-function FeatureCard({ icon, title, description, color }: (typeof features)[0]) {
+function FeatureCard({ icon, title, description, color, image, imageAlt }: (typeof features)[0]) {
   return (
     <div className={styles.featureCard}>
-      <div
-        className={styles.featureIcon}
-        style={{ color, borderColor: `${color}44`, background: `${color}14` }}>
-        {icon}
+      <div className={styles.featureImageWrap}>
+        <img className={styles.featureImage} src={image} alt={imageAlt} loading="lazy" />
+        <div
+          className={styles.featureIcon}
+          style={{ color, borderColor: `${color}44`, background: `${color}14` }}>
+          {icon}
+        </div>
       </div>
-      <h3 className={styles.featureTitle}>{title}</h3>
-      <p className={styles.featureDescription}>{description}</p>
+      <div className={styles.featureContent}>
+        <h3 className={styles.featureTitle}>{title}</h3>
+        <p className={styles.featureDescription}>{description}</p>
+      </div>
       <div className={styles.featureAccent} style={{ background: `linear-gradient(90deg, ${color}, transparent)` }} />
     </div>
   );
@@ -180,14 +194,19 @@ export default function Home(): React.ReactElement {
               <div className={styles.postsGrid}>
                 {latestPosts.map((post) => (
                   <Link key={post.permalink} to={post.permalink} className={styles.postCard}>
-                    <div className={styles.postDate}>{formatDate(post.date)}</div>
-                    <h3 className={styles.postTitle}>{post.title}</h3>
-                    <div className={styles.postTags}>
-                      {post.tags.slice(0, 2).map((t) => (
-                        <span key={t.permalink} className={styles.postTag}>
-                          {t.label}
-                        </span>
-                      ))}
+                    <div className={styles.postImageWrap}>
+                      <img className={styles.postImage} src={post.image} alt="" loading="lazy" />
+                    </div>
+                    <div className={styles.postContent}>
+                      <div className={styles.postDate}>{formatDate(post.date)}</div>
+                      <h3 className={styles.postTitle}>{post.title}</h3>
+                      <div className={styles.postTags}>
+                        {post.tags.slice(0, 2).map((t) => (
+                          <span key={t.permalink || t.label} className={styles.postTag}>
+                            {t.label}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </Link>
                 ))}

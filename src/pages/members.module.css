@@ -1,0 +1,42 @@
+.membersPage {
+  min-height: 70vh;
+  padding: 4.5rem 0 5rem;
+  background:
+    radial-gradient(ellipse at 50% 0, rgba(99, 102, 241, 0.08), transparent 42%),
+    var(--ifm-background-color);
+}
+
+.membersHeader {
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  color: var(--ifm-color-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.membersHeader h1 {
+  margin-bottom: 0.65rem;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.membersHeader p {
+  margin-bottom: 0;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 1.05rem;
+}
+
+@media (max-width: 600px) {
+  .membersPage {
+    padding: 3rem 0 3.5rem;
+  }
+
+  .membersHeader {
+    margin-bottom: 1.5rem;
+  }
+}
