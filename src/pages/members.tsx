@@ -1,13 +1,9 @@
 import React from "react";
 import Layout from "@theme/Layout";
-import Translate from "@docusaurus/Translate";
 import { PageMetadata } from "@docusaurus/theme-common";
 
 import MembersTimeline from "@site/src/components/Members/MembersTimeline";
-import Section from "@site/src/components/Section";  // 假设路径是这样
-
-import styles from "./styles.module.css";
-import ButtonGroup from "antd/lib/button/button-group";
+import styles from "./members.module.css";
 
 // 成员数据
 const membersData = [
@@ -50,15 +46,6 @@ const membersData = [
         blog: "",
         email: "",
       },
-      {
-        name: "Example",
-        role: "填写小组职务",
-        description: "一段个性化的话",
-        avatar: "https://randomuser.me/api/portraits/women/24.jpg",
-        github: "https://github.com/lily",
-        blog: "https://lilyblog.com",
-        email: "lily@example.com",
-      },
     ],
   },
 ];
@@ -70,17 +57,14 @@ export default function Members(): JSX.Element {
         title="FEMATHS小组成员"
         description="The members directory of the team"
       />
-      <main>
-        <div style={{ marginTop: '-100px' }} >
-          <Section
-            title="FEMATHS小组 · 团队成员成员"
-            description="这里是我们小组团队成员的简单介绍"
-            bannerStyle={{  }}
-          >
-            <div className={styles.content}>
-              <MembersTimeline members={membersData} />
-            </div>
-          </Section>
+      <main className={styles.membersPage}>
+        <div className="container">
+          <header className={styles.membersHeader}>
+            <span className={styles.eyebrow}>FEMATHS COMMUNITY</span>
+            <h1>FEMATHS 小组 · 团队成员</h1>
+            <p>认识一起探索计算数学与机器学习的伙伴</p>
+          </header>
+          <MembersTimeline members={membersData} />
         </div>
       </main>
     </Layout>

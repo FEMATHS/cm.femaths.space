@@ -221,8 +221,8 @@ body {
 .featureCard {
   position: relative;
   overflow: hidden;
-  padding: 2rem 1.6rem;
-  border-radius: 18px;
+  padding: 0;
+  border-radius: 16px;
   border: 1px solid var(--ifm-color-emphasis-200);
   background: var(--ifm-card-background-color);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -235,23 +235,50 @@ body {
   border-color: rgba(99, 102, 241, 0.4);
 }
 
+.featureImageWrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--ifm-color-emphasis-100);
+}
+
+.featureImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.featureCard:hover .featureImage {
+  transform: scale(1.04);
+}
+
 .featureIcon {
+  position: absolute;
+  left: 1rem;
+  bottom: -0.5rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 58px;
-  height: 58px;
-  border-radius: 14px;
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
   border: 1px solid;
-  font-size: 1.7rem;
+  font-size: 1.45rem;
   font-family: 'Times New Roman', Times, serif;
-  margin-bottom: 1.1rem;
+  box-shadow: 0 5px 16px rgba(15, 23, 42, 0.12);
+  z-index: 1;
+}
+
+.featureContent {
+  padding: 1.7rem 1.3rem 1.35rem;
 }
 
 .featureTitle {
   font-size: 1.3rem;
   font-weight: 700;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.55rem;
   color: var(--ifm-heading-color);
 }
 
@@ -268,6 +295,7 @@ body {
   left: 0;
   width: 100%;
   height: 3px;
+  z-index: 2;
 }
 
 /* ========== 最新日志 ========== */
@@ -288,7 +316,8 @@ body {
 
 .postCard {
   display: block;
-  padding: 1.6rem 1.5rem;
+  overflow: hidden;
+  padding: 0;
   border-radius: 18px;
   border: 1px solid var(--ifm-color-emphasis-200);
   background: var(--ifm-card-background-color);
@@ -301,6 +330,28 @@ body {
   transform: translateY(-6px);
   box-shadow: 0 16px 44px rgba(99, 102, 241, 0.16);
   border-color: rgba(99, 102, 241, 0.4);
+}
+
+.postImageWrap {
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--ifm-color-emphasis-200);
+}
+
+.postImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.postCard:hover .postImage {
+  transform: scale(1.04);
+}
+
+.postContent {
+  padding: 1.25rem 1.35rem 1.4rem;
 }
 
 .postDate {
@@ -451,6 +502,19 @@ body {
 }
 
 @media screen and (max-width: 500px) {
+  .featuresSection,
+  .postsSection {
+    padding: 3.2rem 0;
+  }
+
+  .sectionHeader {
+    margin-bottom: 2rem;
+  }
+
+  .sectionHeader h2 {
+    font-size: 1.75rem;
+  }
+
   .statsGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.8rem;

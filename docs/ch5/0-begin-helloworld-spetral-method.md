@@ -72,7 +72,7 @@ $$
 这可以通过考虑 $u(x_{j+1})$ 和 $u(x_{j-1})$ 的泰勒展开来推导。为简单起见，让我们假设问题是周期性的，并取 $u_0 = u_N$ 和 $u_1 = u_{N+1}$。然后我们可以将离散二叶化过程表示为矩阵-向量乘法，有
 
 $$
-\left(\begin{array}{c}w_{1}\\ \\ \\ \vdots\\ \\ w_{N}\end{array}\right) = h^{-1}\left(\begin{array}{ccccc}0&\frac{1} {2}&&&-\frac{1}{2}\\ -\frac{1}{2}&0&&\ddots&&\\ &&&\ddots&&\\ &&&\ddots&0&\frac{1}{2}\\ \frac{1}{2}&&&-\frac{1}{2}&0\end{array}\right)\left(\begin{array}{c}u_{1}\\ \\ \\ \vdots\\ \\ u_{N}\end{array}\right). \tag{1.2}
+\left(\begin{array}{c}w_{1}\\ \\ \\ \vdots\\ \\ w_{N}\end{array}\right) = h^{-1}\left(\begin{array}{cccccc}0&\frac{1} {2}&&&-\frac{1}{2}\\ -\frac{1}{2}&0&&\ddots&&\\ &&&\ddots&&\\ &&&\ddots&0&\frac{1}{2}\\ \frac{1}{2}&&&-\frac{1}{2}&0\end{array}\right)\left(\begin{array}{c}u_{1}\\ \\ \\ \vdots\\ \\ u_{N}\end{array}\right). \tag{1.2}
 $$
 
 （此处和本书中其他稀疏矩阵中省略的条目为零。观察该矩阵是 Toeplitz 矩阵，沿对角线具有恒定的条目，即 $a_{ij}$ 仅依赖于 $i$ 和 $j$ 。事实上，它也是**循环**的，这意味着 $a_{ij}$ 仅依赖于 $i$ 和 $j$ $(mod N )$。对角线“环绕”矩阵。
@@ -95,7 +95,7 @@ $$
 同理可以得到四阶矩阵为
 
 $$
-\left(\begin{array}{c}w_{1}\\ \\ \\ \\ \vdots\\ \\ \\ \\ w_{N}\end{array}\right) = h^{-1}\left(\begin{array}{ccccc}&&\ddots&& \frac{1}{12}&-\frac{2}{3}\\ &&\ddots-\frac{1}{12}&&&\frac{1}{12}\\ &&\ddots&\frac{2}{3}&\ddots&\\ &&\ddots&0&\ddots&\\ &&\ddots&-\frac{2}{3}&\ddots&\\ -\frac{1}{12}&&&\frac{1}{12}&\ddots&\\ \frac{2}{3}&-\frac{1}{12}&&&\ddots&\\ \end{array}\right) \left(\begin{array}{c}u_{1}\\ \\ \\ \\ \vdots\\ \\ \\ u_{N}\end{array}\right).\tag{1.3}
+\left(\begin{array}{c}w_{1}\\ \\ \\ \\ \vdots\\ \\ \\ \\ w_{N}\end{array}\right) = h^{-1}\left(\begin{array}{cccccc}&&\ddots&& \frac{1}{12}&-\frac{2}{3}\\ &&\ddots-\frac{1}{12}&&&\frac{1}{12}\\ &&\ddots&\frac{2}{3}&\ddots&\\ &&\ddots&0&\ddots&\\ &&\ddots&-\frac{2}{3}&\ddots&\\ -\frac{1}{12}&&&\frac{1}{12}&\ddots&\\ \frac{2}{3}&-\frac{1}{12}&&&\ddots&\\ \end{array}\right) \left(\begin{array}{c}u_{1}\\ \\ \\ \\ \vdots\\ \\ \\ u_{N}\end{array}\right).\tag{1.3}
 $$
 
 这次我们有一个五对角线而不是三对角线循环矩阵。
@@ -161,7 +161,7 @@ exportgraphics(gcf,'p1.png','Resolution',300)
 我们已经研究了二阶和四阶的二阶，很明显，考虑六阶、八阶和更高阶方案将导致带宽增加的循环矩阵。谱方法背后的想法是将这个过程发挥到极限，至少在原则上是这样，并使用无限阶和无限带宽的双分公式(即密集矩阵)[For75]。在下一章中，我们将证明在这个极限下，对于无限等距网格，人们得到以下无限矩阵：
 
 $$
-D\ =\ h^{-1}\left(\begin{array}{ccccccccc}&&&&&\vdots&&&&\\ &&&&\ddots&&&&\frac{1}{3}&&&&\\ &&&&\ddots&&&&-\frac{1}{2}&&&&\\ &&&&\ddots&&&&1&&&&\\ &&&&&&&0&&&&\\ &&&&&&&-1&&&&\ddots&&\\ &&&&&&&\frac{1}{2}&&&&\ddots&&\\ &&&&&&-\frac{1}{3}&&&&\ddots&\\ &&&&&&&\vdots&&&&\end{array}\right).\tag{1.4}
+D\ =\ h^{-1}\left(\begin{array}{cccccccccccccc}&&&&&\vdots&&&&\\ &&&&\ddots&&&&\frac{1}{3}&&&&\\ &&&&\ddots&&&&-\frac{1}{2}&&&&\\ &&&&\ddots&&&&1&&&&\\ &&&&&&&0&&&&\\ &&&&&&&-1&&&&\ddots&&\\ &&&&&&&\frac{1}{2}&&&&\ddots&&\\ &&&&&&-\frac{1}{3}&&&&\ddots&\\ &&&&&&&\vdots&&&&\end{array}\right).\tag{1.4}
 $$
 
 这是有限托普利茨矩阵中双重偏对称 ($D^T = D$)，也称为洛朗算子 [Hal74，Wid65]。除主对角线上的条目外，其所有条目都是非零的。

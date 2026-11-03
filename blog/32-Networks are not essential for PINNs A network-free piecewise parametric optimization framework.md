@@ -1,8 +1,8 @@
 ---
-title: 'P T Symmetric PINN for integrable nonlocal  equations: Forward and inverse problems'
+title: 'Networks are not essential for PINNs: A network-free piecewise parametric optimization framework'
 authors: [Tanger]
 tags: [PINN, Physics-informed parametric learning, PDE]
-date: 2026-1-13
+date: 2026-11-3
 ---
 
 ![](./src/32/128.png)

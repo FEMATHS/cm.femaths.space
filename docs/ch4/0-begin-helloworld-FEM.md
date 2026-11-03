@@ -90,7 +90,13 @@ Step4：由形状函数构成试探函数空间$V_h$。
 - (ii) 把$V_h$中的任一个函数$u_h$限制在$I_i$($i = 1, 2, \cdots, n + 1$)上时,它是$I_i$上的一个形状函数。
 - (iii) $V_h$中的函数应满足一定的光滑性,至少应对任何函数$u_h, v_h \in V_h$,$a(u_h, v_h)$和$f(v_h)$有意义。例如,取$V_h$为$C_0^1$的一个子空间(光滑性的要求也可以提得更高一些,但此时将造成构造上的困难)。
 
-对问题$(7.1)$,可根据以上要求构造试探函数空间:$V_h = \{u_h | u_h \in C^1(\bar{I}), u_h 限制在I_i上是k次多项式, u_h(0) = 0\}$。要唯一确定$V_h$中的一个函数需要设置$(n + 1)(k + 1)$个条件。由于$u_h \in C^1(\bar{I})$,即$u_h$在$x = x_i$处连续($i = 1, 2, \cdots, n$)且$u_h(0) = 0$,这共有$n + 1$个限制条件,所以总共需设置$(n + 1)(k + 1) - n = (n + 1)k + 1$个条件,当$k = 1$时,需要设置$n + 2$个条件。
+对问题$(7.1)$,可根据以上要求构造试探函数空间：
+
+$$
+V_h = \left\{u_h \mid u_h \in C^1(\bar{I}),\ \left.u_h\right|_{I_i} \in \mathbb{P}_k,\ i = 1, 2, \cdots, n + 1,\ u_h(0) = 0\right\}.
+$$
+
+要唯一确定$V_h$中的一个函数需要设置$(n + 1)(k + 1)$个条件。由于$u_h \in C^1(\bar{I})$,即$u_h$在$x = x_i$处连续($i = 1, 2, \cdots, n$)且$u_h(0) = 0$,这共有$n + 1$个限制条件,所以总共需设置$(n + 1)(k + 1) - n = (n + 1)k + 1$个条件,当$k = 1$时,需要设置$n + 2$个条件。
 
 由于剖分时共设置了$n + 2$个结点$x_0, x_1, \cdots, x_n, x_{n+1}$,除了$u_h(x_0) = 0$外,还留下了$n + 1$个结点$x_1, x_2, \cdots, x_n, x_{n+1}$,当$k = 1$时,这些结点的个数与需设置的条件个数正好相等,因此很自然地会想到,把所要设置的条件放到结点$x = x_i$($i = 1, 2, \cdots, n + 1$)上。
 
@@ -148,7 +154,7 @@ style={{ display: 'block',margin: '0 auto',width: '50%' }}
 
 **定理 7.1** 说明 $V_h^{(1)}$ 中的函数全体 $\{u_h\}$ 与 $n + 1$ 维 Euclid 空间中的点全体 $\{(u_1, u_2, \cdots, u_{n+1})^T\}$ 构成一个一一对应，因此 $V_h^{(1)}$ 也是一个 $n + 1$ 维线性空间。
 
-记 $V_h^{(1)}$ 中与 $\{e_i\}_{i=1}^{n+1}$ 对应的一组基为 $\{\varphi_i\}_{i=1}^{n+1}$，这里 $\{e_i\}$ 是 $\mathbb{R}^{n+1}$ 中的自然基，即 $e_i = (\underbrace{0, 0, \cdots, 0}_{i-1个}, 1, 0, 0, \cdots, 0)^T$，按照 (7.7) 式的对应关系，即有 $(i = 1, 2, \cdots, n)$
+记 $V_h^{(1)}$ 中与 $\{e_i\}_{i=1}^{n+1}$ 对应的一组基为 $\{\varphi_i\}_{i=1}^{n+1}$，这里 $\{e_i\}$ 是 $\mathbb{R}^{n+1}$ 中的自然基，即 $e_i = (\underbrace{0, 0, \cdots, 0}_{i-1}, 1, 0, 0, \cdots, 0)^T$，按照 (7.7) 式的对应关系，即有 $(i = 1, 2, \cdots, n)$
 
 $$
 \varphi_i(x) = \begin{cases}
@@ -161,7 +167,7 @@ $$
 $$
 \varphi_{n+1}(x) = \begin{cases}
 \frac{x - x_n}{h_{n+1}}, & x \in [x_n, x_{n+1}], \\
-0, & \text{在别处}。
+0, & \text{在别处};
 \end{cases}
 $$
 
@@ -177,7 +183,7 @@ style={{ display: 'block',margin: '0 auto',width: '50%' }}
 于是满足(7.9)式的函数$u_h$可以用这组基表示为
 
 $$
-u_h(x) = \sum_{i=1}^{n+1} u_i \varphi_i(x)。
+u_h(x) = \sum_{i=1}^{n+1} u_i \varphi_i(x)
 $$
 
 Step5：导出有限元方程。
@@ -187,7 +193,7 @@ Step5：导出有限元方程。
 变分问题$P_h$：在$V_h^{(1)}$中找一个$u_h^*$，使满足：
 
 $$
-a(u_h^*, v_h) = f(v_h), \quad \forall v_h \in V_h^{(1)}。
+a(u_h^*, v_h) = f(v_h), \quad \forall v_h \in V_h^{(1)}
 \tag{7.8}
 $$
 
@@ -198,14 +204,14 @@ $$
 显然，(7.8)式等价于
 
 $$
-a(u_h^*, \varphi_j) = f(\varphi_j), \quad j = 1, 2, \cdots, n + 1。
+a(u_h^*, \varphi_j) = f(\varphi_j), \quad j = 1, 2, \cdots, n + 1
 \tag{7.9}
 $$
 
 用$u_h^*$表示$u_h^*(x)$，便有
 
 $$
-u_h^* = \sum_{i=1}^{n+1} u_i^* \varphi_i(x)。
+u_h^* = \sum_{i=1}^{n+1} u_i^* \varphi_i(x)
 \tag{7.10}
 $$
 
@@ -233,7 +239,7 @@ u^* = (u_1^*, u_2^*, \cdots, u_{n+1}^*)^T,
 $$
 
 $$
-f = (f(\varphi_1), f(\varphi_2), \cdots, f(\varphi_{n+1}))^T。
+f = (f(\varphi_1), f(\varphi_2), \cdots, f(\varphi_{n+1}))^T
 $$
 
 由(7.3)式和(7.4)式，有
@@ -244,7 +250,7 @@ a(\varphi_i, \varphi_j) = \int_0^1 \left[p \frac{d\varphi_i}{dx} \frac{d\varphi_
 $$
 
 $$
-f(\varphi_j) = \int_0^1 f \varphi_j dx。
+f(\varphi_j) = \int_0^1 f \varphi_j dx
 \tag{7.13}
 $$
 
@@ -281,7 +287,7 @@ a(\varphi_i, \varphi_i) = \frac{1}{h_{i-1}} \int_{x_{i-1}}^{x_i} \left[p(x) + r(
 $$
 
 $$
-a(\varphi_{n+1}, \varphi_{n+1}) = \frac{1}{h_{n+1}} \int_{x_n}^{x_{n+1}} \left[p(x) + r(x)(x - x_n)^2\right] dx + p(1)a。
+a(\varphi_{n+1}, \varphi_{n+1}) = \frac{1}{h_{n+1}} \int_{x_n}^{x_{n+1}} \left[p(x) + r(x)(x - x_n)^2\right] dx + p(1)a
 $$
 
 一般说来，要精确得到公式(7.14)～(7.16)所确定的$a(\varphi_i, \varphi_j)$及$f(\varphi_j)$是不可能的，必须对它们采用数值积分的方法。从(7.14)～(7.16)式可以看到，对不同的$i$和$j$，所对应的积分区间是不同的，这样的表达形式不利于数值积分公式的使用，下面要把它们转化到同一个区间上去积分。
@@ -315,7 +321,7 @@ a(\varphi_i, \varphi_i) = \int_0^1 \left[\frac{p(x_{i-1} + h_i \xi)}{h_i} + h_i^
 $$
 
 $$
-a(\varphi_{n+1}, \varphi_{n+1}) = \int_0^1 \left[\frac{p(x_n + h_{n+1} \xi)}{h_{n+1}} + h_{n+1}^2 r(x_n + h_{n+1} \xi)\xi^2\right] d\xi + p(1)a。
+a(\varphi_{n+1}, \varphi_{n+1}) = \int_0^1 \left[\frac{p(x_n + h_{n+1} \xi)}{h_{n+1}} + h_{n+1}^2 r(x_n + h_{n+1} \xi)\xi^2\right] d\xi + p(1)a
 $$
 
 这样，只要选取某个适用于$[0, 1]$区间的数值求积公式

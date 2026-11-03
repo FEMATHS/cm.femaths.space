@@ -32,6 +32,41 @@ function parseTags(rawTags) {
     .map((label) => ({ label }));
 }
 
+function findFirstImage(raw) {
+  const imagePattern =
+    /!\[[^\]]*\]\((?:<)?([^\s)>]+)(?:>)?(?:\s+["'][^)]*["'])?\)|<img\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi;
+  const match = imagePattern.exec(raw);
+  return match?.[1] || match?.[2] || null;
+}
+
+function getImageDataUrl(image, markdownPath) {
+  if (/^(?:https?:\/\/|\/\/|data:|\/)/i.test(image)) return image;
+
+  const imagePath = path.resolve(path.dirname(markdownPath), decodeURIComponent(image));
+  const relativePath = path.relative(BLOG_DIR, imagePath);
+  if (relativePath.startsWith('..') || path.isAbsolute(relativePath)) {
+    throw new Error(`Blog cover image must be inside the blog directory: ${image}`);
+  }
+  if (!fs.existsSync(imagePath)) {
+    throw new Error(`Blog cover image not found: ${imagePath}`);
+  }
+
+  const mimeTypes = {
+    '.gif': 'image/gif',
+    '.jpeg': 'image/jpeg',
+    '.jpg': 'image/jpeg',
+    '.png': 'image/png',
+    '.svg': 'image/svg+xml',
+    '.webp': 'image/webp',
+  };
+  const mimeType = mimeTypes[path.extname(imagePath).toLowerCase()];
+  if (!mimeType) {
+    throw new Error(`Unsupported blog cover image type: ${imagePath}`);
+  }
+
+  return `data:${mimeType};base64,${fs.readFileSync(imagePath).toString('base64')}`;
+}
+
 module.exports = function blogGlobalDataPlugin() {
   return {
     name: 'blog-global-data',
@@ -44,15 +79,27 @@ module.exports = function blogGlobalDataPlugin() {
         const content = fs.readFileSync(path.join(BLOG_DIR, file), 'utf8');
         const fm = parseFrontmatter(content);
         if (/^true$/i.test(fm.draft || '')) continue;
+        const title = (fm.title || file).replace(/^["']|["']$/g, '');
         posts.push({
-          title: (fm.title || file).replace(/^["']|["']$/g, ''),
+          title,
           date: fm.date || null,
           permalink: `/blog/${file.replace(/\.md$/, '')}`,
+          image: '/img/biglogo.jpg',
+          imageSource: findFirstImage(content),
+          sourceFile: path.join(BLOG_DIR, file),
           tags: parseTags(fm.tags),
         });
       }
       posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-      return { posts };
+      for (const post of posts.slice(0, 3)) {
+        post.image = post.imageSource
+          ? getImageDataUrl(post.imageSource, post.sourceFile)
+          : '/img/biglogo.jpg';
+      }
+
+      return {
+        posts: posts.map(({ imageSource, sourceFile, ...post }) => post),
+      };
     },
     async contentLoaded({ content, actions }) {
       actions.setGlobalData({ blogPosts: content.posts });
