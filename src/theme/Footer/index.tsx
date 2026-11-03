@@ -12,7 +12,6 @@ import Link from '@docusaurus/Link';
 import {FooterLinkItem, useThemeConfig} from '@docusaurus/theme-common';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
-import ThemedImage, {Props as ThemedImageProps} from '@theme/ThemedImage';
 
 function FooterLink({
   to,
@@ -26,7 +25,7 @@ function FooterLink({
 
   return (
     <Link
-      className="footer__link-item"
+      className={clsx('footer__link-item', styles.footerLink)}
       {...(href
         ? {
             href: prependBaseUrlToHref ? normalizedHref : href,
@@ -40,21 +39,9 @@ function FooterLink({
   );
 }
 
-const FooterLogo = ({
-  sources,
-  alt,
-}: Pick<ThemedImageProps, 'sources' | 'alt'>) => (
-  <ThemedImage className="footer__logo" alt={alt} sources={sources} />
-);
-
 function Footer(): JSX.Element | null {
   const {footer} = useThemeConfig();
-
-  const {copyright, links = [], logo = {}} = footer || {};
-  const sources = {
-    light: useBaseUrl(logo.src),
-    dark: useBaseUrl(logo.srcDark || logo.src),
-  };
+  const logo = useBaseUrl('/img/favicon.ico');
 
   if (!footer) {
     return null;
@@ -62,69 +49,48 @@ function Footer(): JSX.Element | null {
 
   return (
     <footer
-      className={clsx('footer', {
-        'footer--dark': footer.style === 'dark',
+      className={clsx(styles.footer, {
+        [styles.footerDark]: footer.style === 'dark',
       })}>
-      <div className="container">
-        {links && links.length > 0 && (
-          <div className="row footer__links">
-            {links.map((linkItem, i) => (
-              <div key={i} className="col footer__col">
-                {linkItem.title != null ? (
-                  <h4 className="footer__title">{linkItem.title}</h4>
-                ) : null}
-                {linkItem.items != null &&
-                Array.isArray(linkItem.items) &&
-                linkItem.items.length > 0 ? (
-                  <ul className="footer__items">
-                    {linkItem.items.map((item, key) =>
-                      item.html ? (
-                        <li
-                          key={key}
-                          className="footer__item"
-                          // Developer provided the HTML, so assume it's safe.
-                          // eslint-disable-next-line react/no-danger
-                          dangerouslySetInnerHTML={{
-                            __html: item.html,
-                          }}
-                        />
+      <div className={clsx('container', styles.footerContainer)}>
+        <div className={styles.footerMain}>
+          <div className={styles.brand}>
+            <Link to="/" className={styles.brandHeading}>
+              <img src={logo} alt="" className={styles.brandLogo} />
+              <span>FEMATHS 小组</span>
+            </Link>
+            <p className={styles.brandDescription}>
+              计算数学 × 机器学习
+              <br />
+              用简单的努力，积累不平凡的价值
+            </p>
+            <p className={styles.brandNote}>论文精读 · Wiki 知识库 · 学习日志</p>
+          </div>
+
+          <div className={styles.footerLinks}>
+            {footer.links?.map((linkGroup, index) => (
+              <nav key={linkGroup.title ?? index} aria-label={linkGroup.title ?? 'Footer'}>
+                {linkGroup.title && <h2 className={styles.footerTitle}>{linkGroup.title}</h2>}
+                <ul className={styles.linkList}>
+                  {linkGroup.items?.map((item, itemIndex) => (
+                    <li key={item.href ?? item.to ?? itemIndex}>
+                      {item.html ? (
+                        <span dangerouslySetInnerHTML={{__html: item.html}} />
                       ) : (
-                        <li key={item.href || item.to} className="footer__item">
-                          <FooterLink {...item} />
-                        </li>
-                      ),
-                    )}
-                  </ul>
-                ) : null}
-              </div>
+                        <FooterLink {...item} />
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             ))}
           </div>
-        )}
-        {(logo || copyright) && (
-          <div className="footer__bottom text--center">
-            {logo && (logo.src || logo.srcDark) && (
-              <div className="margin-bottom--sm">
-                {logo.href ? (
-                  <Link href={logo.href} className={styles.footerLogoLink}>
-                    <FooterLogo alt={logo.alt} sources={sources} />
-                  </Link>
-                ) : (
-                  <FooterLogo alt={logo.alt} sources={sources} />
-                )}
-              </div>
-            )}
-            {copyright ? (
-              <div
-                className="footer__copyright"
-                // Developer provided the HTML, so assume it's safe.
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{
-                  __html: copyright,
-                }}
-              />
-            ) : null}
-          </div>
-        )}
+        </div>
+
+        <div className={styles.footerBottom}>
+          <span>{footer.copyright}</span>
+          <span>FEMATHS · 计算数学与机器学习</span>
+        </div>
       </div>
     </footer>
   );
