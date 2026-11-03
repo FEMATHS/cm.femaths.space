@@ -110,28 +110,62 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: '文档',
+            title: '站内导航',
+            items: [
+              {
+                label: '首页',
+                to: '/',
+              },
+              {
+                label: '团队成员',
+                to: '/members',
+              },
+              {
+                label: '加入我们',
+                href: 'https://github.com/FEMATHS',
+              },
+            ],
+          },
+          {
+            title: '资源中心',
             items: [
               {
                 label: 'Wiki 知识库',
                 to: '/docs/ch0/FEMATHS-wiki-introduction',
               },
               {
-                label: '学习日志',
+                label: '论文学习日志',
                 to: '/blog',
               },
               {
-                label: '小组成员',
-                to: '/members',
+                label: 'FEMATHS GitHub',
+                href: 'https://github.com/FEMATHS',
               },
             ],
           },
           {
-            title: '社区',
+            title: '常用链接',
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/FEMATHS',
+                label: '桂林电子科技大学',
+                href: 'https://www.guet.edu.cn/',
+              },
+              {
+                label: '桂林电子科技大学数学与计算科学学院',
+                href: 'https://www.guet.edu.cn/math/',
+              },
+            ],
+          },
+          {
+            title: '友情链接',
+            items: [
+              {
+                label: '桂林电子科技大学七院创新基地',
+                href: 'https://xn--7gqr3hs9ecxao51c822e.cn/',
+              },
+              {
+                label: '桂林电子科技大学三院科协',
+                href: 'https://www.kexie.space/',
               },
               {
                 label: '公众号 · 山海数模',
@@ -140,7 +174,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} FEMATHS 小组 · Built with Docusaurus`,
+        copyright: `© 2023–${new Date().getFullYear()} FEMATHS 小组`,
       },
 
       prism: {

@@ -1,18 +1,130 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-.container{
-  font-family: "Times New Roman", Times, serif !important;
-  font-size: 20px;
-}
-.footerLogoLink {
-  opacity: 0.5;
-  transition: opacity var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+.footer {
+  padding: 0;
+  background: #10344b;
+  color: #e8f1f8;
 }
 
-.footerLogoLink:hover {
-  opacity: 1;
+.footerDark {
+  --ifm-footer-background-color: #10344b;
+}
+
+.footerContainer {
+  max-width: 1080px;
+}
+
+.footerMain {
+  display: grid;
+  grid-template-columns: minmax(210px, 1.25fr) minmax(0, 4fr);
+  gap: 2rem;
+  padding-top: 3.2rem;
+  padding-bottom: 2.8rem;
+}
+
+.brandHeading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.brandHeading:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.brandLogo {
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+}
+
+.brandDescription {
+  margin: 1rem 0 0.8rem;
+  color: #d3e2ed;
+  font-size: 0.9rem;
+  line-height: 1.9;
+}
+
+.brandNote {
+  color: #91acc0;
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
+.footerLinks {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.footerTitle {
+  margin: 0 0 1rem;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footerLink {
+  color: #d3e2ed;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  transition: color 0.2s ease;
+}
+
+.footerLink:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footerBottom {
+  display: flex;
+  min-height: 3.6rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid rgba(220, 235, 247, 0.13);
+  color: #91acc0;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 996px) {
+  .footerMain {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+
+  .footerLinks {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .footerMain {
+    padding-top: 2.4rem;
+    padding-bottom: 2rem;
+  }
+
+  .footerLinks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 1.8rem;
+  }
+
+  .footerBottom {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.9rem 0;
+  }
 }
