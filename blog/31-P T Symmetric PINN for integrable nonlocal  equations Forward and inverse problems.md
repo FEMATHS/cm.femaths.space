@@ -7,6 +7,8 @@ date: 2026-1-13
 
 ![](./src/31/113.png)
 
+<!-- truncate -->
+
 这是一篇使用 PINN 和 PT 对称解决可积非局部方程逆问题和正问题的论文。
 
 # PT Symmetric PINN for integrable nonlocal equations: Forward and inverse problems

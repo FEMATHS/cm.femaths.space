@@ -8,19 +8,19 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: '机器学习小纵队',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'FEMATHS · 用简单的努力，积累不平凡的价值',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://cm.femaths.space',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'FEMATHS', // Usually your GitHub org/user name.
+  projectName: 'cm.femaths.space', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -29,8 +29,8 @@ const config = {
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'zh-Hans',
+    locales: ['zh-Hans'],
   },
 
   presets: [
@@ -42,8 +42,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           remarkPlugins: [math],
           rehypePlugins: [katex],
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/FEMATHS/cm.femaths.space/tree/main/',
         },
         blog: {
           postsPerPage: 'ALL',
@@ -51,7 +50,7 @@ const config = {
           blogTitle: 'FEMATHS小组学习日志',
           blogSidebarTitle: 'All posts',
           blogSidebarCount: 'ALL',
-          editUrl: 'https://github.com/yourrepo',
+          editUrl: 'https://github.com/FEMATHS/cm.femaths.space/tree/main/',
           remarkPlugins: [math],
           rehypePlugins: [katex],
         },
@@ -61,6 +60,7 @@ const config = {
       }),
     ],
   ],
+  plugins: [require.resolve('./src/plugins/blogGlobalData.js')],
   stylesheets: [
     {
       href: 'https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css',
@@ -75,7 +75,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/biglogo.jpg',
       navbar: {
         title: '机器学习小纵队',
         logo: {
@@ -111,39 +111,36 @@ const config = {
         links: [
           {
             title: '文档',
+            items: [
+              {
+                label: 'Wiki 知识库',
+                to: '/docs/ch0/FEMATHS-wiki-introduction',
+              },
+              {
+                label: '学习日志',
+                to: '/blog',
+              },
+              {
+                label: '小组成员',
+                to: '/members',
+              },
+            ],
           },
           {
             title: '社区',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: '更多',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
                 label: 'GitHub',
                 href: 'https://github.com/FEMATHS',
+              },
+              {
+                label: '公众号 · 山海数模',
+                to: '/',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} FEMATHS 小组 · Built with Docusaurus`,
       },
 
       prism: {

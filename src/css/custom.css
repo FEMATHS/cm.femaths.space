@@ -7,11 +7,11 @@
  */
 /* 全局基础字体 */
 body {
-  font-family: "Times New Roman", Times, serif !important;
+  font-family: var(--ifm-font-family-base);
 }
 
 .markdown > h1,h2,h3,h4,h5,h6 {
-  font-family: "Times New Roman", Times, serif !important;
+  font-family: var(--ifm-heading-font-family);
 }
 
 .markdown > p, li {
@@ -22,15 +22,43 @@ body {
 }
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #007acc;
-  --ifm-color-primary-dark: #005ea2;
-  --ifm-color-primary-darker: #004c82;
-  --ifm-color-primary-darkest: #003666;
-  --ifm-color-primary-light: #3399ff;
-  --ifm-color-primary-lighter: #66b2ff;
-  --ifm-color-primary-lightest: #99ccff;
+  --ifm-color-primary: #5b5fe0;
+  --ifm-color-primary-dark: #4a4ed4;
+  --ifm-color-primary-darker: #4246c4;
+  --ifm-color-primary-darkest: #3639a1;
+  --ifm-color-primary-light: #7b7fe7;
+  --ifm-color-primary-lighter: #9295ec;
+  --ifm-color-primary-lightest: #b4b6f3;
   --ifm-code-font-size: 100%;
-  --ifm-font-family-base: "sans-serif";
+  --ifm-font-family-base: system-ui, -apple-system, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  --ifm-heading-font-family: 'Times New Roman', Times, 'SimSun', serif;
+  --ifm-footer-background-color: #10142b;
+}
+
+html[data-theme='dark'] {
+  --ifm-color-primary: #8b8ff2;
+  --ifm-color-primary-dark: #6f74ee;
+  --ifm-color-primary-darker: #5f64ec;
+  --ifm-color-primary-darkest: #3d41d8;
+  --ifm-color-primary-light: #a3a6f5;
+  --ifm-color-primary-lighter: #b7b9f8;
+  --ifm-color-primary-lightest: #dcddfb;
+}
+
+/* Hero 粒子画布 */
+.heroParticles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroParticles {
+    display: none;
+  }
 }
 
 
@@ -71,9 +99,9 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 /* 强制修改 blog 页面文章卡片标题大小 */
 .blog-list-page article header h2 a {
   font-size: 1rem !important;
-  color: #007acc !important;
+  color: var(--ifm-color-primary) !important;
   font-weight: 600 !important;
-  border-left: 4px solid #007acc;
+  border-left: 4px solid var(--ifm-color-primary);
   padding-left: 0.5rem;
   display: inline-block;
   text-decoration: none;
@@ -81,8 +109,8 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 
 /* 鼠标悬停时效果 */
 .blog-list-page article header h2 a:hover {
-  color: #ff6600 !important;
-  border-color: #ff6600;
+  color: var(--ifm-color-primary-light) !important;
+  border-color: var(--ifm-color-primary-light);
 }
 
 .math-display:hover {
@@ -100,7 +128,7 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 .margin-bottom--xl h2 {
   font-size: 26px;
   font-weight: 600;
-  color: #007acc;
+  color: var(--ifm-color-primary);
   text-decoration: none; /* 默认无下划线 */
 }
 
